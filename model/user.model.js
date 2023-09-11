@@ -1,5 +1,3 @@
-
-
 const bcrypt = require("bcryptjs");
 const { Schema, model } = require("mongoose");
 
@@ -33,7 +31,7 @@ const userSchema = new Schema(
     fullName: {
       type: String,
     },
-posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   {
     timestamps: true,

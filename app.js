@@ -17,7 +17,6 @@ mongoose.set('strictQuery', true);
 
 
 const express = require('express');
-
 const hbs = require('hbs');
 const path = require('path');
 
@@ -45,7 +44,8 @@ app.get('/', (req, resp) => {
 // const index = require('./routes/index');
 // app.use('/', index);
 
+const authRouter = require('./routes/auth.routes');
+app.use("/", authRouter);
 
 // require('./error-handling')(app);
-
 module.exports = app;
