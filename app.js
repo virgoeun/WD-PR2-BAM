@@ -27,11 +27,11 @@ app.locals.title = `${capitalized(projectName)} by BAMM!`;
 
 
 //handling all routes here 
-app.get('/', (req, resp) => {
-    resp.render("index");
-  });
+// app.get('/', (req, resp) => {
+//     resp.render("index");
+//   });
 
-
+//handling all routes here 
 const index = require('./routes/index');
 app.use('/', index);
 
