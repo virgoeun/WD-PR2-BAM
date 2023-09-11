@@ -1,0 +1,22 @@
+[
+  {
+    "emoji": "😢",
+    "name": "Sad"
+  },
+  {
+    "emoji": "😠",
+    "name": "Angry"
+  },
+  {
+    "emoji": "😐",
+    "name": "Neutral"
+  },
+  {
+    "emoji": "😄",
+    "name": "Happy"
+  },
+  {
+    "emoji": "😍",
+    "name": "Excited"
+  }
+]
