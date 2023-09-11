@@ -8,4 +8,5 @@ function connectToServer() {
   });
 }
 
-connectDB().then(connectToServer);
+connectDB()
+.then(connectToServer);

@@ -15,13 +15,14 @@ router.get("/daily-journal", (req, res) => {
 
 //handle mood submission
 router.post("/submit-mood", (req, res) => {
-  const selectedMood = req.body.mood;
+  const selectedMood = req.body
+  console.log(selectedMood)
 
   // Store mood data in the array
-  moodData.push(selectedMood);
+  // moodData.push(selectedMood);
 
   // Redirect to the user profile page
-  res.redirect("users/user-profile");
+  res.redirect("userProfile");
 });
 
 //render the mood on the journal page
