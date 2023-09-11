@@ -4,7 +4,7 @@ const logger = require("morgan");
 
 const cookieParser = require("cookie-parser");
 
-// const favicon = require("serve-favicon");
+const favicon = require("serve-favicon");
 
 const path = require("path");
 
@@ -27,5 +27,5 @@ module.exports = (app) => {
     app.use(express.static(path.join(__dirname, "..", "public")));
   
     // Handles access to the favicon
-//     app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+    // app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
   };

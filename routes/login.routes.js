@@ -5,20 +5,20 @@ const bcryptjs = require ("bcryptjs");
 const User = require("../model/user.model");
 const mongoose = require("mongoose");
 const {isLoggedOut, isLoggedIn} = require("../middleware/loggedInOut");
-const isAuthenticated = require("../middleware/isauthenticated");
+const {bothFilled, authenticateUser} = require("../middleware/isauthenticated");
 
 
-router.get("/login", isLoggedOut, isAuthenticated,  (req, res, next) => {
+router.get("/login", isLoggedOut, (req, res, next) => {
 res.render('auth/login');
 })
 
 //isLoggedout : if already logged-in user tries to access
 // to login page, then middleware blocks it
 
-router.post("/login", isLoggedOut, isAuthenticated,  (req,res,next) =>{
+router.post("/login", isLoggedOut, bothFilled, authenticateUser, (req,res,next) =>{
 const {username, password} = req.body;
 console.log(req.body);
-res.redirect('/profile')
+res.redirect('/') //correct to /profile
 .catch((error) => next(error));
 });
 
