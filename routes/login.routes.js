@@ -25,7 +25,7 @@ router.post(
     const { username, password } = req.body;
     console.log(req.body);
     res
-      .redirect("/") //correct to /profile
+      .redirect("/userProfile") 
       .catch((error) => next(error));
   }
 );
