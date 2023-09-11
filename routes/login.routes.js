@@ -4,9 +4,8 @@ const bcryptjs = require ("bcryptjs");
 
 const User = require("../model/user.model");
 const mongoose = require("mongoose");
-const isLoggedOut = require("../middleware/loggedInOut");
-const isLoggedIn = require("../middleware/loggedInOut");
-const isAuthenticated = require("../middleware/isauthentificated");
+const {isLoggedOut, isLoggedIn} = require("../middleware/loggedInOut");
+const isAuthenticated = require("../middleware/isauthenticated");
 
 
 router.get("/login", isLoggedOut, isAuthenticated,  (req, res, next) => {
@@ -24,10 +23,13 @@ res.redirect('/profile')
 });
 
 
-
+//if not a loggedin user, it can't log-out
 router.post("/logout", isLoggedIn, (req, res, next) => {
     req.session.destroy((err) => {
       if (err) next(err);
       res.redirect("/");
     });
   });
+
+
+  module.exports = router;

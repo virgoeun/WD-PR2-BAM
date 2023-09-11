@@ -1,6 +1,6 @@
 const User = require('../model/user.model'); // Import your user model here
 const bcryptjs = require("bcryptjs");
-const saltRounds = 10;
+// const saltRounds = 10;
 
 function isAuthenticated(req, res, next) {
   const { username, password } = req.body;

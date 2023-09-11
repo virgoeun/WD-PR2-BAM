@@ -45,6 +45,8 @@ app.get('/', (req, resp) => {
 // const index = require('./routes/index');
 // app.use('/', index);
 
+const loginRoutes = require("./routes/login.routes");
+app.use("/", loginRoutes);
 
 // require('./error-handling')(app);
 
