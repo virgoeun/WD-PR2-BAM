@@ -32,6 +32,7 @@ const userSchema = new Schema(
       type: String,
     },
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    journals: [{ type: Schema.Types.ObjectId, ref: "Journal" }],
   },
   {
     timestamps: true,

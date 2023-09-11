@@ -41,6 +41,9 @@ app.use("/", signUpRoutes);
 const loginRoutes = require("./routes/login.routes");
 app.use("/", loginRoutes);
 
+const journalRoutes = require("./routes/journal.routes")
+app.use("/", journalRoutes)
+
 
 //Always comes the Last!
 require('./error-handling')(app);
