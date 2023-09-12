@@ -4,3 +4,4 @@ function formatDate(dateString) {
   }
 
   module.exports = formatDate;
+
