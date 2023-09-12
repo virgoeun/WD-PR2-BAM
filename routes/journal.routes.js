@@ -80,7 +80,7 @@ router.get("/daily-journal/:journalId", (req, res, next) => {
     });
 });
 
-router.post("/daily-journal/:journalId/delete", (req, res, next) => {
+router.get("/daily-journal/:journalId/delete", (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findByIdAndDelete(journalId)
