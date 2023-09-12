@@ -42,7 +42,7 @@ router.post('/signup', (req, res, next) => {
         res.status(500)
         .render('auth/signup', {errorMessage: error.message});
     } else if(error.code === 11000) {
-        console.log("Username and password need to be unique. Either username or email is already used.");
+        console.log("Username is already used.");
 
         res.status(500).render('auth/signup', {
             errorMessage: 'User not found and/or incorrect password.'

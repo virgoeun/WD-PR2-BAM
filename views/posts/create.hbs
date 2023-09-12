@@ -1,0 +1,54 @@
+<main>
+    <h2> Create a new Post </h2>
+    <form action="/create"  method="POST">
+            <label input="text">
+                <p>
+                    {{content}}<!--placeholder-->
+                </p>
+            </label>
+
+            <div class="interaction-buttons">
+                <button class="like-btn"> 
+                    Like
+                </button>
+
+                <button class="comment-btn">
+                    Comment
+                </button>
+            </div>
+
+            <div class="comments">
+                {{#each comments}}
+                <div class="comment">
+                    <p>
+                        {{this}}<!--current comment-->
+                    </p>
+                </div>
+                {{/each}}
+            </div>
+
+            <div class ="comment-form">
+                <textarea class="comment-text" placeholder="Add a comment...">
+                </textarea>
+
+                <button class="comment-submit">
+                    Submit
+                </button>
+            </div>
+    </form> 
+
+  {{!-- <form action="/post-create" method="POST">
+  
+  <label> Title:
+    <input type="text" name="title" />
+  </label>
+  <br>
+
+  <label> Content:
+    <textarea type="text" name="content"> </textarea>
+  </label>
+  <br>
+
+  <button type="submit"> Create the post </button>
+</form>--}}
+</main>  

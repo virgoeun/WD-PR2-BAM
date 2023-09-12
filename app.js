@@ -47,5 +47,8 @@ app.get('/', (req, resp) => {
 const authRouter = require('./routes/auth.routes');
 app.use("/", authRouter);
 
+const communityRouter = require('./routes/post.routes');
+app.use("/", communityRouter);
+
 // require('./error-handling')(app);
 module.exports = app;

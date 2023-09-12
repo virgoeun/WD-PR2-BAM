@@ -8,7 +8,6 @@ const userSchema = new Schema(
       trim: true,
       required: [true, "Username is required."],
       unique: [true, "Username is already taken."],
-      trim: true,
       match: [
         /^[A-Za-z][A-Za-z0-9_]{5,21}$/,
         "Your username should be at least 6 characters long, start with a letter, and can include letters, numbers, or underscores.",
@@ -36,9 +35,7 @@ const userSchema = new Schema(
   {
     timestamps: true,
   }
-
 )
 
 const User = model("User", userSchema);
-
 module.exports = User;
