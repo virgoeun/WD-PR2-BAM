@@ -34,6 +34,9 @@ app.use("/", loginRoutes);
 const profileRoutes = require("./routes/auth.routes");
 app.use("/", profileRoutes);
 
+const journalRoutes = require("./routes/journal.routes");
+app.use("/", journalRoutes);
+
 //Always comes the Last!
 require('./error-handling')(app);
 

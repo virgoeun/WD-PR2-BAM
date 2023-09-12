@@ -20,8 +20,8 @@ router.post("/submit-mood", (req, res) => {
 });
 
 //render the mood on the journal page
-router.get("/daily-journal", (req, res) => {
-  res.render("daily-journal");
-});
+// router.get("/daily-journal", (req, res) => {
+//   res.render("daily-journal");
+// });
 
 module.exports = router;
