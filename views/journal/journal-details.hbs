@@ -1,9 +1,14 @@
 <div id="journal-detail-page">
-<h2> {{journal.title}} Journal</h2>
+<h2> {{journals.title}} Journal</h2>
 <div class ="journal-detail-date"> 
  <aside> <p>
  Created:
-  {{journal.createdAt}}
+  {{journals.createdAt}}
+</p></aside>
+<br />
+ <aside> <p>
+ Created By:
+  {{journals.author.username}}
 </p></aside>
 <br />
 </div>
@@ -15,20 +20,20 @@
 <div class ="journal-detail-content"> 
 <p>
   Content:
-  {{journal.content}}
+  {{journals.content}}
 </p>
 <br />
 </div>
 
 
 <div class ="edit-delete-journal">
-<a href="/daily-journal/{{journal._id}}/edit">Edit this journal 📝</a>
+<a href="/daily-journal/{{journals._id}}/edit">Edit this journal 📝</a>
 <br />
 <br />
 
-<a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🙄</a>
-
-<form action="/daily-journal/{{journal._id}}/delete" method="POST">
+{{!-- <a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🙄</a> --}}
+<p class="deletebox">Delete this journal 🙄</p>
+<form action="/daily-journal/{{journals._id}}/delete" method="POST">
   <button>Delete</button>
 </form>
 </div>

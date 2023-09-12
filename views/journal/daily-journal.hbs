@@ -1,3 +1,12 @@
+
+
+{{!-- {{#if userInSession}}
+  <h2>Hello, {{userInSession.username}}!</h2>
+{{/if}} --}}
+
+
+  {{!-- <h2>Hello, {{userInSession.username}}!</h2> --}}
+
 <h2>Write today's journal</h2>
 
 <form action ="/daily-journal" method = "Post">
@@ -13,6 +22,17 @@
     <input type="date" id ="post_date" name ="post_date"/>
 </label>
 <br>
+{{!-- <label for="joural-author"> Created by:
+
+  <input type="text" id="journal-author" name ="author"/> --}}
+    {{!-- <select name="author">
+      <option disable selected value=""></option> --}}
+      {{!-- {{#each journalUser}}
+       {{this.username}}  --}}
+        {{!-- <option value="{{this._id}}"> {{this.username}} </option> --}}
+      {{!-- {{/each}} --}}
+    {{!-- </select> --}}
+  {{!-- </label> --}}
 <button type="submit"> Create your Journal </button>
 </form>
 

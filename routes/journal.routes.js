@@ -3,10 +3,20 @@ const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 
 // simpler version
+// router.get("/daily-journal", (req, res) => {
+//   res.render("journal/daily-journal", {
+//     userInSession: req.session.currentUser,
+//   });
+//   console.log(req.session.currentUser)
+// });
+
 router.get("/daily-journal", (req, res) => {
-  res.render("journal/daily-journal", {
-    userInSession: req.session.currentUser,
-  });
+    User.find()
+    .then((journalUser) => {
+       // console.log('journalUser', journalUser);
+        res.render("journal/daily-journal", {journalUser});
+    })
+    .catch((err) => console.log(`Err while displaying journal input: ${err}`))
 });
 
 //journal form get
@@ -30,11 +40,7 @@ router.post("/daily-journal", (req, res, next) => {
 
   Journal.create({ title, content, author, createdAt })
     .then((journalPost) => {
-      // console.log(journalPost)
-      // console.log(journalPost._id)
-      return User.findByIdAndUpdate(author, {
-        $push: { journals: journalPost._id },
-      });
+    return User.findByIdAndUpdate(author, { $push: { journals: journalPost._id } });
     })
     .then(() => res.redirect("/journal-list")) // need to get!
     .catch((err) => {
@@ -57,9 +63,12 @@ router.post("/daily-journal", (req, res, next) => {
 //     })
 
 router.get("/journal-list", (req, res, next) => {
+
   Journal.find()
-    .then((journalsFromDb) => {
-      res.render("journal/journal-list", { journalsFromDb });
+  .populate("author")
+    .then((myJounals) => {
+        //console.log("my journals are:", myJounals)
+      res.render("journal/journal-list", { journals: myJounals });
     })
     .catch((err) => {
       next(err);
@@ -70,9 +79,12 @@ router.get("/daily-journal/:journalId", (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findById(journalId)
+  //.then(data => console.log(data))
     .populate("author")
+    .then(data => console.log(data))
     .then((foundedJournal) => {
-      res.render("journal/journal-details", { journal: foundedJournal });
+        // console.log("journal/journal-details", { journal: foundedJournal })
+      res.render("journal/journal-details", {journals:foundedJournal});
     })
     .catch((err) => {
       console.log(`Err while getting a single journal from the DB: ${err}`);

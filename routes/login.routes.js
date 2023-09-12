@@ -8,14 +8,11 @@ const {
   authenticateUser,
 } = require("../middleware/isAuthenticated");
 
-router.get("/login", (req, res, next) => {
+router.get("/login", isLoggedOut, (req, res, next) => {
+  console.log("SESSION =====> ", req.session);
   res.render("auth/login");
 });
 
-
-// isLoggedOut
-// bothFilled,
- // authenticateUser,
 //isLoggedout : if already logged-in user tries to access
 // to login page, then middleware blocks it
 

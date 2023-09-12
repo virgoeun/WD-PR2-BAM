@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const journalSchema = new Schema(
   {
-    author: { type: Schema.Types.ObjectId, ref: "User" },
+    author: [{ type: Schema.Types.ObjectId, ref: "User" }],
     title: String,
     content: String,
     createdAt: {
