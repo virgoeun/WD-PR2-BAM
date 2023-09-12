@@ -27,7 +27,17 @@ router.post(
   (req, res, next) => {
     const { username, password } = req.body;
     console.log(req.body);
-    res.redirect("/userProfile").catch((error) => console.log(error));
+
+    req.session.user = username; // Store user data in the session
+    req.session
+      .save((err) => {
+        if (err) {
+          console.error(err);
+          return next(err);
+        }
+        res.redirect("/userProfile");
+      })
+      .catch((error) => console.log(error));
     // next(error));
   }
 );

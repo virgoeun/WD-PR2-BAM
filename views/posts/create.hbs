@@ -1,15 +1,22 @@
 <h2>Create a new post</h2>
 
 <form action="/create-post" method="POST">
-  <label> Title:
+
+  {{!-- <label> POST:
     <input type="text" name="title" />
   </label>
-  <br>
+  <br> --}}
 
-  <label> Content:
-    <textarea type="text" name="content"> </textarea>
+  <label> Post:
+    <textarea type="text" name="content" placeholder="what's on your mind?"> </textarea>
   </label>
   <br>
 
+  <label>
+    Created by:
+    {{author.username}}
+  </label>
+
   <button type="submit"> Create the post </button>
-</form>
+<br/>
+

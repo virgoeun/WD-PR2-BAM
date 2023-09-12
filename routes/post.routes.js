@@ -28,6 +28,7 @@ router.post("/create-post", (req, res) => {
     .catch((error) => console.log(error));
 });
 
+//list all posts
 router.get("/posts", (req, res, next) => {
   Post.find()
     .populate("author")
@@ -41,19 +42,20 @@ router.get("/posts", (req, res, next) => {
     });
 });
 
+//display a single post
 router.get("/posts/:postId", (req, res, next) => {
   const { postId } = req.params;
 
   Post.findById(postId)
-    // .populate("author comments")
-    // .populate({
-    //   path: "comments",
-    //   populate: {
-    //     path: "author",
-    //     model: "User",
-    //   },
-    // })
-    .then((foundPost) => res.send(foundPost))
+    .populate("author")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    })
+    .then((foundPost) => res.render(foundPost))
     .catch((err) => {
       console.log(`Err while getting a single post from the  DB: ${err}`);
       next(err);
