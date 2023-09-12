@@ -4,7 +4,7 @@ const Journal = require("../model/journal.model");
 
 
 //journal form get
-router.get("/daily-journal", (req, res) => {
+router.get("/daily-journal", ensureAuthenticated, (req, res) => {
     res.render("journal/daily-journal", { userInSession: req.session.currentUser });
   });
 

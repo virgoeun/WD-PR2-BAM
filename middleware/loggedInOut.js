@@ -14,4 +14,5 @@ function isLoggedIn (req, res, next) {
   next();
 };
 
+
 module.exports = { isLoggedOut, isLoggedIn };
