@@ -115,15 +115,15 @@ router.post("/daily-journal/:journalId/edit", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-//only one users' all posts
+//only one users' all journals
 
-// router.get("/users/:userId/posts", (req, res, next) => {
+// router.get("/userProfile/:userId/journal-list", (req, res, next) => {
 //     const { userId } = req.params;
   
 //     User.findById(userId)
-//       .populate("posts")
+//       .populate("Journal")
 //       .then((foundUser) => {
-//         res.render("users/details", { posts: foundUser.posts });
+//         res.render("all-my-journals", { journals: foundUser.journals });
 //       })
 //       .catch((err) =>
 //         console.log(`Error while getting all posts from the DB: ${err}`)

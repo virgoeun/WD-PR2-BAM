@@ -8,8 +8,9 @@ const {
   bothFilled,
   authenticateUser,
 } = require("../middleware/isAuthenticated");
+const {ensureNotLoggedIn} = require("../middleware/ensuredNotLoggedIn")
 
-router.get("/login", (req, res, next) => {
+router.get("/login", ensureNotLoggedIn, (req, res, next) => {
   res.render("auth/login");
 });
 

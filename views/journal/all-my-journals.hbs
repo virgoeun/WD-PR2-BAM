@@ -1,0 +1,14 @@
+<h2>User's posts</h2>
+
+<ul>
+  {{#each journals}}
+    <li>
+      {{this.title}}
+      by
+      {{this.author.username}}
+    </li>
+  {{/each}}
+</ul>
+
+<a href="/userProfile">Back to Dashboard</a>
+<br>

@@ -1,3 +1,15 @@
+
+{{#if userInSession}}
+  <h2>Welcome, {{ userInSession.username }}!</h2>
+  <button>
+    <a href="/daily-journal">Reload the page</a>
+  </button>
+{{else}}
+  
+  <br><p>Still no logged in user, sorry!</p>
+ 
+{{/if}}
+
 <h2>Write today's journal</h2>
 
 <form action ="/daily-journal" method = "Post">

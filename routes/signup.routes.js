@@ -5,8 +5,9 @@ const router = new Router();
 const mongoose = require("mongoose");
 const User = require("../model/user.model");
 const { bothFilled } = require("../middleware/isAuthenticated");
+const {ensureNotLoggedIn} = require("../middleware/ensuredNotLoggedIn")
 
-router.get("/signup", (req, res) => res.render("auth/signup"));
+router.get("/signup", ensureNotLoggedIn, (req, res) => res.render("auth/signup"));
 
 router.post("/signup", bothFilled, (req, res, next) => {
   const { username, password } = req.body;
