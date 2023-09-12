@@ -8,10 +8,11 @@ const userSchema = new Schema(
       trim: true,
       required: [true, "Username is required."],
       unique: [true, "Username is already taken."],
-      match: [
-        /^[A-Za-z][A-Za-z0-9_]{5,21}$/,
-        "Your username should be at least 6 characters long, start with a letter, and can include letters, numbers, or underscores.",
-      ],
+      trim: true,
+      // match: [
+      //   /^[A-Za-z][A-Za-z0-9_]{5,21}$/,
+      //   "Your username should be at least 6 characters long, start with a letter, and can include letters, numbers, or underscores.",
+      // ],
     },
     password: {
       type: String,
@@ -31,6 +32,7 @@ const userSchema = new Schema(
       type: String,
     },
     posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    journals: [{ type: Schema.Types.ObjectId, ref: "Journal" }],
   },
   {
     timestamps: true,

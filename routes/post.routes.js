@@ -5,16 +5,21 @@ const Post = require("../model/post.model");
 const User = require("../model/user.model");
 
 //get route
-router.get("/create-post", (req, res) => {
+router.get("/community", (req, res) => {
   console.log(req.session.currentUser);
   res.render("posts/create");
 });
+
+// router.get("/create-post", (req, res) => {
+//   console.log(req.session.currentUser);
+//   res.render("posts/create");
+// });
 
 //post route
 router.post("/create-post", (req, res) => {
   console.log(req.session);
   const { title, content, author } = req.body;
-  
+
   Post.create({ title, content, author })
     .then((dbPost) => {
       return User.findByIdAndUpdate(author, { $push: { content: dbPost._id } });

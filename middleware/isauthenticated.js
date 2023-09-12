@@ -27,7 +27,7 @@ function authenticateUser(req, res, next) {
         });
       } else if (bcryptjs.compareSync(password, user.password)) {
         req.session.currentUser = user;
-        res.redirect("/"); //change to /profile
+        res.redirect("/userProfile"); //change to /profile
       } else {
         console.log("Incorrect password. ");
         res.render("auth/login", {
