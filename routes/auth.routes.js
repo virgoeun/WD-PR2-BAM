@@ -25,3 +25,4 @@ router.get("/daily-journal", (req, res) => {
 });
 
 module.exports = router;
+
