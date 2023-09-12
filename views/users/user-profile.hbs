@@ -23,10 +23,11 @@
       <h2>Daily status check-in</h2>
       <h3>How are you feeling today?</h3>
       <h4>Select Your Mood:</h4>
-      <form action="/submit-mood" method="post">
+      <form class="emojies" action="/submit-mood" method="post">
         {{#each emojies}}
-          <input type="radio" name="{{name}}" value="{{name}}" />
+          <input type="radio" name="selectedMood" value="{{name}}" />
           {{emoji}}
+          {{name}}
         {{/each}}
         <button type="submit">Submit</button>
       </form>
