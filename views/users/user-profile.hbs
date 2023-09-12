@@ -1,16 +1,18 @@
 {{! views/users/user-profile.hbs }}
 
-{{!-- {{#if userInSession}}
+{{#if userInSession}}
   <h2>Hello, {{userInSession.username}}!</h2>
-{{/if}} --}}
+{{/if}}
 
 <div>
   <div class="profile-details">
-    <img src=`{{user.avatar}}` alt=`{{user.username}} Avatar` class="avatar" />
-    <p>Username: {{user.username}}</p>
-    <p>Full Name: {{user.username}}</p>
-    <br>
-    <a href='/userProfile/edit/{{_id}}' class="edit-profile"><button class="styled-button">Edit Profile</button></a>
+    <img src="{{user.avatar}}" alt="{{user.username}} Avatar" class="avatar" />
+    <p>Username: {{userInSession.username}}</p>
+    <p>Full Name: {{userInSession.username}}</p>
+    <br />
+    <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
+        class="styled-button"
+      >Edit Profile</button></a>
   </div>
 
   <div>
@@ -19,26 +21,38 @@
   </div>
 
   <div class="profile-body">
-    <div>
-      <h2>Daily status check-in</h2>
+    <div class="mood">
+      <h2>Wellbeing Mood Check</h2>
       <h3>How are you feeling today?</h3>
       <h4>Select Your Mood:</h4>
       <form class="emojies" action="/submit-mood" method="post">
+       <div class="emoji-container">
         {{#each emojies}}
-          <input type="radio" name="selectedMood" value="{{name}}" />
-          {{emoji}}
-          {{name}}
+          <label class="emoji-label">
+            <input type="radio" name="selectedMood" value="{{name}}" style="display: none;">
+            <span class="emoji">{{emoji}}</span>
+            <span class="emoji">{{name}}</span>
+          </label>
         {{/each}}
-        <button type="submit">Submit</button>
+       </div>
+       <button type="submit">Submit</button> 
       </form>
     </div>
-    <div>
+    <div class="recomm">
       <h2>Daily recommendation</h2>
       <p>Placeholder for suggestion</p>
     </div>
-    <div>
-      <h2>Activity</h2>
+    <div class="activity">
+      <h2>Your Posts</h2>
       <p>Placeholder for post tracking</p>
+      <div>
+        {{#each userPosts}}
+          <div class="post">
+            <p>{{content}}</p>
+            <!-- Display other post details as needed -->
+          </div>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>

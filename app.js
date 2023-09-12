@@ -6,7 +6,7 @@ require("./db");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
-require('dotenv/config');
+// require('dotenv/config');
 
 // ℹ️ Connects to the database
 require('./db');
@@ -38,6 +38,12 @@ app.use("/", loginRoutes);
 
 const profileRoute = require("./routes/profile.routes");
 app.use("/", profileRoute);
+
+const jounalRoutes = require('./routes/journal.routes');
+app.use('/', jounalRoutes);
+
+const aboutRoutes = require("./routes/about.routes");
+app.use('/', aboutRoutes);
 
 //Always comes the Last!
 require('./error-handling')(app);
