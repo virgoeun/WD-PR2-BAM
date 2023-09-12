@@ -1,34 +1,58 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const router = new Router();
-const mongoose = require('mongoose');
-const Post = require('../model/post.model')
-const User = require('../model/user.model')
+
+const Post = require("../model/post.model");
+const User = require("../model/user.model");
 
 //get route
+router.get("/create-post", (req, res) => {
+  console.log(req.session.currentUser);
+  res.render("posts/create");
+});
 
 //post route
-router.post('/create', (req, res) => {
-    const {author, content, comments } = req.body;
-
-    Post
-    .create({ author, content, comments })
-    .then(dbPost => {
-        return User.findByIdAndUpdate(author, {$push: {content: dbPost._id}})
+router.post("/create-post", (req, res) => {
+  console.log(req.session);
+  const { title, content, author } = req.body;
+  
+  Post.create({ title, content, author })
+    .then((dbPost) => {
+      return User.findByIdAndUpdate(author, { $push: { content: dbPost._id } });
     })
-    .then(() => res.redirect('/posts'))//not sure
-    .catch(error => console.log(error))
-  });
+    .then(() => res.redirect("/posts"))
+    .catch((error) => console.log(error));
+});
 
-router.get('/create-post', (req, res) => {
-    Post
-    .find()
-      .then(dbPosts => {
-        console.log('Posts from the DB: ', dbPosts);
-      })
-      .catch(err => {
-        console.log(`Err while getting the posts from the DB: ${err}`);
-        next(err);
-      });
-  });
+router.get("/posts", (req, res, next) => {
+  Post.find()
+    .populate("author")
+    .then((dbPosts) => {
+      console.log("Posts from the DB: ", dbPosts);
+      res.render("posts/list", { posts: dbPosts });
+    })
+    .catch((err) => {
+      console.log(`Err while getting the posts from the DB: ${err}`);
+      next(err);
+    });
+});
 
-  module.exports = router
+router.get("/posts/:postId", (req, res, next) => {
+  const { postId } = req.params;
+
+  Post.findById(postId)
+    // .populate("author comments")
+    // .populate({
+    //   path: "comments",
+    //   populate: {
+    //     path: "author",
+    //     model: "User",
+    //   },
+    // })
+    .then((foundPost) => res.send(foundPost))
+    .catch((err) => {
+      console.log(`Err while getting a single post from the  DB: ${err}`);
+      next(err);
+    });
+});
+
+module.exports = router;
