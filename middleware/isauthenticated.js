@@ -2,6 +2,7 @@ const User = require("../model/user.model"); // Import your user model here
 const bcryptjs = require("bcryptjs");
 // const saltRounds = 10;
 
+//this is for sign-up
 function bothFilled(req, res, next) {
   const { username, password } = req.body;
 
@@ -27,6 +28,8 @@ function authenticateUser(req, res, next) {
         });
       } else if (bcryptjs.compareSync(password, user.password)) {
         req.session.currentUser = user;
+        console.log(req.session)
+        console.log(req.session.currentUser)
         res.redirect("/userProfile"); //change to /profile
       } else {
         console.log("Incorrect password. ");

@@ -5,7 +5,6 @@ const User = require("../model/user.model");
 const mongoose = require("mongoose");
 const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
 const {
-  bothFilled,
   authenticateUser,
 } = require("../middleware/isAuthenticated");
 
@@ -21,7 +20,7 @@ router.get("/login", (req, res, next) => {
 // to login page, then middleware blocks it
 
 router.post(
-  "/login", isLoggedOut, bothFilled, authenticateUser,(req, res, next) => {
+  "/login", isLoggedOut, authenticateUser,(req, res, next) => {
     const { username, password } = req.body;
     console.log(req.body);
     res.redirect("/users/userProfile") 
