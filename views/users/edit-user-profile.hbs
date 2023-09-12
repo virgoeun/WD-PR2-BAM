@@ -1,0 +1,24 @@
+<h2>Edit Profile</h2>
+
+<form action="/edit-user-profile" method="post">
+
+  <div class="form">
+    <label>Profile Image</label>
+    <input type="file" id="avatar" name="avatar">
+    <p class="note">Upload a new profile image (JPEG or PNG).</p>
+    <img src=`{{user.avatar}}` alt=`{{user.username}} Avatar` class="avatar">
+  </div>
+
+  <div class="form">
+    <label>Username</label>
+    <input type="text" id="username" name="username" value=`{{user.username}}`>
+  </div>
+
+  <div class="form">
+    <label>Full Name</label>
+    <input type="text" id="fullName" name="fullName">
+  </div>
+
+  <button type="submit"> Done Editing! </button>
+  
+  </form>
