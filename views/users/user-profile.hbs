@@ -1,14 +1,44 @@
+{{! views/users/user-profile.hbs }}
+
 {{#if userInSession}}
-  <h2>Welcome, {{ userInSession.username }}!</h2>
-  <p>This is your profile page!</p>
-  <button>
-    <a href="/userProfile">Reload the page</a>
-  </button>
-  <button type ="submit"><a href="/">Logout</a></button>
-{{else}}
-  
-  <br><p>Still no logged in user, sorry!</p>
- 
+  <h2>Hello, {{userInSession.username}}!</h2>
 {{/if}}
-<br>
-<a href="/userProfile">⬅️ Back to my dashboard</a>
+
+<div>
+
+  <div class="profile-details">
+    <img src="public/images/icon-avatar.png" alt="Avatar" class="avatar" />
+    <br />
+    <a href="/community">Community</a>
+    <br />
+    <a href="/daily-journal">Daily Journal</a>
+  </div>
+
+  <div class="profile-body">
+
+    <div>
+      <h2>Daily status checkin</h2>
+      <h3>How are you feeling today?</h3>
+      <h4>Select Your Mood:</h4>
+      <form action="/submit-mood" method="post">
+        {{#each emojies}}
+          <input type="radio" name="{{name}}" value="{{name}}" />
+          {{emoji}}
+        {{/each}}
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+
+    <div>
+      <h2>Daily reccomendation</h2>
+      <p>Placeholder for suggestion</p>
+    </div>
+
+    <div>
+      <h2>Activity</h2>
+      <p>Placeholder for post tracking</p>
+    </div>
+
+  </div>
+
+</div>
