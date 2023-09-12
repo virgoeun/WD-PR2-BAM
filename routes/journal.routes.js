@@ -114,4 +114,19 @@ router.post("/daily-journal/:journalId/edit", (req, res, next) => {
     .catch((error) => next(error));
 });
 
+//only one users' all posts
+
+// router.get("/users/:userId/posts", (req, res, next) => {
+//     const { userId } = req.params;
+  
+//     User.findById(userId)
+//       .populate("posts")
+//       .then((foundUser) => {
+//         res.render("users/details", { posts: foundUser.posts });
+//       })
+//       .catch((err) =>
+//         console.log(`Error while getting all posts from the DB: ${err}`)
+//       );
+//   });
+
 module.exports = router;
