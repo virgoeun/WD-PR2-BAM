@@ -26,11 +26,11 @@ router.get("/daily-journal", (req, res) => {
 //journal post
 
 router.post("/daily-journal", (req, res, next) => {
-  const { title, content, author, createdAt } = req.body;
+  const { title, content, author } = req.body;
 
-  Journal.create({ title, content, author, createdAt })
+  Journal.create({ title, content, author})
     .then((journalPost) => {
-      // console.log(journalPost)
+      console.log("journalPost", journalPost)
       // console.log(journalPost._id)
       return User.findByIdAndUpdate(author, {
         $push: { journals: journalPost._id },
@@ -57,8 +57,16 @@ router.post("/daily-journal", (req, res, next) => {
 //     })
 
 router.get("/journal-list", (req, res, next) => {
+
+    // const userId = req.session.currentUser;
+    // console.log(userId)
+
+    // Find journals that belong to the current user
   Journal.find()
+  .populate("author")
+//   .then((data)=> console.log("data please", data))
     .then((journalsFromDb) => {
+        console.log("journalFromDb", journalsFromDb)
       res.render("journal/journal-list", { journalsFromDb });
     })
     .catch((err) => {
@@ -68,10 +76,18 @@ router.get("/journal-list", (req, res, next) => {
 
 router.get("/daily-journal/:journalId", (req, res, next) => {
   const { journalId } = req.params;
+//   const userId = req.session.currentUser
 
-  Journal.findById(journalId)
+// Find the requested journal by ID and author (current user)
+  Journal.find({journalId})
     .populate("author")
     .then((foundedJournal) => {
+console.log("foundedjournal", foundedJournal)
+        if(!foundedJournal) {
+            res.status(404).send("Journal not founded or unauthorized");
+            return;
+        }
+
       res.render("journal/journal-details", { journal: foundedJournal });
     })
     .catch((err) => {
@@ -83,7 +99,7 @@ router.get("/daily-journal/:journalId", (req, res, next) => {
 router.get("/daily-journal/:journalId/delete", (req, res, next) => {
   const { journalId } = req.params;
 
-  Journal.findByIdAndDelete(journalId)
+  Journal.findByIdAndDelete({journalId})
     //.then(() => console.log("deletejournalID:", journalId))
     .then(() => res.redirect("/journal-list"))
     .catch((error) => next(error));
@@ -92,7 +108,7 @@ router.get("/daily-journal/:journalId/delete", (req, res, next) => {
 router.get("/daily-journal/:journalId/edit", (req, res, next) => {
   const { journalId } = req.params;
 
-  Journal.findById(journalId)
+  Journal.findById({journalId})
     .then((journalToEdit) =>
       res.render("journal/edit-journal", { journal: journalToEdit })
     )
@@ -104,7 +120,7 @@ router.post("/daily-journal/:journalId/edit", (req, res, next) => {
   const { author, title, content, createdAt } = req.body;
 
   Journal.findByIdAndUpdate(
-    journalId,
+    {journalId},
     { author, title, content, createdAt },
     { new: true }
   )
@@ -113,5 +129,22 @@ router.post("/daily-journal/:journalId/edit", (req, res, next) => {
     )
     .catch((error) => next(error));
 });
+
+
+//specific user's all journals
+// router.get("/users/:userId/journal-list", (req, res, next) => {
+//     const { userId } = req.params;
+  
+//     User.findById(userId)
+//       .populate("Journal")
+//       .then((foundUser) => {
+//         res.render("journal/my-journals", { journals: foundUser.journals });
+//       })
+//       .catch((err) =>
+//         console.log(`Error while getting all posts from the DB: ${err}`)
+//       );
+//   });
+
+
 
 module.exports = router;
