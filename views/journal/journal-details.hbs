@@ -1,29 +1,38 @@
-<h2>Movie Details</h2>
-<p>
+<div id="journal-detail-page">
+<h2> {{journal.title}} Journal</h2>
+<div class ="journal-detail-date"> 
+ <aside> <p>
+ Created:
+  {{journal.createdAt}}
+</p></aside>
+<br />
+</div>
+{{!-- <p>
   Title:
   {{journal.title}}
-</p>
+</p> --}}
 <br />
+<div class ="journal-detail-content"> 
 <p>
   Content:
   {{journal.content}}
 </p>
 <br />
-<p>
-  date:
-  {{journal.date}}
-</p>
-<br />
+</div>
 
 
-
-<a href="/daily-journal/{{movie._id}}/edit">Edit this journal 📝</a>
+<div class ="edit-delete-journal">
+<a href="/daily-journal/{{journal._id}}/edit">Edit this journal 📝</a>
 <br />
 <br />
-<a href="/daily-journal/{{movie._id}}/delete">Delete this journal 🙄</a>
-<br />
-<form action="/daily-journal/{{_id}}/delete" method="POST">
+<a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🙄</a>
+<form action="/daily-journal/{{journal._id}}/delete" method="POST">
   <button>Delete</button>
 </form>
-<a href="/journal-list">⬅️ Back to Journal List</a>
+</div>
+<div class ="journal-detail-reroutes">
+<a href="/journal-list">✏️Back to Journal List</a>
+<br>
 <a href="/userProfile">⬅️ Back to Dashboard</a>
+</div>
+ </div>
