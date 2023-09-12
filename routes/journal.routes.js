@@ -72,6 +72,7 @@ router.get("/daily-journal/:journalId", (req, res, next) => {
   Journal.findById(journalId)
     .populate("author")
     .then((foundedJournal) => {
+        console.log(foundedJournal)
       res.render("journal/journal-details", { journal: foundedJournal });
     })
     .catch((err) => {
