@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.set('strictQuery', true);
-
-// ℹ️ Gets access to environment variables/settings
+mongoose.set("strictQuery", true);
 
 require('dotenv/config');
 
@@ -22,15 +20,7 @@ require('./config')(app);
 
 const projectName = 'Hugger';
 const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerCase();
-
 app.locals.title = `${capitalized(projectName)} by BAM!`;
-
-
-//handling all routes here 
-app.get('/', (req, resp) => {
-    resp.render("index");
-  });
-
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -41,11 +31,11 @@ app.use("/", signUpRoutes);
 const loginRoutes = require("./routes/login.routes");
 app.use("/", loginRoutes);
 
-const journalRoutes = require("./routes/journal.routes")
-app.use("/", journalRoutes)
-
+const profileRoutes = require("./routes/auth.routes");
+app.use("/", profileRoutes);
 
 //Always comes the Last!
 require('./error-handling')(app);
+
 
 module.exports = app;

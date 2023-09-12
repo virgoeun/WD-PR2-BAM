@@ -9,26 +9,26 @@ const {
   authenticateUser,
 } = require("../middleware/isAuthenticated");
 
-router.get("/login", isLoggedOut, (req, res, next) => {
+router.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
 
+
+// isLoggedOut
+// bothFilled,
+ // authenticateUser,
 //isLoggedout : if already logged-in user tries to access
 // to login page, then middleware blocks it
 
 router.post(
-  "/login",
-  isLoggedOut,
-  bothFilled,
-  authenticateUser,
-  (req, res, next) => {
+  "/login", isLoggedOut, bothFilled, authenticateUser,(req, res, next) => {
     const { username, password } = req.body;
     console.log(req.body);
-    res
-      .redirect("/userProfile") 
-      .catch((error) => next(error));
-  }
-);
+    res.redirect("/users/userProfile") 
+      .catch((error) => 
+     console.log(error))
+      // next(error));
+  });
 
 //if not a loggedin user, it can't log-out
 router.post("/logout", isLoggedIn, (req, res, next) => {
