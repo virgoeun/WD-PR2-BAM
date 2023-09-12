@@ -1,0 +1,38 @@
+<div id="journal-detail-page">
+<h2> {{journal.title}} Journal</h2>
+<div class ="journal-detail-date"> 
+ <aside> <p>
+ Created:
+  {{journal.createdAt}}
+</p></aside>
+<br />
+</div>
+{{!-- <p>
+  Title:
+  {{journal.title}}
+</p> --}}
+<br />
+<div class ="journal-detail-content"> 
+<p>
+  Content:
+  {{journal.content}}
+</p>
+<br />
+</div>
+
+
+<div class ="edit-delete-journal">
+<a href="/daily-journal/{{journal._id}}/edit">Edit this journal 📝</a>
+<br />
+<br />
+<a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🙄</a>
+<form action="/daily-journal/{{journal._id}}/delete" method="POST">
+  <button>Delete</button>
+</form>
+</div>
+<div class ="journal-detail-reroutes">
+<a href="/journal-list">✏️Back to Journal List</a>
+<br>
+<a href="/userProfile">⬅️ Back to Dashboard</a>
+</div>
+ </div>

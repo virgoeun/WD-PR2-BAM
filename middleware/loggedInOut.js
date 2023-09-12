@@ -2,7 +2,7 @@
 
 function isLoggedOut (req, res, next) {
   if (req.session.currentUser) {
-    return res.redirect("/");
+    return res.redirect("/userProfile");
   }
   next();
 };
@@ -13,5 +13,6 @@ function isLoggedIn (req, res, next) {
   }
   next();
 };
+
 
 module.exports = { isLoggedOut, isLoggedIn };
