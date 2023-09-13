@@ -19,23 +19,7 @@ router.get("/login", (req, res, next) => {
 //isLoggedout : if already logged-in user tries to access
 // to login page, then middleware blocks it
 
-router.post("/login", authenticateUser,(req, res, next) => {
-    const { username, password } = req.body;
-    console.log(req.body);
-    const user = username;
-    req.session.user = username; // Store user data in the session
-    req.session
-      .save((err) => {
-        if (err) {
-          console.error(err);
-          return next(err);
-        }
-        res.redirect("/userProfile");
-      })
-      .catch((error) => console.log(error));
-    // next(error));
-  }
-);
+router.post("/login", authenticateUser);
 
 //if not a loggedin user, it can't log-out
 router.post("/logout", (req, res, next) => {

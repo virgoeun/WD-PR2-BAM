@@ -1,50 +1,46 @@
 const router = require("express").Router();
-const Post = require("../models/Post.model");
-const Comment = require("../models/Comment.model");
+const Post = require("../model/post.model");
+const Comment = require("../model/comment.model");
+const User = require("../model/user.model");
+const { isLoggedIn } = require("../middleware/loggedInOut"); //if it is exported in curlies, should be imported in curlies. 
 
 //Post route here
-router.post("/posts/:postId/comment", (req, res, next) => {
+router.post("/posts/:postId/comment", isLoggedIn, (req, res, next) => {
   const { postId } = req.params;
-  const { author, content } = req.body;
+  const { content } = req.body;
+  console.log(req.session);
+  // let user;
 
-  let user;
-
-  User.findOne({ username: author })
-    .then((userDocFromDB) => {
-      user = userDocFromDB;
-
-      // if commenter is not user yet, let's register him/her as a user
-      if (!userDocFromDB) {
-        return User.create({ username: author });
+  User.findOne({ username: req.session.currentUser.username })
+    .then((user) => {
+      if (!user) {
+        console.log("User not found");
+        return res.status(404).send("User not found");
       }
-    })
-    .then((newUser) => {
-      // prettier-ignore
-      Post.findById(postId)
-        .then(dbPost => {
-          let newComment;
-   
-          // the conditional is result of having the possibility that we have already existing or new users
-          if (newUser) {
-            newComment = new Comment({ author: newUser._id, content });
-          } else {
-            newComment = new Comment({ author: user._id, content });
-          }
-   
-          // when new comment is created, we save it ...
-          newComment
-          .save()
-          .then(dbComment => {
-   
-            // ... and push its ID in the array of comments that belong to this specific post
-            dbPost.comments.push(dbComment._id);
-   
-            // after adding the ID in the array of comments, we have to save changes in the post
-            dbPost
-              .save()       // if everything is ok, we redirect to the same page to see the comment
-              .then(updatedPost => res.redirect(`/posts/${updatedPost._id}`))
-          });
+
+      Post.findById(postId).then((dbPost) => {
+        if (!dbPost) {
+          console.log("Post not found");
+          return res.status(404).send("Post not found");
+        }
+
+        const newComment = new Comment({
+          author: req.session.currentUser._id,
+          content,
         });
+        newComment.save()
+        .then((dbComment) => {
+          // console.log("Comment created:", dbComment);
+          dbPost.comments.push(dbComment._id);
+
+          dbPost
+            .save() // if everything is ok, we redirect to the same page to see the comment
+            .then((updatedPost) => {
+              console.log("Post updated:", updatedPost);
+              res.redirect(`/posts/${updatedPost._id}`);
+            });
+        });
+      });
     })
     .catch((err) => {
       console.log(`Error while creating the comment: ${err}`);
