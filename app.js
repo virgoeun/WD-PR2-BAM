@@ -8,6 +8,7 @@ mongoose.set("strictQuery", true);
 
 const express = require("express");
 
+
 const hbs = require("hbs");
 const app = express();
 require("./config/session.config")(app);
@@ -35,10 +36,13 @@ const communityRouter = require("./routes/post.routes");
 app.use("/", communityRouter);
 
 const aboutRoutes = require("./routes/about.routes");
-app.use('/', aboutRoutes);
+app.use("/", aboutRoutes);
 
 const jounalRoutes = require("./routes/journal.routes.js");
 app.use("/", jounalRoutes);
+
+const commentRoutes = require("./routes/comment.routes");
+app.use("/", commentRoutes);
 
 //Always comes the Last!
 require("./error-handling")(app);

@@ -9,9 +9,8 @@ const favicon = require("serve-favicon");
 const path = require("path");
 
 
-// Middleware configuration
 module.exports = (app) => {
-    // In development environment the app logs
+
     app.use(logger("dev"));
   
     // To have access to `body` property in the request
@@ -25,7 +24,5 @@ module.exports = (app) => {
     app.set("view engine", "hbs");
     // Handles access to the public folder
     app.use(express.static(path.join(__dirname, "..", "public")));
-  
-    // Handles access to the favicon
-    // app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
-  };
+
+};

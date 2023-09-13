@@ -4,8 +4,7 @@ const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 const { isLoggedIn } = require("../middleware/loggedInOut");
 
-//journal form get 
-router.get("/daily-journal", isLoggedIn, (req, res) => { 
+router.get("/daily-journal", (req, res) => { 
   res.render("journal/daily-journal", {
     userInSession: req.session.currentUser,
   });

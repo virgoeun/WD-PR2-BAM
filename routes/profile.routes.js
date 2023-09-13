@@ -5,7 +5,6 @@ const emojies = require("../assets/emojies.json");
 const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
 const axios = require("axios");
 
-// const recommendations = require("../assets/daily-recommendations.json");
 
 //render profile page and emojies
 router.get("/userProfile", isLoggedIn, (req, res) => {
@@ -30,17 +29,26 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     });
   })
   .catch ((error) => console.log("HERE IS THE ERROR!!!",error))
+=======
+
+// ********* require fileUploader in order to use it *********
+const fileUploader = require("../config/cloudinary.config");
+
+//render profile page and emojies
+router.get("/userProfile", isLoggedIn, (req, res) => {
+  res.render("users/user-profile", {
+    emojies,
+    userInSession: req.session.currentUser,
+  });
 });
 
 //handle mood submission
 router.post("/submit-mood", isLoggedIn, (req, res) => {
   const selectedMood = req.body.selectedMood;
-
-  // Redirect to the user profile page
   res.redirect("/userProfile");
 });
 
-//get edit form  :id
+//get edit form
 router.get("/userProfile/edit/", isLoggedIn, (req, res) => {
   // Fetch user data based on the current user's session
   const username = req.session.currentUser.username;
@@ -53,20 +61,22 @@ router.get("/userProfile/edit/", isLoggedIn, (req, res) => {
 });
 
 //handle edit form submission
-router.post("/userProfile/edit/", isLoggedIn, (req, res) => {
-  // Update the user's profile information in the database based on the form data
-
-  const username = req.session.currentUser.username;
-
-  const { avatar, username: newUsername, fullName } = req.body;
-  User.findOneAndUpdate(
-    userName,
-    { avatar, username: newUsername, fullName },
-    { new: true }
-  )
-    .then((updateUser) => res.redirect("/userProfile"))
-    .catch((error) => console.log(error));
-});
+router.post(
+  "/userProfile/edit/:id",
+  isLoggedIn,
+  fileUploader.single("avatar"),
+  (req, res) => {
+    const { id } = req.params;
+    const avatar = req.file.path;
+    const { username, fullName } = req.body;
+    User.findByIdAndUpdate(id, { username, fullName, avatar }, { new: true })
+      .then((updateUser) => {
+        req.session.currentUser = updateUser;
+        res.redirect("/userProfile");
+      })
+      .catch((error) => console.log(error));
+  }
+);
 
 // get posts from community page
 router.get("/userProfile", isLoggedIn, (req, res) => {
