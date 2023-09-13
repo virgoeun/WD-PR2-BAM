@@ -18,6 +18,7 @@ const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 app.locals.title = `${capitalized(projectName)} by BAM!`;
 
+
 //handling all routes here
 const index = require("./routes/index");
 app.use("/", index);
