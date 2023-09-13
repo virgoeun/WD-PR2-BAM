@@ -34,31 +34,6 @@
       <h3>How are you feeling today?</h3>
       <h4>Select Your Mood:</h4>
       <form class="emojies" action="/submit-mood" method="post">
-
-{{!-- 
-***********THIS IS NEWLY ADDED YOGAAPI LINES***********
-******************************************************* 
---}}
-    <div class="recomm">
-      <h2>Daily Yoga recommendation</h2>
-
-<div class="yoga-container">
-    <h1>Daily Yoga</h1>
-    <div class="pose-container">     
-<img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
-  <h3>{{poses.english_name}}</h3>
-  <p><strong>How to do:</strong></p>
-  <p>{{poses.pose_description}}</p>
- <strong>Benefits:</strong></p>
-  <p>{{poses.pose_benefits}}</p>
-       </div>
-</div>
-</div>
-{{!-- 
-******************************************************* 
---}}
-    
-
         <div class="emoji-container">
           {{#each emojies}}
             <label class="emoji-label">
@@ -75,11 +50,24 @@
         </div>
         {{!-- <button type="submit">Submit</button> --}}
       </form>
-    </div>
-    <div class="recomm">
-      <h2>Daily recommendation</h2>
-      <p>Placeholder for suggestion</p>
-    </div>
+    </div>    
+
+  <div class="recomm">
+      <h2>Daily Yoga recommendation</h2>
+
+      <div class="yoga-container">
+            <h3>Daily Yoga</h3>
+        <div class="pose-container">     
+        <img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
+          <h3>{{poses.english_name}}</h3>
+          <p><strong>How to do:</strong></p>
+          <p>{{poses.pose_description}}</p>
+          <strong>Benefits:</strong></p>
+          <p>{{poses.pose_benefits}}</p>
+       </div>
+      </div>
+  </div>
+
     <div class="activity">
       <h2>Your Posts</h2>
       <p>Placeholder for post tracking</p>
@@ -92,5 +80,6 @@
         {{/each}}
       </div>
     </div>
+
   </div>
 </div>
