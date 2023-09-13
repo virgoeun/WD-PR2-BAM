@@ -9,14 +9,27 @@ const axios = require("axios");
 
 //render profile page and emojies
 router.get("/userProfile", isLoggedIn, (req, res) => {
+  
+// ********* NEWLY ADDDED! FOR YOGA POSES ****************
+
   axios.get(process.env.YOGA_API_URL).then((poses) => {
-    console.log(poses.data);
+    const randomIndex = Math.floor (Math.random()*poses.data.length)
+    const randomPose = poses.data[randomIndex]
+    console.log(randomPose)
+
+// ******************************************************
     res.render("users/user-profile", {
       emojies,
       userInSession: req.session.currentUser,
-      poses: poses.data,
+
+// ********* NEWLY ADDDED! FOR YOGA POSES ****************
+      
+      poses: randomPose
+  
+// ******************************************************
     });
-  });
+  })
+  .catch ((error) => console.log("HERE IS THE ERROR!!!",error))
 });
 
 //handle mood submission
