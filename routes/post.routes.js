@@ -10,19 +10,16 @@ router.get("/community", (req, res) => {
   res.render("posts/create", { xyz: req.session.currentUser });
 });
 
-// router.get("/create-post", (req, res) => {
-//   console.log(req.session.currentUser);
-//   res.render("posts/create");
-// });
-
 //post route
 router.post("/create-post", (req, res) => {
-  console.log(req.session);
-  const { title, content, author } = req.body;
+  console.log(req.session.currentUser._id);
+  const { content } = req.body;
 
-  Post.create({ title, content, author })
+  Post.create({ content, author: req.session.currentUser._id })
     .then((dbPost) => {
-      return User.findByIdAndUpdate(author, { $push: { content: dbPost._id } });
+      return User.findByIdAndUpdate(req.session.currentUser._id, {
+        $push: { posts: dbPost._id },
+      });
     })
     .then(() => res.redirect("/posts"))
     .catch((error) => console.log(error));
@@ -55,7 +52,7 @@ router.get("/posts/:postId", (req, res, next) => {
         model: "User",
       },
     })
-    .then((foundPost) => res.render(foundPost))
+    .then((foundPost) => res.render("posts/details", foundPost))
     .catch((err) => {
       console.log(`Err while getting a single post from the  DB: ${err}`);
       next(err);
