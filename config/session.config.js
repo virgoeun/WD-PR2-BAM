@@ -27,7 +27,6 @@ module.exports = (app) => {
 
         maxAge: 36000000, // 1 hour
 
-
       }, // ADDED code below !!!
       store: MongoStore.create({
         mongoUrl:

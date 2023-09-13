@@ -1,9 +1,9 @@
 
-{{!-- <h2>{{title}}</h2> --}}
 <div>
   {{content}}
   <br>
   - by {{author.username}}
+
 </div>
 
 {{#unless comments}}
@@ -29,6 +29,7 @@
   <textarea name="content" cols="30" rows="2"></textarea>
   <br/>
   <p>By: {{author.username}}</p>
+
   <button type="submit">Comment</button>
 </form>
 

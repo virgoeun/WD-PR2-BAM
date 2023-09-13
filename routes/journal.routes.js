@@ -1,9 +1,9 @@
 const router = require("express").Router();
+
 const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
+const { isLoggedIn } = require("../middleware/loggedInOut");
 
-
-//journal form get 
 router.get("/daily-journal", (req, res) => { 
   res.render("journal/daily-journal", {
     userInSession: req.session.currentUser,
@@ -12,14 +12,18 @@ router.get("/daily-journal", (req, res) => {
 
 //journal post
 
-router.post("/daily-journal", (req, res, next) => {
-  const { title, content, author, createdAt } = req.body;
+router.post("/daily-journal", isLoggedIn, (req, res, next) => {
+  const { title, content, createdAt } = req.body;
+  const userId = req.session.currentUser._id // current user ID
+  
+  console.log("currentUser", req.session.currentUser)
+  console.log("currentUserID", req.session.currentUser._id)
+  console.log("currentUserUsername", req.session.currentUser.username)
 
-  Journal.create({ title, content, author, createdAt })
+  Journal.create({ title, content, author: userId, createdAt }) //author:userId!!! (or author doesn't have any value)
     .then((journalPost) => {
-      // console.log(journalPost)
-      // console.log(journalPost._id)
-      return User.findByIdAndUpdate(author, {
+      console.log("journalPost", journalPost)
+      return User.findByIdAndUpdate(userId, {
         $push: { journals: journalPost._id },
       });
     })
@@ -44,14 +48,36 @@ router.post("/daily-journal", (req, res, next) => {
 //     })
 
 router.get("/journal-list", (req, res, next) => {
-  Journal.find()
-    .then((journalsFromDb) => {
-      res.render("journal/journal-list", { journalsFromDb });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  const userId = req.session.currentUser._id
+
+  User.findById(userId)
+  .populate('journals') // Populate the journals field
+  .then(user => {
+
+    const journals = user.journals;
+    
+    console.log(journals);
+    res.render("journal/journal-list", { journals });
+  })
+  .catch(err => {
+    next(err);
+  });
 });
+
+
+// router.get("/journal-list", (req, res, next) => {
+//   const userId = req.session.currentUser._id
+
+//   Journal.findById(userId)
+//     .then((journalsByID) => {
+//       console.log(journalsByID);
+//       res.render("journal/journal-list", { journalsByID });
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
+
 
 router.get("/daily-journal/:journalId", (req, res, next) => {
   const { journalId } = req.params;
@@ -100,5 +126,21 @@ router.post("/daily-journal/:journalId/edit", (req, res, next) => {
     )
     .catch((error) => next(error));
 });
+
+
+//only one users' all journals
+
+// router.get("/daily-journal/:userId/journal-list", (req, res, next) => {
+//   const userId = req.session.currentUser._id
+//     User.findById(userId)
+//       .populate("Journal")
+//       .then((foundUser) => {
+//         res.render("all-my-journals", { journals: foundUser.journals });
+//       })
+//       .catch((err) =>
+//         console.log(`Error while getting all posts from the DB: ${err}`)
+//       );
+//   });
+
 
 module.exports = router;
