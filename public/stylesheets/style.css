@@ -70,7 +70,7 @@ ul li {
 /* Add styles for highlighting selected emoji if desired */
 .emoji-label input:checked + .emoji {
   background-color: #876c91; /* Change the background color when selected */
-  border-radius: 40%; /* Make it round when selected */
+  border-radius: 20%;
 }
 
 .about {
