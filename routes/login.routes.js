@@ -9,7 +9,7 @@ const {bothFilled, authenticateUser,
 const ensureNotLoggedIn = require("../middleware/ensuredNotLoggedIn")
 
 
-router.get("/login",ensureNotLoggedIn,(req, res, next) => {
+router.get("/login",isLoggedOut, ensureNotLoggedIn,(req, res, next) => {
   res.render("auth/login");
 });
 
@@ -35,6 +35,7 @@ router.post("/login", isLoggedOut, authenticateUser,(req, res, next) => {
 //if not a loggedin user, it can't log-out
 router.get("/logout", (req, res, next) => {
 router.post("/login", authenticateUser);
+})
 
 //if not a loggedin user, it can't log-out
 router.post("/logout", (req, res, next) => {
@@ -43,5 +44,6 @@ router.post("/logout", (req, res, next) => {
     res.redirect("/");
   });
 });
+
 
 module.exports = router;

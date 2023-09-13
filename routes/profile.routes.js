@@ -29,7 +29,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     });
   })
   .catch ((error) => console.log("HERE IS THE ERROR!!!",error))
-=======
+})
 
 // ********* require fileUploader in order to use it *********
 const fileUploader = require("../config/cloudinary.config");
