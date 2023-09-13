@@ -3,13 +3,19 @@ const app = require("../routes/profile.routes");
 const User = require("../model/user.model");
 const emojies = require("../assets/emojies.json");
 const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
+const axios = require("axios");
+
 // const recommendations = require("../assets/daily-recommendations.json");
 
 //render profile page and emojies
 router.get("/userProfile", isLoggedIn, (req, res) => {
-  res.render("users/user-profile", {
-    emojies,
-    userInSession: req.session.currentUser,
+  axios.get(process.env.YOGA_API_URL).then((poses) => {
+    console.log(poses.data);
+    res.render("users/user-profile", {
+      emojies,
+      userInSession: req.session.currentUser,
+      poses: poses.data,
+    });
   });
 });
 
@@ -20,7 +26,6 @@ router.post("/submit-mood", isLoggedIn, (req, res) => {
   // Redirect to the user profile page
   res.redirect("/userProfile");
 });
-
 
 //get edit form  :id
 router.get("/userProfile/edit/", isLoggedIn, (req, res) => {
@@ -49,7 +54,6 @@ router.post("/userProfile/edit/", isLoggedIn, (req, res) => {
     .then((updateUser) => res.redirect("/userProfile"))
     .catch((error) => console.log(error));
 });
-
 
 // get posts from community page
 router.get("/userProfile", isLoggedIn, (req, res) => {
