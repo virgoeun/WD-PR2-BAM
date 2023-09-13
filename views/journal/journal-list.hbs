@@ -2,7 +2,7 @@
 <h2>My Journals</h2>
  
 <ul>
-  {{#each journalsFromDb}}
+  {{#each journals}}
     <li>
       <a href="/daily-journal/{{_id}}"> {{ this.createdAt }} - {{this.title}}</a>
     </li>
