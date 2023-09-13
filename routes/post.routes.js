@@ -10,17 +10,6 @@ router.get("/community", (req, res) => {
   res.render("posts/create", { xyz: req.session.currentUser });
 });
 
-
-
-//post route
-router.post("/create-post", (req, res) => {
-  console.log(req.session);
-  const { title, content, author } = req.body;
-
-  Post.create({ title, content, author })
-    .then((dbPost) => {
-      return User.findByIdAndUpdate(author, { $push: { content: dbPost._id } });
-
 //post route
 router.post("/create-post", (req, res) => {
   console.log(req.session.currentUser._id);
