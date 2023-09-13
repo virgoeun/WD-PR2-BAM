@@ -8,7 +8,7 @@ const { bothFilled } = require("../middleware/isAuthenticated");
 
 router.get("/signup", (req, res) => res.render("auth/signup"));
 
-router.post("/signup", bothFilled, (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const { username, password } = req.body;
 
   //    if (!username || !password) {

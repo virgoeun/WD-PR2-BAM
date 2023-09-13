@@ -1,38 +1,31 @@
 const router = require("express").Router();
 const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
+const { isLoggedIn } = require("../middleware/loggedInOut");
 
-// simpler version
-router.get("/daily-journal", (req, res) => {
+
+//journal form get 
+router.get("/daily-journal", isLoggedIn, (req, res) => { 
   res.render("journal/daily-journal", {
     userInSession: req.session.currentUser,
   });
 });
 
-//journal form get
-// router.get("/daily-journal", (req, res) => {
-
-//     try {
-//         // console.log("success")
-//         res.render("journal/daily-journal", { userInSession: req.session.currentUser });
-//       } catch (error) {
-//         // Handle any errors that occur during rendering or authentication
-//         console.error("Error rendering daily journal page:", error);
-//         res.status(500).send("Internal Server Error"); // You can customize the error response as needed
-//       }
-
-// })
-
 //journal post
 
-router.post("/daily-journal", (req, res, next) => {
+router.post("/daily-journal", isLoggedIn, (req, res, next) => {
   const { title, content, author, createdAt } = req.body;
+  const userId = req.session.currentUser._id
+  
+  console.log("currentUser", req.session.currentUser)
+  console.log("currentUserID", req.session.currentUser._id)
+  console.log("currentUserUsername", req.session.currentUser.username)
 
   Journal.create({ title, content, author, createdAt })
     .then((journalPost) => {
-      // console.log(journalPost)
-      // console.log(journalPost._id)
-      return User.findByIdAndUpdate(author, {
+      console.log("journalPost", journalPost) // no author(id)
+      console.log("userID", userId) // undefined
+      return User.findByIdAndUpdate(userId, {
         $push: { journals: journalPost._id },
       });
     })
