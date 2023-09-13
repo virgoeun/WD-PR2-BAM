@@ -1,4 +1,4 @@
-require("dotenv/config");
+require("dotenv").config();
 
 // ℹ️ Connects to the database
 require("./db");
@@ -6,10 +6,9 @@ require("./db");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
-require("dotenv/config");
+const express = require("express");
 
-// ℹ️ Connects to the database
-require("./db");
+const hbs = require("hbs");
 
 const express = require("express");
 const hbs = require("hbs");
@@ -39,10 +38,19 @@ app.use("/", signUpRoutes);
 const loginRoutes = require("./routes/login.routes");
 app.use("/", loginRoutes);
 
-const profileRoute = require("./routes/profile.routes");
-app.use("/", profileRoute);
+const profileRoutes = require("./routes/profile.routes");
+app.use("/", profileRoutes);
 
 const communityRouter = require("./routes/post.routes");
 app.use("/", communityRouter);
+
+const aboutRoutes = require("./routes/about.routes");
+app.use('/', aboutRoutes);
+
+const jounalRoutes = require("./routes/journal.routes.js");
+app.use("/", jounalRoutes);
+
+//Always comes the Last!
+require("./error-handling")(app);
 
 module.exports = app;
