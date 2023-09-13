@@ -7,14 +7,21 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
 const express = require("express");
+
+
 const hbs = require("hbs");
+
+// const express = require("express");
+// const hbs = require("hbs");
+
 const app = express();
 require("./config/session.config")(app);
 require("./config")(app);
 
-// app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
-// app.use(express.static(path.join(__dirname, 'public')));
+
+// app.set("view engine", "hbs");
+// app.set("views", path.join(__dirname, "views"));
+// app.use(express.static(path.join(__dirname, "public")));
 
 const projectName = "Hugger";
 const capitalized = (string) =>
