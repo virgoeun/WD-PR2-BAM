@@ -4,24 +4,13 @@ const Journal = require("../model/journal.model");
 
 // simpler version
 router.get("/daily-journal", (req, res) => {
+
+//journal form get 
+router.get("/daily-journal", (req, res) => { 
   res.render("journal/daily-journal", {
     userInSession: req.session.currentUser,
   });
 });
-
-//journal form get
-// router.get("/daily-journal", (req, res) => {
-
-//     try {
-//         // console.log("success")
-//         res.render("journal/daily-journal", { userInSession: req.session.currentUser });
-//       } catch (error) {
-//         // Handle any errors that occur during rendering or authentication
-//         console.error("Error rendering daily journal page:", error);
-//         res.status(500).send("Internal Server Error"); // You can customize the error response as needed
-//       }
-
-// })
 
 //journal post
 

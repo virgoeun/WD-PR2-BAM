@@ -36,13 +36,36 @@ ul li {
 }
 
 .styled-button {
-  background-color: #876c91; 
+  background-color: #876c91;
   border: none;
   color: white;
   padding: 10px 25px;
+  margin: 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
 }
 
+.emoji-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.emoji-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.emoji {
+  font-size: 20px; /* Adjust the size as needed */
+}
+
+/* Add styles for highlighting selected emoji if desired */
+.emoji-label input:checked + .emoji {
+  background-color: #876c91; /* Change the background color when selected */
+  border-radius: 40%; /* Make it round when selected */
+}

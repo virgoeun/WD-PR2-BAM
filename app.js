@@ -6,9 +6,6 @@ require("./db");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
 
-// ℹ️ Connects to the database
-require("./db");
-
 const express = require("express");
 
 const hbs = require("hbs");
@@ -38,8 +35,12 @@ app.use("/", loginRoutes);
 const profileRoutes = require("./routes/profile.routes");
 app.use("/", profileRoutes);
 
+const aboutRoutes = require("./routes/about.routes");
+app.use('/', aboutRoutes);
+
 const jounalRoutes = require("./routes/journal.routes.js");
 app.use("/", jounalRoutes);
+
 
 //Always comes the Last!
 require("./error-handling")(app);
