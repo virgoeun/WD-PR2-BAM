@@ -13,17 +13,10 @@ const app = express();
 require("./config/session.config")(app);
 require("./config")(app);
 
-// app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
-// app.use(express.static(path.join(__dirname, 'public')));
-
 const projectName = "Hugger";
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 app.locals.title = `${capitalized(projectName)} by BAM!`;
-
-// const index = require("./routes/index");
-// app.use("/", index);
 
 //handling all routes here
 const index = require("./routes/index");

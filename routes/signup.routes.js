@@ -4,7 +4,6 @@ const router = new Router();
 // const saltRounds = 10;
 const mongoose = require("mongoose");
 const User = require("../model/user.model");
-const { bothFilled } = require("../middleware/isAuthenticated");
 
 router.get("/signup", (req, res) => res.render("auth/signup"));
 

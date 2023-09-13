@@ -1,8 +1,8 @@
 const router = require("express").Router();
+
 const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 const { isLoggedIn } = require("../middleware/loggedInOut");
-
 
 //journal form get 
 router.get("/daily-journal", isLoggedIn, (req, res) => { 

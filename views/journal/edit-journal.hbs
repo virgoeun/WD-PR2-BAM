@@ -10,17 +10,15 @@
     <input type="text" name="content" value="{{journal.content}}" />
   </label>
  
-  <label for = "date"> Date:
-    <input type="text" name="date" value ="{{journal.createdAt}}" />
-  </label>
+  {{!-- <label for = "date"> Date:
+    <input type="date" name="date" value ="{{journal.createdAt}}"/>
+  </label> --}}
 
   <button type = "submit">Save changes</button>
 </form>
 
 
-<a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🤪</a>
-
-<form action="/daily-journal/{{journal._id}}/delete" method="POST">
+<p>Delete this journal 🤪</p><form action="/daily-journal/{{journal._id}}/delete" method="POST">
   <button>Delete</button>
 </form>
     <br>
