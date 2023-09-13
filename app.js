@@ -14,9 +14,10 @@ const app = express();
 require("./config/session.config")(app);
 require("./config")(app);
 
-// app.set('view engine', 'hbs');
-// app.set('views', path.join(__dirname, 'views'));
-// app.use(express.static(path.join(__dirname, 'public')));
+const path = require("path");
+app.set("view engine", "hbs");
+app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 const projectName = "Hugger";
 const capitalized = (string) =>
@@ -36,11 +37,10 @@ const profileRoutes = require("./routes/profile.routes");
 app.use("/", profileRoutes);
 
 const aboutRoutes = require("./routes/about.routes");
-app.use('/', aboutRoutes);
+app.use("/", aboutRoutes);
 
 const jounalRoutes = require("./routes/journal.routes.js");
 app.use("/", jounalRoutes);
-
 
 //Always comes the Last!
 require("./error-handling")(app);

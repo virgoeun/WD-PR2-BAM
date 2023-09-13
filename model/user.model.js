@@ -24,8 +24,8 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default:
-        "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
+      default: "/images/icon-avatar.png", // Relative path to image
+        // "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png",
     },
 
     fullName: {

@@ -3,7 +3,7 @@ const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 
 // simpler version
-router.get("/daily-journal", (req, res) => {
+// router.get("/daily-journal", (req, res) => {
 
 //journal form get 
 router.get("/daily-journal", (req, res) => { 
