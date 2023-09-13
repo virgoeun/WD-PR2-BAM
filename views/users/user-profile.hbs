@@ -6,13 +6,21 @@
 
 <div>
   <div class="profile-details">
-    <img src="{{user.avatar}}" alt="{{user.username}} Avatar" class="avatar" />
+    <img class="avatar"
+      src="{{userInSession.avatar}}"
+      alt="{{userInSession.username}} Avatar"
+      class="avatar"
+    />
     <p>Username: {{userInSession.username}}</p>
-    <p>Full Name: {{userInSession.username}}</p>
+    <p>Full Name: {{userInSession.fullName}}</p>
     <br />
     <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
         class="styled-button"
-      >Edit Profile</button></a>
+      >Edit Profile Details</button></a>
+
+    {{!-- <a href="/userProfile/edit/{{user._id}}" class="edit-avatar"><button
+        class="styled-button"
+      >Edit Profile Image</button></a> --}}
   </div>
 
   <div>
@@ -26,16 +34,46 @@
       <h3>How are you feeling today?</h3>
       <h4>Select Your Mood:</h4>
       <form class="emojies" action="/submit-mood" method="post">
-       <div class="emoji-container">
-        {{#each emojies}}
-          <label class="emoji-label">
-            <input type="radio" name="selectedMood" value="{{name}}" style="display: none;">
-            <span class="emoji">{{emoji}}</span>
-            <span class="emoji">{{name}}</span>
-          </label>
-        {{/each}}
+
+{{!-- 
+***********THIS IS NEWLY ADDED YOGAAPI LINES***********
+******************************************************* 
+--}}
+    <div class="recomm">
+      <h2>Daily Yoga recommendation</h2>
+
+<div class="yoga-container">
+    <h1>Daily Yoga</h1>
+    <div class="pose-container">     
+<img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
+  <h3>{{poses.english_name}}</h3>
+  <p><strong>How to do:</strong></p>
+  <p>{{poses.pose_description}}</p>
+ <strong>Benefits:</strong></p>
+  <p>{{poses.pose_benefits}}</p>
        </div>
-       <button type="submit">Submit</button> 
+</div>
+</div>
+{{!-- 
+******************************************************* 
+--}}
+    
+
+        <div class="emoji-container">
+          {{#each emojies}}
+            <label class="emoji-label">
+              <input
+                type="radio"
+                name="selectedMood"
+                value="{{name}}"
+                style="display: none;"
+              />
+              <span class="emoji">{{emoji}}</span>
+              <span class="emoji">{{name}}</span>
+            </label>
+          {{/each}}
+        </div>
+        {{!-- <button type="submit">Submit</button> --}}
       </form>
     </div>
     <div class="recomm">
