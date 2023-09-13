@@ -85,17 +85,26 @@ router.get("/daily-journal/:journalId/edit", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.post("/daily-journal/:journalId/edit", (req, res, next) => {
+router.post("/daily-journal/:journalId/edit", fileUploader.single("journal-post-image"), 
+(req, res, next) => {
   const { journalId } = req.params;
-  const { author, title, content, createdAt } = req.body;
+  const { author, title, content, createdAt, existingImage } = req.body;
+
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = existingImage;
+  }
 
   Journal.findByIdAndUpdate(
     journalId,
-    { author, title, content, createdAt },
+    { author, title, content, createdAt, imageUrl },
     { new: true }
   )
     .then((updatedJournal) =>
-      res.redirect(`/daily-journal/${updatedJournal.id}`)
+           res.redirect('/journal-list/')
+      // res.redirect(`/daily-journal/${updatedJournal.id}`)
     )
     .catch((error) => next(error));
 });

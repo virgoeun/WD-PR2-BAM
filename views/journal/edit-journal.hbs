@@ -5,22 +5,23 @@
 <form action="/daily-journal/{{journal._id}}/edit" method="post" enctype="multipart/form-data">
    <div class="form-group"> 
   <label for ="title"> Title:
-    <input type="text" name="title" value="{{journal.title}}" />
+    <input type="text" name="title" class="form-control" value="{{journal.title}}" />
   </label>
   </div>
  <div class="form-group">
   <label for = "genre"> Content:
-    <input type="text" name="content" value="{{journal.content}}" />
+   <textarea name="content" cols="30" rows="4" class="form-control">{{journal.content}}" </textarea>
   </label>
   </div>
  <div class="form-group">
         <label>Image:
+          <img src="{{imageUrl}}" alt="Current Image" id="existing-image" />
           <input type="file" name="journal-post-image" class="form-control-file" />
           <input type="text" name="existingImage" hidden value="{{imageUrl}}">
         </label>
       </div>
 
-  <button type = "submit">Save changes</button>
+  <button type = "submit" class="btn btn-success">Save changes</button>
 </form>
 </div>
 </div>

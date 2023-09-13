@@ -1,7 +1,21 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&family=Work+Sans:wght@300&display=swap');
+body {
+  padding: 50px;
+  font: 14px;
+  /* font-family: 'Work Sans', sans-serif; */
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+/* {
   background-color: #dadad9;
 }
-ul {
+
+/* a {
+  color: #00b7ff;
+} */
+
+/* ul {
   border-bottom: 2px solid #876c91;
   height: 30px;
   padding: 1em 0;
@@ -48,9 +62,9 @@ ul li {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-}
+} */
 
-.emoji-container {
+/* .emoji-container {
   display: flex;
   flex-wrap: wrap;
 }
@@ -65,15 +79,17 @@ ul li {
 
 .emoji {
   font-size: 20px; /* Adjust the size as needed */
-}
+/* }
 
 /* Add styles for highlighting selected emoji if desired */
-.emoji-label input:checked + .emoji {
-  background-color: #876c91; /* Change the background color when selected */
+/* .emoji-label input:checked + .emoji {
+  background-color: #876c91; 
   border-radius: 20%;
-}
+} */
 
-.about {
+/* Change the background color when selected */
+
+/* .about {
   width: 50%;
   height: 50%;
   padding: 20px;
@@ -83,4 +99,4 @@ ul li {
 .avatar {
   height: 150px;
   width: auto;
-}
+}  */ 
