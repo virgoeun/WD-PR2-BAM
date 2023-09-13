@@ -16,6 +16,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
 //handle mood submission
 router.post("/submit-mood", isLoggedIn, (req, res) => {
   const selectedMood = req.body.selectedMood;
+
   // Redirect to the user profile page
   res.redirect("/userProfile");
 });
@@ -36,6 +37,7 @@ router.get("/userProfile/edit/", isLoggedIn, (req, res) => {
 //handle edit form submission
 router.post("/userProfile/edit/", isLoggedIn, (req, res) => {
   // Update the user's profile information in the database based on the form data
+
   const username = req.session.currentUser.username;
 
   const { avatar, username: newUsername, fullName } = req.body;
@@ -48,14 +50,11 @@ router.post("/userProfile/edit/", isLoggedIn, (req, res) => {
     .catch((error) => console.log(error));
 });
 
-//get route for community
-// router.get("/comunity", (req, res) => {
-//   res.render("/comunity").catch((error) => console.log(error));
-// });
 
 // get posts from community page
 router.get("/userProfile", isLoggedIn, (req, res) => {
   const userId = req.session.currentUser._id;
+
 
   // Assuming you have a "Post" model with a field named "author" to store the user who created the post
   Post.find({ author: userId })
