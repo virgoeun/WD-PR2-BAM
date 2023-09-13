@@ -7,7 +7,7 @@ const User = require("../model/user.model");
 //get route
 router.get("/community", (req, res) => {
   console.log(req.session.currentUser);
-  res.render("posts/create");
+  res.render("posts/create", { xyz: req.session.currentUser });
 });
 
 // router.get("/create-post", (req, res) => {

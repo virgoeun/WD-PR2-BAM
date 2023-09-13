@@ -27,7 +27,7 @@ router.post(
   (req, res, next) => {
     const { username, password } = req.body;
     console.log(req.body);
-
+    const user = username;
     req.session.user = username; // Store user data in the session
     req.session
       .save((err) => {

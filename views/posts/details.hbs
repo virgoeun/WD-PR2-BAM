@@ -23,7 +23,7 @@
     <input type="text" name="author" />
   </label>
 
-  <input type="text" name="postAuthor" value="{{author.username}}" hidden />
+  <input type="text" name="postAuthor" value="{{author.username}}" >
   <textarea name="content" cols="30" rows="2"></textarea>
 
   <button type="submit">Comment</button>
@@ -31,13 +31,3 @@
 
 <br>
 <a href="/users/{{author._id}}/posts">See all {{author.username}}'s posts </a>
-
-<h2>Posts</h2>
-<ul>
-  {{#each posts}}
-    <li>
-        {{ this.title }} by {{this.author.username}}
-        <a href="/posts/{{this._id}}">Read more</a>
-    </li>
-  {{/each}}
-</ul>
