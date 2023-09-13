@@ -8,4 +8,4 @@ function ensureNotLoggedIn(req, res, next) {
     next();
   }
   
-  module.exports = {ensureNotLoggedIn}
+  module.exports = ensureNotLoggedIn

@@ -38,29 +38,17 @@
        <button type="submit">Submit</button> 
       </form>
     </div>
-    <div class="recomm">
-      <h2>Daily Yoga recommendation</h2>
 
-{{!-- 
+    {{!-- 
 ***********THIS IS NEWLY ADDED YOGAAPI LINES***********
 ******************************************************* 
 --}}
-{{!-- <h1>Daily Yoga</h1>
-    <div class="pose-container">
-<img id="random-pose-image" src="" alt="">
-  <h3 id="pose-name"></h3>
-  <p><strong>How to do:</strong></p>
-  <p id="pose-description"></p>
- <strong>Benefits:</strong></p>
-  <p id="pose-benefits"></p>
-</div> --}}
-{{!-- //ALTERNATIVE  --}}
+    <div class="recomm">
+      <h2>Daily Yoga recommendation</h2>
+
 <div class="yoga-container">
     <h1>Daily Yoga</h1>
-    <div class="pose-container">
-
- 
-      
+    <div class="pose-container">     
 <img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
   <h3>{{poses.english_name}}</h3>
   <p><strong>How to do:</strong></p>
@@ -69,11 +57,11 @@
   <p>{{poses.pose_benefits}}</p>
        </div>
 </div>
-
+</div>
 {{!-- 
 ******************************************************* 
 --}}
-    </div>
+    
     <div class="activity">
       <h2>Your Posts</h2>
       <p>Placeholder for post tracking</p>
