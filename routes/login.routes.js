@@ -21,7 +21,7 @@ router.get("/login", (req, res, next) => {
 // to login page, then middleware blocks it
 
 router.post(
-  "/login", isLoggedOut, bothFilled, authenticateUser,(req, res, next) => {
+  "/login", authenticateUser,(req, res, next) => {
     const { username, password } = req.body;
     console.log(req.body);
     res.redirect("/users/userProfile") 
@@ -31,7 +31,7 @@ router.post(
   });
 
 //if not a loggedin user, it can't log-out
-router.post("/logout", isLoggedIn, (req, res, next) => {
+router.post("/logout", (req, res, next) => {
   req.session.destroy((err) => {
     if (err) next(err);
     res.redirect("/");
