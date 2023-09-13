@@ -1,3 +1,6 @@
+* {
+  background-color: #dadad9;
+}
 ul {
   border-bottom: 2px solid #876c91;
   height: 30px;
@@ -68,4 +71,16 @@ ul li {
 .emoji-label input:checked + .emoji {
   background-color: #876c91; /* Change the background color when selected */
   border-radius: 40%; /* Make it round when selected */
+}
+
+.about {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  text-align: center;
+}
+
+.avatar {
+  height: 150px;
+  width: auto;
 }

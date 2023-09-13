@@ -8,9 +8,9 @@ const favicon = require("serve-favicon");
 
 const path = require("path");
 
-
 // Middleware configuration
 module.exports = (app) => {
+
     // In development environment the app logs
     app.use(logger("dev"));
   
@@ -29,3 +29,4 @@ module.exports = (app) => {
     // Handles access to the favicon
     // app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
   };
+
