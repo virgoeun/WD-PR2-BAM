@@ -55,7 +55,6 @@ router.post("/userProfile/edit/", isLoggedIn, (req, res) => {
 router.get("/userProfile", isLoggedIn, (req, res) => {
   const userId = req.session.currentUser._id;
 
-
   // Assuming you have a "Post" model with a field named "author" to store the user who created the post
   Post.find({ author: userId })
     .then((userPosts) => {
