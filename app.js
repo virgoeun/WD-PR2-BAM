@@ -10,6 +10,8 @@ const express = require("express");
 
 const hbs = require("hbs");
 
+const express = require("express");
+const hbs = require("hbs");
 const app = express();
 require("./config/session.config")(app);
 require("./config")(app);
@@ -24,6 +26,10 @@ const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 app.locals.title = `${capitalized(projectName)} by BAM!`;
 
+// const index = require("./routes/index");
+// app.use("/", index);
+
+//handling all routes here
 const index = require("./routes/index");
 app.use("/", index);
 
@@ -35,6 +41,9 @@ app.use("/", loginRoutes);
 
 const profileRoutes = require("./routes/profile.routes");
 app.use("/", profileRoutes);
+
+const communityRouter = require("./routes/post.routes");
+app.use("/", communityRouter);
 
 const aboutRoutes = require("./routes/about.routes");
 app.use("/", aboutRoutes);
