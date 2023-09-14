@@ -2,10 +2,14 @@
 <ul>
   {{#each posts}}
     <li>
-        {{ this.title }} by {{this.author.username}}
-        <a href="/posts/{{this._id}}">Read more</a>
+      {{this.title}}
+      by
+      {{this.author.username}}
+      <a href="/posts/{{this._id}}">Read more</a>
     </li>
   {{/each}}
 
-  <a href="/community">Create Post</a>
+  <a href="/create-post">Create Post</a>
+  <br />
+  <a href="/userProfile">Go back to Dashboard</a>
 </ul>
