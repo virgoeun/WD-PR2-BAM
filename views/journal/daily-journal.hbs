@@ -1,4 +1,24 @@
-<section class ="journal-section"> 
+
+{{!-- LOGIN HEADBAR --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
+
+
+<section class ="background-section"> 
 <div class="bg-indigo text-white"> 
 <section class="daily-journal-section">
   <div class="writejournal-textbox">  
@@ -11,19 +31,16 @@
 <div class="journal-content-padding-box"> 
 <div class="form-outline mb-4">
 <label for ="title">Title:
-   {{!-- <textarea name="title" cols="10" rows="10" style="width:100%"; class="form-control"> </textarea> --}}
-    {{!-- <textarea class="col-md-12" ng-model="myTextarea" placeholder="Please write customer notes"></textarea> --}}
      <input type="text" name="title" class="form-control" placeholder="Title goes here..."/>
-    {{!-- <input type="text" id = "journal-title" name ="title" class="form-control" /> --}}
 </label>
 </div>
 
 <div class="form-outline mb-4">
 <label for ="content">Journal Content:
-   <input type="text" name ="content" class="form-control h-25" cols="30" rows="4" placeholder="How is your day? Start journaling here!"/> 
+   <input type="text" name ="content" class="form-control h-25" cols="30" rows="4" placeholder="How is your day?"/> 
 </label>
 </div>
-<br>
+
 <div class="form-outline mb-4">
 <label for ="date">Date:
     <input type="date" name ="createdAt" class="form-control-file"/>

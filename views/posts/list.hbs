@@ -1,35 +1,37 @@
-<h2 class="head-posts">Hugger's Community Page </h2>
 
-<div class="posts-button">
-  <div class="d-grid gap-2 d-md-block">
-    <button class="btn btn-primary" type="button">
-      <a href="/create-post">
-        Create Post</a>
-    </button>
-    <button class="btn btn-primary" type="button">
-      <a href="/userProfile">
-        Go back to Dashboard
-      </a>
-    </button>
+<div class="community-page">
+  <div class="header-community">
+    <h2>Hugger's Community Page </h2>
+    <div class="d-grid gap-2 d-md-block">
+      <button class="btn community-btn" type="button">
+        <a href="/create-post">
+          Create Post</a>
+      </button>
+      <button class="btn community-btn" type="button">
+        <a href="/userProfile">
+          Go back to Dashboard
+        </a>
+      </button>
+    </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="row">
-    {{#each posts}}
-      <div class="col-md-4">
-        <div class="card mb-3">
-          <h5 class="card-header">{{this.title}}</h5>
-          <div class="card-body">
-            <p class="card-text">{{this.content}}</p>
-            <a href="/posts/{{this._id}}" class="btn btn-primary">Comment</a>
-          </div>
-          <div class="card-footer text-muted">
-            by
-            {{this.author.username}}
+  <div class="container">
+    <div class="row">
+      {{#each posts}}
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <h5 class="card-header">{{this.title}}</h5>
+            <div class="card-body">
+              <p class="card-text">{{this.content}}</p>
+              <a href="/posts/{{this._id}}" class="btn btn-primary">Comment</a>
+            </div>
+            <div class="card-footer text-muted">
+              by
+              {{this.author.username}}
+            </div>
           </div>
         </div>
-      </div>
-    {{/each}}
+      {{/each}}
+    </div>
   </div>
 </div>

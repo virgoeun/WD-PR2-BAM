@@ -1,11 +1,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
-* {
-  font-family: "Quicksand", sans-serif;
-}
+
+*{
+font-family: "Quicksand", sans-serif;
+
 /* JOURNAL STYLING */
 h2 {
   font-size: 64px;
+}
+
+
+.nav-link {
+  padding-top:12px;
+  font-size: 1.2em;
+}
+
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#logout-form {
+  padding-top:11px;
 }
 
 .myjournals-textbox {
@@ -15,13 +34,16 @@ h2 {
   margin-bottom: 50px;
   margin-top: -50px;
 }
+
 .journal-section {
   background-image: linear-gradient(
     rgb(51, 27, 106),
     rgb(97, 85, 143),
     rgb(232, 147, 12)
   );
+
 }
+
 .journal-list-section {
   padding: 100px;
 }
@@ -65,10 +87,18 @@ h2 {
   margin-top: 50px;
 }
 
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+
+}
+
 .writejournal-textbox {
+
   margin-bottom: 50px;
   margin-top: 50px;
   padding-top: 50px;
+
   padding-left: 90px;
 }
 
@@ -137,8 +167,55 @@ h2 {
   width: auto;
   border-radius: 20px;
 }
+ 
+.header-community {
+ text-align: center;
+ margin: auto;
+}
 
-.head-posts {
+/* Login, SignUp, community Page button */
+#login-form, 
+#signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Community page Buttons */
+.community-btn {
+  margin: 10px;
+  
+.card-body {
+  background-color: rgb(244, 200, 118);
+}
+
+#post-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+}
+
+
+.community-page {
+  height: 100vh;
+  align-items: center;
+}
+
+.edit-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+.head-posts{
+  text-align: center;
+
+}
+
+.btn-primary {
+.head-posts{
   text-align: center;
 }
 .button-mira {
@@ -197,10 +274,6 @@ h2 {
   padding-top: 30px;
 }
 
-.user-profile {
-  font-size: 30px;
-}
-
 .about-container {
   background-color: #f48748;
   color: aliceblue;
@@ -230,3 +303,29 @@ h2 {
   height: 150px;
   width: auto;
 }
+
+.background-section {
+  background-color: #F26B1D;
+}
+.journalwrite-text {
+  font-size:64px;
+  padding-left: 100px;
+  margin-top:50px;
+}
+.journal-content-padding-box {
+  padding-left:100px;
+  margin-top:-20px;
+}
+.last-btn {
+  margin-left:85px;
+  margin-top:70px;
+}
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+}
+
+.user-profile{
+  font-size: 30px;
+}
+

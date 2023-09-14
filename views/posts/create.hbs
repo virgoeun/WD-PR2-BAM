@@ -1,30 +1,52 @@
-<h2>What is on your mind?</h2>
 
-<form action="/create-post" method="POST">
+<section class="background-section">
+  <div class="bg-indigo text-white">
+    <section class="daily-journal-section">
+      <div class="writejournal-textbox">
+        <h2>What is on your mind?</h2>
+      </div>
+{{!-- Create --}}
+      <div class="journal-content-padding-box">
+        <form action="/create-post" method="POST">
+          <div class="form-outline mb-4">
+            <label>Title:</label>
+            <input type="text" name="title" placeholder="1-2 words" />
+          </div>
+{{!-- post-button --}}
+          <div class="form-outline mb-4">
+            <label>Post:</label>
+            <textarea
+              type="text"
+              name="content"
+              placeholder="what's on your mind?"
+            ></textarea>
+          </div>
+{{!-- username --}}
+          <div class="form-outline mb-4">
+            <label>By: {{xyz.username}}</label>
+          </div>
+{{!-- submit --}}
+          <div class="post-btn">
+            <button
+              type="submit"
+              id="journal-create-btn"
+              class="btn btn-warning fw-bold mr-2"
+            >Post</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+{{!-- other buttons --}}
+  <div class="last-btn">
+    <nav class="navbar navbar-expand-lg">
+      <a class="nav-link" href="/posts"><button
+          class="btn btn-primary btn-sm"
+        >See all Hugger's Posts</button></a>
+      <a class="nav-link" href="/userProfile"><button
+          class="btn btn-primary btn-sm"
+        >Go back to Dashboard</button></a>
+    </nav>
+  </div>
+</section>
 
-  <label> Title:
-    <input type="text" name="title" placeholder="1-2 words" />
-  </label>
-  <br>
-
-  <label> Post:
-    <textarea type="text" name="content" placeholder="what's on your mind?"> </textarea>
-  </label>
-  <br>
-
-  <label>
-
-    By:
-    {{xyz.username}}
-
-  </label>
-
-  <button type="submit"> Post </button>
-  <br/>
-  <a href="/posts"> See all Hugger's Posts </a>
-  <br/>
-  <a href="/userProfile">Go back to Dashboard</a>
-
-<br/>
-
- 
