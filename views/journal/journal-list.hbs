@@ -1,20 +1,26 @@
+{{!-- LOGIN HEADBAR --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
+
 <div class="bg-indigo text-white"> 
-<div class ="journal-section">
+<section class ="background-section">
   <div class="myjournals-textbox"> 
 <h2>My Journals</h2>
-</div>
-  {{#each journals}}
-    <div class="col-md-4 mb-5"> 
-        <div class="card" style="width: 18rem;">
-        <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}">
-        <div class="card-body">
-          <h5 class="card-title">{{this.title}}</h5>
-          <p class="created-date">Created at: {{ this.createdAt }}</p>
-        <a href="/daily-journal/{{_id}}/edit" class="btn btn-primary">Edit</a>
-        <a href="/daily-journal/{{_id}}" class="btn btn-primary">See</a>
-        </div>
-      </div>
-      </div>
+</div> 
  <div class="row"> 
   {{#each journals}} 
     <div class="col-sm-4 mb-5">   
@@ -47,5 +53,5 @@
  <div class="text-center"> 
 <a href="/daily-journal"><button class ="btn btn-warning btn-lg mb-5">Back to Journaling</button></a>
   </div>
-</div>
+</section>
 </div>

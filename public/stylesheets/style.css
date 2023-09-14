@@ -3,10 +3,29 @@
 
 *{
 font-family: "Quicksand", sans-serif;
+
 }
 /* JOURNAL STYLING */
 h2 {
   font-size:64px;
+}
+
+
+.nav-link {
+  padding-top:12px;
+  font-size: 1.2em;
+}
+
+
+#login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+#logout-form {
+  padding-top:11px;
 }
 
 .myjournals-textbox {
@@ -18,9 +37,10 @@ h2 {
   margin-top: -50px;
 
 }
-.journal-section {
-  background-image: linear-gradient(rgb(51,27,106), rgb(97,85,143), rgb(232,147,12));
+.background-section {
+  background-color: #f26b1d;
 }
+
 .journal-list-section {
  padding: 100px;
 }
@@ -65,10 +85,14 @@ h2 {
 
 }
 
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+
+}
+
 .writejournal-textbox {
   margin-bottom:50px;
-  margin-top: 50px;
-  padding-top:50px;
   padding-left: 90px;
 }
 
@@ -80,7 +104,6 @@ h2 {
 .last-btn {
   margin-left:85px;
   margin-top:70px;
-
 }
 
 .edit-btn {
@@ -90,12 +113,12 @@ h2 {
   margin-top: 30px;
   margin-bottom: 100px;
   margin-left:-10px;
-
 }
 
 .detail-btn {
   margin-left:100px;
   margin-top:70px;
+  
 }
 
 .link-btns {
@@ -149,12 +172,6 @@ h2 {
 .posts-button {
   text-align: center;
   color: white;  
-}
-
-.btn {
-  background-color: #341773;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .head-posts{
@@ -216,3 +233,5 @@ h2 {
 .profile-buttons{
   padding-top: 30px;
 }
+
+
