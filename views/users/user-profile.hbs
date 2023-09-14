@@ -75,6 +75,31 @@
           </form>
         </div>
 
+
+    <div class="activity">
+      <h2>Your Posts</h2>
+      <div class="profile-posts">
+        <ul class="posts">
+          {{#each userPosts}}
+            <div class="post">
+              <li>{{title}}</li>
+              <p>{{content}}</p>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <a href="/posts/{{_id}}/edit" class="btn btn-primary">Edit</a>
+              </div>
+              <div class="col">
+                <form action="/posts/{{_id}}/delete" method="POST">
+                  <button class="btn btn-primary" type="submit">Delete</button>
+                </form>
+              </div>
+            </div>
+          {{/each}}
+
+        </ul>
+
         <div class="recomm">
           <h2>Daily Yoga recommendation</h2>
 
