@@ -33,9 +33,16 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
           // ******************************************************
         });
       })
-      .catch((error) => console.log("HERE IS THE ERROR!!!", error));
+      .catch((error) => {
+        
+      console.error("Error fetching yoga poses:", error);
+      res.status(500).render('error-page', {
+      errorMessage: '🥲 Sorry, our server is in maintenance phase! Please try again later.',
+      });
+    
   });
 });
+})
 
 // ********* require fileUploader *********
 const fileUploader = require("../config/cloudinary.config");
