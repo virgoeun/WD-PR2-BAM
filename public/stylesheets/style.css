@@ -1,86 +1,322 @@
-* {
-  background-color: #dadad9;
-}
-ul {
-  border-bottom: 2px solid #876c91;
-  height: 30px;
-  padding: 1em 0;
-  list-style-type: none;
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+*{
+font-family: "Quicksand", sans-serif; 
 }
 
-ul li {
-  line-height: 20px;
+h1 {
+font-size: 80px;
+
+}
+/* JOURNAL STYLING */
+h2 {
+  font-size:64px;
 }
 
-#to-right {
-  padding: 1em;
-  float: right;
+
+.main-picture{
+  width:40%;
+  display: block;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0;
+  margin-bottom:0;
+  background-repeat: no-repeat;
+  background-size: contain;
+
 }
 
-#to-right span {
-  color: #876c91;
-  font-size: 1.5em;
+.nav-link {
+  padding-top:12px;
+  font-size: 1.2em;
 }
 
-#form h2 {
+
+#login-form {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
-#to-left {
-  float: left;
+#logout-form {
+  padding-top:11px;
 }
 
-#to-left p a {
-  color: #000;
-  font-weight: bold;
-  font-size: 1.5em;
-  text-decoration: none;
+.myjournals-textbox {
+  
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-bottom:10px;
+  margin-bottom:50px;
+  margin-top: -50px;
+
+}
+.background-section {
+  background-color: #f26b1d;
 }
 
-.styled-button {
-  background-color: #876c91;
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  margin: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.journal-list-section {
+ padding: 100px;
 }
 
+.card {
+  border: 3px solid 
+}
+
+.text-center{
+  padding-top:35px;
+}
+.card-body {
+  color:rgb(23, 1, 42);
+}
+
+.journal-card-container {
+  padding-top: 100px;
+  padding-left: 50px;
+  margin-top:-80px;
+ }
+
+ /* same card size */
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+ #journal-list-image {
+  max-width: 200px; 
+}
+
+.journalwrite-text {
+  font-size:64px;
+  padding-left: 100px;
+  margin-top:50px;
+}
+
+.journalcreat-btn {
+  margin-left:100px;
+  margin-top:50px;
+
+}
+
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+
+}
+
+.writejournal-textbox {
+  margin-bottom:50px;
+  padding-left: 90px;
+}
+
+.journal-content-padding-box {
+  padding-left:100px;
+  margin-top:-20px;
+ 
+}
+.last-btn {
+  margin-left:85px;
+  margin-top:70px;
+}
+
+.edit-btn {
+  margin-top:70px;
+}
+.backlink-btn {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  margin-left:-10px;
+}
+
+.detail-btn {
+  margin-left:100px;
+  margin-top:70px;
+  
+}
+
+.link-btns {
+  margin-left:-15px;
+  margin-bottom: 50px;
+}
+
+/* style for emoji */
 .emoji-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .emoji-label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
-  cursor: pointer;
 }
 
 .emoji {
-  font-size: 20px; /* Adjust the size as needed */
+  font-size: 20px;
+  font-weight: bold;
+  padding: 2px;
 }
 
-/* Add styles for highlighting selected emoji if desired */
-.emoji-label input:checked + .emoji {
-  background-color: #876c91; /* Change the background color when selected */
-  border-radius: 20%;
+/* Style the default appearance of the labels */
+.emoji-label {
+  cursor: pointer;
+  padding: 1px;
+  border: 3px solid #cbbbcb;
+  border-radius: 10px;
+  margin: 5px;
+  width: 80px;
+  height: 70px;
+  color: beige;
 }
 
-.about {
-  width: 50%;
-  height: 50%;
-  padding: 20px;
+/* avatar */
+.avatar  {
+  height: 200px;
+  width: auto;
+  border-radius: 20px;
+}
+
+.card-body {
+  background-color: rgb(244, 200, 118);
+}
+
+.posts-button {
+  text-align: center;
+  color: white;  
+}
+
+.head-posts{
   text-align: center;
 }
 
-.avatar {
+.head-posts{
+  text-align: center;
+}
+.button-mira {
+  background: linear-gradient(rgb(36, 119, 170) 0%, rgb(100, 97, 224) 100%);
+  border-radius: 100px;
+  transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
+  margin: 0px;
+  box-shadow: none;
+  border: none;
+  color: rgb(255, 255, 255);
+}
+
+.profile-body {
+  background-color: #f26b1d;
+  color: aliceblue;
+}
+
+.recomm {
+  margin-top: 50px;
+}
+
+.mood {
+  margin-top: 40px;
+}
+
+.each-post {
+  margin-top: 5px;
+  background-color: #8d765c;
+  color: aliceblue;
+  padding: 5px;
+}
+
+.activity {
+  margin-top: 40px;
+}
+
+/* .left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70%;
+  background-color: #f29f05;
+} */
+
+.profile-left {
+  background-color: #f29f05;
+  padding: 20px;
+  padding-left: 20px; 
+}
+
+.profile-right {
+  padding: 10px;
+}
+
+.profile-buttons{
+  padding-top: 30px;
+}
+
+
+.user-profile{
+  font-size: 30px;
+}
+
+
+#signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.team {
+  padding-bottom: 50px;
+  margin-left:50px;
+}
+.edit-profile {
+  padding-bottom: 50px;
+}
+.profile-edit {
+  margin-left:50px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.team-photo img {
+  height: 150px;
+  width: auto;
+}
+.header-community {
+  text-align: center;
+  margin: auto;
+ }
+
+ .community-page {
+  height: 100vh;
+  align-items: center;
+}
+
+.about-container {
+  background-color: #F48748;
+  color: aliceblue;
+}
+.about-text {
+  width: 50%;
+  margin: auto;
+}
+.profile-section {
+  background-color: #F48748;
+  padding-left: 40px;
+  padding-top: 50px;
+  font-weight: bold;
+}
+.team {
+  padding-bottom: 50px;
+}
+.edit-profile {
+  padding-bottom: 50px;
+}
+.profile-edit {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.team-photo img {
   height: 150px;
   width: auto;
 }

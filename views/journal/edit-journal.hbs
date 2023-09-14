@@ -1,27 +1,70 @@
-<div>   
-<h2>Edit Your Journal: {{journal.title}}</h2>
- 
-<form action="/daily-journal/{{journal._id}}/edit" method="post">
-  <label for ="title"> Title:
-    <input type="text" name="title" value="{{journal.title}}" />
-  </label>
- 
-  <label for = "genre"> Content:
-    <input type="text" name="content" value="{{journal.content}}" />
-  </label>
- 
-  {{!-- <label for = "date"> Date:
-    <input type="date" name="date" value ="{{journal.createdAt}}"/>
-  </label> --}}
+{{!-- LOGIN HEADBAR --}}
 
-  <button type = "submit">Save changes</button>
-</form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
 
+{{!-- END --}}
 
-<p>Delete this journal 🤪</p><form action="/daily-journal/{{journal._id}}/delete" method="POST">
-  <button>Delete</button>
-</form>
-    <br>
-    <a href="/journal-list">⬅️ Back to Journal List</a>
-    
+<section class ="background-section">  
+<div class="bg-indigo text-white"> 
+  <div class="writejournal-textbox">
+<strong> <h2>Edit Your Journal</h2></strong>
+{{!-- <h2>Edit Your Journal: {{journal.title}}</h2> --}}
 </div>
+ <div class="row">
+  <div class="col-sm-6"> 
+<form action="/daily-journal/{{journal._id}}/edit" method="post" enctype="multipart/form-data">
+  
+<div class="journal-content-padding-box"> 
+<div class="form-outline mb-4">
+  <strong> <label for ="title"> Title:</strong>
+    <input type="text" name="title" class="form-control" value="{{journal.title}}" />
+  
+  </label>
+ <div class="form-outline mb-4"> 
+  <strong></strong><label for = "content"> Content:</strong>
+
+   <input type="text" name="content"  class="form-control h-25" cols="30" rows="4" value="{{journal.content}}"/>
+  </label>
+  </div>
+  
+ <div class="form-outline">
+   <strong> <label>Image:</strong>
+      <img src="{{imageUrl}}" alt="Current Image" id="existing-image" />
+      <br>  
+      <input type="file" name="journal-post-image" class="form-control-file" />
+      <input type="text" name="existingImage" hidden value="{{imageUrl}}">
+   </label>
+  </div>
+
+<div class="edit-btn">
+  <button type = "submit" class="btn btn-warning fw-bold mr-2">Save changes</button>
+
+<form action="/daily-journal/{{journal._id}}/delete" method="POST">
+  <button class ="btn btn-secondary">Delete the Journal</button>
+  </form> 
+</div>
+
+ <div class ="backlink-btn"> 
+  <a href="/journal-list"><button class ="btn btn-link">Back to Journals</button></a>
+  </div>
+
+
+
+</form>
+
+</div>
+</div>
+</div>
+</section> 

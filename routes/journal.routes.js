@@ -1,26 +1,37 @@
 const router = require("express").Router();
 
+
 const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 const { isLoggedIn } = require("../middleware/loggedInOut");
 
-router.get("/daily-journal", (req, res) => { 
+router.get("/daily-journal", isLoggedIn,(req, res) => { 
   res.render("journal/daily-journal", {
     userInSession: req.session.currentUser,
   });
 });
 
 //journal post
+const fileUploader = require("../config/cloudinary.config");
 
-router.post("/daily-journal", isLoggedIn, (req, res, next) => {
+router.post("/daily-journal", fileUploader.single("journal-post-image"), (req, res, next) => {
   const { title, content, createdAt } = req.body;
   const userId = req.session.currentUser._id // current user ID
+  const body = {title, content, createdAt,author:userId}
   
+      if (req.file) {
+        body.imageUrl = req.file.path;
+      } 
+
+
   console.log("currentUser", req.session.currentUser)
   console.log("currentUserID", req.session.currentUser._id)
   console.log("currentUserUsername", req.session.currentUser.username)
 
-  Journal.create({ title, content, author: userId, createdAt }) //author:userId!!! (or author doesn't have any value)
+  
+  
+
+  Journal.create( body ) //author:userId!!! (or author doesn't have any value)
     .then((journalPost) => {
       console.log("journalPost", journalPost)
       return User.findByIdAndUpdate(userId, {
@@ -34,24 +45,11 @@ router.post("/daily-journal", isLoggedIn, (req, res, next) => {
     });
 });
 
-//simpler version
-
-// router.post("/daily-journal", (req, res, next) => {
-//     const {title, content, author} = req.body;
-
-//     Journal.create({title, content, author})
-//     .then((journalPost) => {
-//         console.log(journalPost)
-//         res.redirect("/journal-list");
-//     })
-//     .catch(err => next(err));
-//     })
-
-router.get("/journal-list", (req, res, next) => {
+router.get("/journal-list", isLoggedIn, (req, res, next) => {
   const userId = req.session.currentUser._id
 
   User.findById(userId)
-  .populate('journals') // Populate the journals field
+  .populate('journals')
   .then(user => {
 
     const journals = user.journals;
@@ -63,21 +61,6 @@ router.get("/journal-list", (req, res, next) => {
     next(err);
   });
 });
-
-
-// router.get("/journal-list", (req, res, next) => {
-//   const userId = req.session.currentUser._id
-
-//   Journal.findById(userId)
-//     .then((journalsByID) => {
-//       console.log(journalsByID);
-//       res.render("journal/journal-list", { journalsByID });
-//     })
-//     .catch((err) => {
-//       next(err);
-//     });
-// });
-
 
 router.get("/daily-journal/:journalId", (req, res, next) => {
   const { journalId } = req.params;
@@ -112,17 +95,26 @@ router.get("/daily-journal/:journalId/edit", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.post("/daily-journal/:journalId/edit", (req, res, next) => {
+router.post("/daily-journal/:journalId/edit", fileUploader.single("journal-post-image"), 
+(req, res, next) => {
   const { journalId } = req.params;
-  const { author, title, content, createdAt } = req.body;
+  const { author, title, content, createdAt, existingImage } = req.body;
+
+  let imageUrl;
+  if (req.file) {
+    imageUrl = req.file.path;
+  } else {
+    imageUrl = existingImage;
+  }
 
   Journal.findByIdAndUpdate(
     journalId,
-    { author, title, content, createdAt },
+    { author, title, content, createdAt, imageUrl },
     { new: true }
   )
     .then((updatedJournal) =>
-      res.redirect(`/daily-journal/${updatedJournal.id}`)
+           res.redirect('/journal-list/')
+      // res.redirect(`/daily-journal/${updatedJournal.id}`)
     )
     .catch((error) => next(error));
 });

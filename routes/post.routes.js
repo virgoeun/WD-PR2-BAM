@@ -5,21 +5,10 @@ const Post = require("../model/post.model");
 const User = require("../model/user.model");
 
 //get route
-router.get("/community", (req, res) => {
+router.get("/create-post", (req, res) => {
   console.log(req.session.currentUser);
   res.render("posts/create", { xyz: req.session.currentUser });
 });
-
-
-
-//post route
-router.post("/create-post", (req, res) => {
-  console.log(req.session);
-  const { title, content, author } = req.body;
-
-  Post.create({ title, content, author })
-    .then((dbPost) => {
-      return User.findByIdAndUpdate(author, { $push: { content: dbPost._id } });
 
 //post route
 router.post("/create-post", (req, res) => {
@@ -69,6 +58,40 @@ router.get("/posts/:postId", (req, res, next) => {
       console.log(`Err while getting a single post from the  DB: ${err}`);
       next(err);
     });
+});
+
+//edit post
+// router.get("/posts/:postId/edit", (req, res, next) => {
+//   const { postId } = req.params;
+
+//   Post.findById(postId)
+//     .then((postToEdit) => {
+//       // console.log(postToEdit);
+//       res.render("posts/post-edit", { post: postToEdit });
+//     })
+//     .catch((error) => next(error));
+// });
+
+// //returning updated posts
+// router.post("/posts/:postId/edit", (req, res, next) => {
+//   const { postId } = req.params;
+//   const { title, content } = req.body;
+
+//   Post.findByIdAndUpdate(postId, { title, content }, { new: true })
+//     .then((updatedPost) => {
+//       console.log(updatedPost);
+//       res.redirect(`/posts/${updatedPost._id}`);
+//     })
+//     .catch((error) => next(error));
+// });
+
+//delete the post
+router.post("/posts/:postId/delete", (req, res, next) => {
+  const { postId } = req.params;
+
+  Post.findByIdAndDelete(postId)
+    .then(() => res.redirect("/posts"))
+    .catch((error) => next(error));
 });
 
 module.exports = router;

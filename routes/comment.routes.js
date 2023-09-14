@@ -1,8 +1,8 @@
-
 const Post = require("../model/post.model");
 const Comment = require("../model/comment.model");
 const User = require("../model/user.model");
-const { isLoggedIn } = require("../middleware/loggedInOut"); //if it is exported in curlies, should be imported in curlies. 
+const { isLoggedIn } = require("../middleware/loggedInOut"); //if it is exported in curlies, should be imported in curlies.
+const router = require("express").Router();
 
 //Post route here
 router.post("/posts/:postId/comment", isLoggedIn, (req, res, next) => {
@@ -28,8 +28,7 @@ router.post("/posts/:postId/comment", isLoggedIn, (req, res, next) => {
           author: req.session.currentUser._id,
           content,
         });
-        newComment.save()
-        .then((dbComment) => {
+        newComment.save().then((dbComment) => {
           // console.log("Comment created:", dbComment);
           dbPost.comments.push(dbComment._id);
 

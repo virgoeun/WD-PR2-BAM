@@ -1,15 +1,57 @@
-  
-<h2>My Journals</h2>
- 
-<ul>
-  {{#each journals}}
-    <li>
-      <a href="/daily-journal/{{_id}}">  {{this.title}}</a>
-      <p>Created at: {{ this.createdAt }}</p>
-    </li>
-  {{/each}}
-</ul>
+{{!-- LOGIN HEADBAR --}}
 
-<br>
-<br>
-<a href="/daily-journal">⬅️ Back to journal</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
+
+<div class="bg-indigo text-white"> 
+<section class ="background-section">
+  <div class="myjournals-textbox"> 
+<h2>My Journals</h2>
+</div> 
+ <div class="row"> 
+  {{#each journals}} 
+    <div class="col-sm-4 mb-5">   
+      <div class="journal-card-container"> 
+   <div class="card border-warning mb-3" style="max-width: 18rem;">
+    <div class="text-center"> 
+           <img src="{{this.imageUrl}}" class="card-img-top mx-auto" id = "journal-list-image" alt="{{this.title}}">
+           </div>
+           <div class="card-body">
+           
+            <h5 class="card-title"> <a href="/daily-journal/{{_id}}">{{this.title}}</a></h5>
+           
+           
+            <p class="card-text">Created at: {{ this.createdAt }}</p>
+            
+          
+           <a href="/daily-journal/{{_id}}/edit" class="btn btn-primary fw-bold mr-2">Edit</a>
+           
+      
+          </div>
+          </div>
+          </div>
+  </div>
+      {{else}}
+<p>There are no journals yet!😉 Start journaling Here!</p> 
+  {{/each}}
+  
+  </div>
+
+ <div class="text-center"> 
+<a href="/daily-journal"><button class ="btn btn-warning btn-lg mb-5">Back to Journaling</button></a>
+  </div>
+</section>
+</div>

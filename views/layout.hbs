@@ -3,16 +3,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hugger Community</title>
 
-    <title>Hugger</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
 
   <body>
+{{!-- NEW NAVBAR  --}}
+{{!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+        <a class="nav-link text-white" href="/">Hugger</a>
+        <a class="nav-link text-white" aria-current="page" href="/about">About Us</a>
+        <a class="nav-link text-white" href="/login ">Login</a>
+      </div>
+    </div>
+  </div>
+</nav> --}}
+{{!-- END --}}
+
+
+
+
 
     <!-- mainpage navbar code below -->
-    <nav>
+    {{!-- <nav>
       <ul class="nav-bar">
         <li id="to-left">
           <p><a href="/"> Hugger &#128151 </a></p>
@@ -24,41 +55,57 @@
           <span> | </span>
           <a href="/about">About Hugger</a>
           <span> | </span>
-          <a href="/logout">Logout</a>
+          <form id="logout-form" action="/logout" method="POST">
+            <button>Logout</button>
+          </form>
         </li>
       </ul>
-    </nav>
+    </nav> --}}
 
-    <img
-      src="/images/testing-image.jpg"
-      alt="mainimage"
-      width="500"
-      height="350"
-    />
     {{{body}}}
 
-    <br />
-    <footer>
-      <div>
-        <h4> Follow Us </h4>
-        <ul>
-          <li>
-            <a href="https://www.facebook.com/" target="_blank">
-              Facebook
-            </a>
-          </li>
-          <li>
-            <a href="https://www.instagram.com/" target="_blank">
-              Instagram
-            </a>
-          </li>
-        </ul>
-        <span>
-          &copy; Hugger &#128151 created with love by Alice, Maddy and Mira
-        </span>
-      </div>
-    </footer>
+    <footer
+      class="bg-dark text-center text-white"
+      style="background-color: rgb(27, 34, 80) !important;"
+    >
+      <div class="container p-4 pb-0">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.facebook.com/"
+            role="button"
+          ><i class="fab fa-facebook-f"></i></a>
+          <!-- Instagram -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://www.instagram.com/"
+            role="button"
+          ><i class="fab fa-instagram"></i></a>
 
+          <!-- Github -->
+          <a
+            class="btn btn-outline-light btn-floating m-1"
+            href="https://github.com/virgoeun/WD-PR2-BAM"
+            role="button"
+          ><i class="fab fa-github"></i></a>
+        </section>
+        <!-- Section: Social media -->
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgb(27, 34, 80);">
+        &copy; 2023 Hugger &#128151 created with love by Alice, Maddy and Mira
+      </div>
+
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/scripts/index.js"> </script>
   </body>
 
 </html>

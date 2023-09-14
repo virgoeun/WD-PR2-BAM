@@ -1,36 +1,66 @@
 
-<div>
-  {{content}}
-  <br>
-  - by {{author.username}}
+{{!-- LOGIN HEADBAR --}}
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
+
+<div class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">{{title}} - by {{author.username}}</h5>
+        </div>
+        <!-- Specific Post -->
+        <div class="card-body">
+          <p class="card-text">{{content}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2 d-md-block">
+    <a class="nav-link" href="/userProfile"><button class="btn btn-primary">Go
+        back to Dashboard</button></a>
+    <a class="nav-link" href="/posts"><button class="btn btn-primary">
+        Hugger's Board</button></a>
+  </div>
 </div>
-
-{{#unless comments}}
-  <p>No comments yet!</p>
-{{/unless}}
-
-{{#each comments}}
-  <p><b>{{this.author.username}}:</b> {{this.content}}</p>
-{{/each}}
-
-<hr>
-
-<h3>Add comment</h3>
-
-<form action="/posts/{{_id}}/comment" method="post">
-  {{!-- <label> Your username:
-    <input type="text" name="author" />
-  </label> --}}
-
-  {{!-- <input type="text" name="postAuthor"  --}}
-  {{!-- value=" --}}
-  
-  <textarea name="content" cols="30" rows="2"></textarea>
-  <br/>
-  <p>By: {{author.username}}</p>
-
-  <button type="submit">Comment</button>
-</form>
-
-<br>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <hr />
+      <!-- Comment Area -->
+      <h3>Add comment</h3>
+      <form action="/posts/{{_id}}/comment" method="post">
+        <textarea name="content" class="form-control" rows="3"></textarea>
+        <br />
+        <p>By: {{author.username}}</p>
+        <button type="submit" class="btn btn-primary">Comment</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Display Comments -->
+      {{#each comments}}
+        <hr />
+        <p><b>{{this.author.username}}:</b> {{this.content}}</p>
+      {{/each}}
+    </div>
+  </div>
+</div>

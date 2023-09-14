@@ -1,96 +1,128 @@
-{{! views/users/user-profile.hbs }}
+{{!-- LOGIN HEADBAR --}}
 
-{{#if userInSession}}
-  <h2>Hello, {{userInSession.username}}!</h2>
-{{/if}}
-
-<div>
-  <div class="profile-details">
-    <img class="avatar"
-      src="{{userInSession.avatar}}"
-      alt="{{userInSession.username}} Avatar"
-      class="avatar"
-    />
-    <p>Username: {{userInSession.username}}</p>
-    <p>Full Name: {{userInSession.fullName}}</p>
-    <br />
-    <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
-        class="styled-button"
-      >Edit Profile Details</button></a>
-
-    {{!-- <a href="/userProfile/edit/{{user._id}}" class="edit-avatar"><button
-        class="styled-button"
-      >Edit Profile Image</button></a> --}}
-  </div>
-
-  <div>
-    <a href="/community"><button class="styled-button">Go to the Community</button></a>
-    <a href="/daily-journal"><button class="styled-button">Add a Journal Entry</button></a>
-  </div>
-
-  <div class="profile-body">
-    <div class="mood">
-      <h2>Wellbeing Mood Check</h2>
-      <h3>How are you feeling today?</h3>
-      <h4>Select Your Mood:</h4>
-      <form class="emojies" action="/submit-mood" method="post">
-
-{{!-- 
-***********THIS IS NEWLY ADDED YOGAAPI LINES***********
-******************************************************* 
---}}
-    <div class="recomm">
-      <h2>Daily Yoga recommendation</h2>
-
-<div class="yoga-container">
-    <h1>Daily Yoga</h1>
-    <div class="pose-container">     
-<img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
-  <h3>{{poses.english_name}}</h3>
-  <p><strong>How to do:</strong></p>
-  <p>{{poses.pose_description}}</p>
- <strong>Benefits:</strong></p>
-  <p>{{poses.pose_benefits}}</p>
-       </div>
-</div>
-</div>
-{{!-- 
-******************************************************* 
---}}
-    
-
-        <div class="emoji-container">
-          {{#each emojies}}
-            <label class="emoji-label">
-              <input
-                type="radio"
-                name="selectedMood"
-                value="{{name}}"
-                style="display: none;"
-              />
-              <span class="emoji">{{emoji}}</span>
-              <span class="emoji">{{name}}</span>
-            </label>
-          {{/each}}
-        </div>
-        {{!-- <button type="submit">Submit</button> --}}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
       </form>
+      </div>
     </div>
-    <div class="recomm">
-      <h2>Daily recommendation</h2>
-      <p>Placeholder for suggestion</p>
-    </div>
-    <div class="activity">
-      <h2>Your Posts</h2>
-      <p>Placeholder for post tracking</p>
-      <div>
-        {{#each userPosts}}
-          <div class="post">
-            <p>{{content}}</p>
-            <!-- Display other post details as needed -->
+  </div>
+</nav>
+
+{{!-- END --}}
+{{! views/users/user-profile.hbs }}
+<div class="profile-body">
+  <div class="row">
+    <div class="profile-left col-md-4">
+      {{#if userInSession}}
+        <h2 class="user-profile"><strong>Hello, {{userInSession.username}}!</strong></h2>
+      {{/if}}
+      <div class="left-section">
+        <div class="profile-details">
+          <img
+            class="avatar"
+            src="{{userInSession.avatar}}"
+            alt="{{userInSession.username}} Avatar"
+            class="avatar"
+            style="height: 200px; width: auto; border-radius: 20px;"
+          />
+          <p><strong>Name: {{userInSession.fullName}}</strong></p>
+          <br />
+          <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
+              class="edit-button"
+            >Edit Profile Details</button></a>
+        </div>
+        <div class="d-grid gap-2 d-md-block">
+          <div class="profile-buttons"><a href="/posts"><button
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
+              >Go to the Community</button></a></div>
+          <div class="profile-buttons">
+            <a href="/daily-journal"><button
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
+              >Add a Journal Entry</button></a>
           </div>
-        {{/each}}
+        </div>
+        <div class="activity">
+          <h2>Your Posts</h2>
+          <div>
+            <div
+              class="card text-bg-secondary post-card"
+              style="max-width: 25rem;"
+            >
+              {{#each userPosts}}
+                <div class="each-post">
+                  <h5 class="card-header">{{title}}</h5>
+                  <p class="card-text">{{content}}</p>
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        href="/posts/{{_id}}/edit"
+                        class="btn btn-secondary"
+                      >Edit</a>
+                    </div>
+                    <div class="col">
+                      <form action="/posts/{{_id}}/delete" method="POST">
+                        <button
+                          class="btn btn-secondary"
+                          type="submit"
+                        >Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-right col-md-8 text-center">
+      <div class="right-section">
+        <div class="mood">
+          <h2>Wellbeing Mood Check</h2>
+          <h5>How are you feeling today?</h5>
+          <form class="emojies" action="/submit-mood" method="post">
+            <div class="emoji-container">
+              {{#each emojies}}
+                <label class="emoji-label">
+                  <input
+                    type="radio"
+                    name="selectedMood"
+                    value="{{name}}"
+                    style="display: none;"
+                  />
+                  <span class="emoji">{{emoji}}</span>
+                  <span class="emoji">{{name}}</span>
+                </label>
+              {{/each}}
+            </div>
+          </form>
+        </div>
+        <div class="recomm">
+          <h2>Daily Yoga recommendation</h2>
+          <div class="yoga-container">
+            <h5>Get your dose of yoga for the day</h5>
+            <div class="pose-container">
+              <img
+                src="{{poses.url_png}}"
+                alt="{{poses.english_name}}"
+                class="yoga-pose-picture"
+              />
+              <h3>{{poses.english_name}}</h3>
+              <p><strong>How to do:</strong></p>
+              <p>{{poses.pose_description}}</p>
+              <p><strong>Benefits:</strong></p>
+              <p>{{poses.pose_benefits}}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

@@ -8,7 +8,8 @@ const journalSchema = new Schema(
     createdAt: {
         type: Date,
         // default: Date.now
-      }
+      },
+      imageUrl: String
   },
   {
     timestamps: true,
