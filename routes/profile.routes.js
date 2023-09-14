@@ -11,7 +11,7 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
   const userId = req.session.currentUser._id;
 
   Post.find({ author: userId }).then((userPosts) => {
-    console.log(userPosts); 
+    console.log(userPosts);
     // ********* NEWLY ADDDED! FOR YOGA POSES ****************
     axios
       .get(process.env.YOGA_API_URL)
@@ -34,15 +34,14 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
         });
       })
       .catch((error) => {
-        
-      console.error("Error fetching yoga poses:", error);
-      res.status(500).render('error-page', {
-      errorMessage: '🥲 Sorry, our server is in maintenance phase! Please try again later.',
+        console.error("Error fetching yoga poses:", error);
+        res.status(500).render("error-page", {
+          errorMessage:
+            "🥲 Sorry, our server is in maintenance phase! Please try again later.",
+        });
       });
-    
   });
 });
-})
 
 // ********* require fileUploader *********
 const fileUploader = require("../config/cloudinary.config");
@@ -105,7 +104,6 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     });
 });
 
-
 router.get("/posts/:postId/edit", (req, res, next) => {
   const { postId } = req.params;
 
@@ -125,10 +123,10 @@ router.post("/posts/:postId/edit", (req, res, next) => {
   Post.findByIdAndUpdate(postId, { title, content }, { new: true })
     .then((updatedPost) => {
       console.log(updatedPost);
-      res.redirect(`/posts/${updatedPost._id}`);
+      // res.redirect(`/posts/${updatedPost._id}`);
+      res.redirect("/userProfile");
     })
     .catch((error) => next(error));
 });
-
 
 module.exports = router;
