@@ -1,4 +1,4 @@
-{{!-- <section class ="journal-section"> 
+<section class ="journal-section"> 
 <div class="bg-indigo text-white"> 
 <section class="daily-journal-section">
   <div class="writejournal-textbox">  
@@ -49,47 +49,8 @@
 
 <div class="last-btn"> 
  <nav class="navbar navbar-expand-lg">
-      <a class="nav-link" href="/userProfile"><button class ="btn btn-link btn-sm">Go back to Dashboards</button></a> 
-      <a class="nav-link" href="/journal-list"><button class ="btn btn-link btn-sm">Check Your Journal</button></a>
+      <a class="nav-link" href="/userProfile"><button class ="btn btn-primary btn-sm">Go back to Dashboards</button></a> 
+      <a class="nav-link" href="/journal-list"><button class ="btn btn-primary btn-sm">Check Your Journal</button></a>
     </nav>
 </div>
     </section>
-{{!-- <a href="/userProfile">Go back to Dashboard</a>
-<br>
-<a href="/journal-list">Check Your Journals</a> --}}
- --}}
-
-
-
-<h2>Write today's journal</h2>
-
-<form action ="/daily-journal" method = "Post" enctype="multipart/form-data">
-<div class="form-group"> 
-<label for ="title">Title:
-    <input type="text" id = "journal-title" name ="title" />
-</label>
-</div>
-<br>
-<div class="form-group"> 
-<label for ="content">Journal Content:
-    <input type="text" id="journal-content" name ="content"/>
-</label>
-</div>
-<br>
-<div class="form-group"> 
-<label for ="date">Date:
-    <input type="date" id ="post_date" name ="createdAt"/>
-</label>
-</div>
-<div class="form-group">
-        <label>Image:
-          <input type="file" name="journal-post-image" class="form-control-file" />
-        </label>
-      </div>
-<br>
-<button type="submit"> Create your Journal </button>
-</form>
- <nav class="navbar navbar-expand-lg">
-      <a class="nav-link" href="/userProfile">Go back to Dashboards</a> 
-      <a class="nav-link" href="/journal-list">Check Your Journal</a>
-    </nav>

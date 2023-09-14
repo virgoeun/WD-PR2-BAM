@@ -1,5 +1,6 @@
 const router = require("express").Router();
 
+
 const User = require("../model/user.model");
 const Journal = require("../model/journal.model");
 const { isLoggedIn } = require("../middleware/loggedInOut");
@@ -16,12 +17,21 @@ const fileUploader = require("../config/cloudinary.config");
 router.post("/daily-journal", fileUploader.single("journal-post-image"), (req, res, next) => {
   const { title, content, createdAt } = req.body;
   const userId = req.session.currentUser._id // current user ID
+  const body = {title, content, createdAt,author:userId}
   
+      if (req.file) {
+        body.imageUrl = req.file.path;
+      } 
+
+
   console.log("currentUser", req.session.currentUser)
   console.log("currentUserID", req.session.currentUser._id)
   console.log("currentUserUsername", req.session.currentUser.username)
 
-  Journal.create({ title, content, author: userId, createdAt, imageUrl: req.file.path }) //author:userId!!! (or author doesn't have any value)
+  
+  
+
+  Journal.create( body ) //author:userId!!! (or author doesn't have any value)
     .then((journalPost) => {
       console.log("journalPost", journalPost)
       return User.findByIdAndUpdate(userId, {
