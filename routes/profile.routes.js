@@ -1,46 +1,44 @@
 const router = require("express").Router();
 const app = require("../routes/profile.routes");
 const User = require("../model/user.model");
+const Post = require("../model/post.model");
 const emojies = require("../assets/emojies.json");
 const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
 const axios = require("axios");
 
-
 //render profile page and emojies
 router.get("/userProfile", isLoggedIn, (req, res) => {
-  
-// ********* NEWLY ADDDED! FOR YOGA POSES ****************
+  const userId = req.session.currentUser._id;
 
-  axios.get(process.env.YOGA_API_URL).then((poses) => {
-    const randomIndex = Math.floor (Math.random()*poses.data.length)
-    const randomPose = poses.data[randomIndex]
-    console.log(randomPose)
+  Post.find({ author: userId }).then((userPosts) => {
+    console.log(userPosts); 
+    // ********* NEWLY ADDDED! FOR YOGA POSES ****************
+    axios
+      .get(process.env.YOGA_API_URL)
+      .then((poses) => {
+        const randomIndex = Math.floor(Math.random() * poses.data.length);
+        const randomPose = poses.data[randomIndex];
+        console.log(randomPose);
 
-// ******************************************************
-    res.render("users/user-profile", {
-      emojies,
-      userInSession: req.session.currentUser,
+        // ******************************************************
+        res.render("users/user-profile", {
+          emojies,
+          userInSession: req.session.currentUser,
+          userPosts,
 
-// ********* NEWLY ADDDED! FOR YOGA POSES ****************
-      
-      poses: randomPose
-  
-// ******************************************************
-    });
-  })
-  .catch ((error) => console.log("HERE IS THE ERROR!!!",error))
-})
+          // ********* NEWLY ADDDED! FOR YOGA POSES ****************
 
-// ********* require fileUploader in order to use it *********
-const fileUploader = require("../config/cloudinary.config");
+          poses: randomPose,
 
-//render profile page and emojies
-router.get("/userProfile", isLoggedIn, (req, res) => {
-  res.render("users/user-profile", {
-    emojies,
-    userInSession: req.session.currentUser,
+          // ******************************************************
+        });
+      })
+      .catch((error) => console.log("HERE IS THE ERROR!!!", error));
   });
 });
+
+// ********* require fileUploader *********
+const fileUploader = require("../config/cloudinary.config");
 
 //handle mood submission
 router.post("/submit-mood", isLoggedIn, (req, res) => {
@@ -67,8 +65,16 @@ router.post(
   fileUploader.single("avatar"),
   (req, res) => {
     const { id } = req.params;
-    const avatar = req.file.path;
+    // const avatar = req.file.path;
     const { username, fullName } = req.body;
+
+    // Check if a new image was uploaded
+    let avatar = req.body.avatar;
+    // If a new image was uploaded, use its path
+    if (req.file) {
+      avatar = req.file.path;
+    }
+
     User.findByIdAndUpdate(id, { username, fullName, avatar }, { new: true })
       .then((updateUser) => {
         req.session.currentUser = updateUser;

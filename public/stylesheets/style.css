@@ -1,0 +1,45 @@
+
+/* style for emoji */
+.emoji-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.emoji-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emoji {
+  font-size: 20px; /* Adjust the size as needed */
+  padding: 2px;
+}
+
+/* Style the default appearance of the labels */
+.emoji-label {
+  cursor: pointer;
+  padding: 1px;
+  border: 1px solid #cbbbcb;
+  border-radius: 10px;
+  margin: 5px;
+  width: 80px;
+  height: 70px;
+}
+
+/* Style the labels when the associated radio button is checked */
+.emoji-label input[type="radio"]:checked + .emoji + .emoji {
+  background-color: #f29f05;
+  font-weight: bolder;
+  color: white;
+}
+
+
+
+/* avatar */
+.avatar {
+  height: 150px;
+  width: auto;
+  border-radius: 20px;
+}
+
