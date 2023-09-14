@@ -141,24 +141,9 @@ h2 {
   border-radius: 20px;
 }
 
-
-.card-body {
-  background-color: rgb(244, 200, 118);
-}
-
-.posts-button {
-  text-align: center;
-  color: white;  
-}
-
-.btn {
-  background-color: #341773;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
 .head-posts{
   text-align: center;
+}
 
 .btn-primary {
   background: linear-gradient(rgb(36, 119, 170) 0%, rgb(100, 97, 224) 100%);

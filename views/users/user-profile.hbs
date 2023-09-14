@@ -5,36 +5,37 @@
 
   <div class="row">
     <div class="profile-left col-md-4">
-      {{#if userInSession}}
-        <h2>Hello, {{userInSession.username}}!</h2>
-      {{/if}}
-      <div class="left-section">
-        <div class="profile-details">
-          <img
-            class="avatar"
-            src="{{userInSession.avatar}}"
-            alt="{{userInSession.username}} Avatar"
-            class="avatar"
-          />
-          <p>Full Name: {{userInSession.fullName}}</p>
-          <br />
-          <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
-              class="edit-button"
-            >Edit Profile Details</button></a>
-        </div>
+{{#if userInSession}}
+  <h2>Hello, {{userInSession.username}}!</h2>
+{{/if}}
+<div class="left-section">
+  <div class="profile-details">
+    <img
+      class="avatar"
+      src="{{userInSession.avatar}}"
+      alt="{{userInSession.username}} Avatar"
+      class="avatar"
+    />
+    <p>Username: {{userInSession.username}}</p>
+    <p>Full Name: {{userInSession.fullName}}</p>
+    <br />
+    <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
+        class="edit-button"
+      >Edit Profile Details</button></a>
+  </div>
 
-        <div>
-          <div class="profile-buttons"><a href="/community"><button
+  <div>
+    <div class="profile-buttons"><a href="/community"><button
                 class="styled-button btn btn-block btn-primary"
               >Go to the Community</button></a></div>
           <div class="profile-buttons">
-            <a href="/daily-journal"><button
+    <a href="/daily-journal"><button
                 class="styled-button btn btn-block btn-primary"
               >Add a Journal Entry</button></a>
-          </div>
-        </div>
+</div>
+  </div>
 
-        <div class="activity">
+  <div class="activity">
           <h2>Your Posts</h2>
           <div>
             <div
@@ -54,26 +55,26 @@
     </div>
     <div class="profile-right col-md-8 text-center">
       <div class="right-section">
-        <div class="mood">
-          <h2>Wellbeing Mood Check</h2>
-          <h5>How are you feeling today?</h5>
-          <form class="emojies" action="/submit-mood" method="post">
-            <div class="emoji-container">
-              {{#each emojies}}
-                <label class="emoji-label">
-                  <input
-                    type="radio"
-                    name="selectedMood"
-                    value="{{name}}"
-                    style="display: none;"
-                  />
-                  <span class="emoji">{{emoji}}</span>
-                  <span class="emoji">{{name}}</span>
-                </label>
-              {{/each}}
-            </div>
-          </form>
+    <div class="mood">
+      <h2>Wellbeing Mood Check</h2>
+      <h5>How are you feeling today?</h5>
+      <form class="emojies" action="/submit-mood" method="post">
+        <div class="emoji-container">
+          {{#each emojies}}
+            <label class="emoji-label">
+              <input
+                type="radio"
+                name="selectedMood"
+                value="{{name}}"
+                style="display: none;"
+              />
+              <span class="emoji">{{emoji}}</span>
+              <span class="emoji">{{name}}</span>
+            </label>
+          {{/each}}
         </div>
+              </form>
+    </div>
 
 
     <div class="activity">
@@ -100,26 +101,39 @@
 
         </ul>
 
-        <div class="recomm">
-          <h2>Daily Yoga recommendation</h2>
+    <div class="recomm">
+      <h2>Daily Yoga recommendation</h2>
 
-          <div class="yoga-container">
-            <h5>Get your dose of yoga for the day</h5>
-            <div class="pose-container">
-              <img
-                src="{{poses.url_png}}"
-                alt="{{poses.english_name}}"
-                class="yoga-pose-picture"
-              />
-              <h3>{{poses.english_name}}</h3>
-              <p><strong>How to do:</strong></p>
-              <p>{{poses.pose_description}}</p>
-              <p><strong>Benefits:</strong></p>
-              <p>{{poses.pose_benefits}}</p>
-            </div>
-          </div>
+      <div class="yoga-container">
+        <h5>Get your dose of yoga for the day</h5>
+        <div class="pose-container">
+          <img
+            src="{{poses.url_png}}"
+            alt="{{poses.english_name}}"
+            class="yoga-pose-picture"
+          />
+          <h3>{{poses.english_name}}</h3>
+          <p><strong>How to do:</strong></p>
+          <p>{{poses.pose_description}}</p>
+          <p><strong>Benefits:</strong></p>
+          <p>{{poses.pose_benefits}}</p>
         </div>
       </div>
     </div>
+
+    <div class="activity">
+      <h2>Your Posts</h2>
+      <div class="profile-posts">
+        <ul class="posts">
+          {{#each userPosts}}
+            <div class="post">
+              <li>{{title}}</li>
+              <p>{{content}}</p>
+            </div>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
   </div>
 </div>
