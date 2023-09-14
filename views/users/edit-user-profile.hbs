@@ -1,24 +1,43 @@
-<h2>Edit Profile</h2>
+{{#if userInSession}}
+  <h2>Profile edit for {{userInSession.username}}!</h2>
+{{/if}}
 
-<form action="/edit-user-profile" method="post">
+<h2>Edit Profile Details</h2>
+
+<form
+  action="/userProfile/edit/{{user._id}}"
+  method="post"
+  enctype="multipart/form-data"
+>
 
   <div class="form">
-    <label>Profile Image</label>
-    <input type="file" id="avatar" name="avatar">
-    <p class="note">Upload a new profile image (JPEG or PNG).</p>
-    <img src=`{{user.avatar}}` alt=`{{user.username}} Avatar` class="avatar">
+    <label>New Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      value="{{user.username}}"
+    />
   </div>
 
   <div class="form">
-    <label>Username</label>
-    <input type="text" id="username" name="username" value=`{{user.username}}`>
+    <label>New Password</label>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      {{!-- value="{{user.password}}" --}}
+    />
   </div>
-
   <div class="form">
     <label>Full Name</label>
-    <input type="text" id="fullName" name="fullName">
+    <input type="text" id="fullName" name="fullName" />
+  </div>
+
+  <div class="form">
+    <label>Avatar</label>
+    <input type="file" id="avatar" name="avatar" />
   </div>
 
   <button type="submit"> Done Editing! </button>
-  
-  </form>
+</form>

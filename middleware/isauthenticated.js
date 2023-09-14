@@ -7,7 +7,7 @@ function bothFilled(req, res, next) {
 
   // Check if both fields are filled
   if (!username || !password) {
-    return res.render("auth/login", {
+    return res.render("auth/signup", {
       errorMessage: "🐣 Please enter both username and password to login.",
     });
   }

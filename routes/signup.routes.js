@@ -1,22 +1,14 @@
 const { Router } = require("express");
 const router = new Router();
-// const bcryptjs = require("bcryptjs");
-// const saltRounds = 10;
 const mongoose = require("mongoose");
 const User = require("../model/user.model");
-const { bothFilled } = require("../middleware/isAuthenticated");
+const ensureNotLoggedIn = require("../middleware/ensuredNotLoggedIn")
 
-router.get("/signup", (req, res) => res.render("auth/signup"));
+router.get("/signup",ensureNotLoggedIn, (req, res) => res.render("auth/signup"));
 
-router.post("/signup", bothFilled, (req, res, next) => {
+router.post("/signup", (req, res, next) => {
   const { username, password } = req.body;
 
-  //    if (!username || !password) {
-  //     res.render('auth/signup', {
-  //         errorMessage:"All fields are mandatory. Please provide your username and password."
-  //     })
-  //     return;
-  //    }
 
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 
@@ -27,19 +19,10 @@ router.post("/signup", bothFilled, (req, res, next) => {
     });
   }
 
-  //    bcryptjs
-  //    .genSalt(saltRounds)
-  //    .then(salt => bcryptjs.hash(password, salt))
-  //    .then(hashedPassword => {
-  //     return User.create({
-  //         username,
-  //         passwordHash: hashedPassword
-  //     });
-  //    })
 
   User.create({
     username,
-    password, // The password will be hashed automatically by the pre-save middleware
+    password, 
   })
     .then((userfromDB) => {
       console.log(userfromDB);

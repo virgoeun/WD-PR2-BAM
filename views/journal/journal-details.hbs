@@ -2,7 +2,7 @@
 <h2> {{journal.title}} Journal</h2>
 <div class ="journal-detail-date"> 
  <aside> <p>
- Created:
+ Created At:
   {{journal.createdAt}}
 </p></aside>
 <br />
@@ -22,12 +22,11 @@
 
 
 <div class ="edit-delete-journal">
-<a href="/daily-journal/{{journal._id}}/edit">Edit this journal 📝</a>
-<br />
-<br />
-<a href="/daily-journal/{{journal._id}}/delete">Delete this journal 🙄</a>
-<form action="/daily-journal/{{journal._id}}/delete" method="POST">
-  <button>Delete</button>
+<a href="/daily-journal/{{journal._id}}/edit"><button class="edit-button">Edit this journal 📝 </button></a>
+
+<br /><br>
+ <form action="/daily-journal/{{journal._id}}/delete" method="POST">
+  <button>Delete this journal 🙄</button>
 </form>
 </div>
 <div class ="journal-detail-reroutes">
