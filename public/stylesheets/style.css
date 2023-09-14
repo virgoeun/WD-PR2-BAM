@@ -34,8 +34,6 @@
   color: white;
 }
 
-
-
 /* avatar */
 .avatar {
   height: 150px;
@@ -43,3 +41,21 @@
   border-radius: 20px;
 }
 
+.card-body {
+  background-color: rgb(244, 200, 118);
+}
+
+.posts-button {
+  text-align: center;
+  color: white;  
+}
+
+.btn {
+  background-color: #341773;
+  margin-top: 1.5em;
+}
+
+.head-posts{
+  text-align: center;
+  margin-bottom: 1.5em;
+}
