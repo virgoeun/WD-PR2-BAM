@@ -1,24 +1,37 @@
-  
+<div class="bg-indigo text-white"> 
+<section class ="journal-section">
+  <div class="myjournals-textbox"> 
 <h2>My Journals</h2>
-
-  {{#each journals}}
-  <hr>
-    {{!-- <li>
-      <a href="/daily-journal/{{_id}}">  {{this.title}}</a>
-      <p>Created at: {{ this.createdAt }}</p>
-    </li> --}}
-    <div class="col-md-4 mb-5"> 
-        <div class="card" style="width: 18rem;">
-        <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}">
-        <div class="card-body">
-          <h5 class="card-title">{{this.title}}</h5>
-          <p class="created-date">Created at: {{ this.createdAt }}</p>
-        <a href="/daily-journal/{{_id}}/edit" class="btn btn-primary">Edit</a>
-        </div>
-      </div>
-      </div>
-
+</div> 
+ <div class="row"> 
+  {{#each journals}} 
+    <div class="col-sm-4 mb-5">   
+      <div class="journal-card-container"> 
+   <div class="card border-warning mb-3" style="max-width: 18rem;">
+    <div class="text-center"> 
+           <img src="{{this.imageUrl}}" class="card-img-top mx-auto" id = "journal-list-image" alt="{{this.title}}">
+           </div>
+           <div class="card-body">
+           
+            <h5 class="card-title">{{this.title}}</h5>
+           
+           
+            <p class="card-text">Created at: {{ this.createdAt }}</p>
+            
+          
+           <a href="/daily-journal/{{_id}}/edit" class="btn btn-primary fw-bold mr-2">Edit</a>
+      
+          </div>
+          </div>
+          </div>
+  </div>
+      {{else}}
+<p>There are no journals yet!😉 Start journaling Here!</p> 
   {{/each}}
-  <p>There are no movies yet!</p>
-  </hr>
-<a href="/daily-journal">⬅️ Back to Journaling!</a>
+  
+  </div>
+ <div class="text-center"> 
+<a href="/daily-journal"><button class ="btn btn-warning btn-lg">Back to Journaling</button></a>
+  </div>
+</section>
+</div>

@@ -1,31 +1,55 @@
+<div class="bg-indigo text-white"> 
+<section class ="journal-section"> 
+<section class="daily-journal-section">
+  <div class="writejournal-textbox">  
 <h2>Write today's journal</h2>
-
+</div>
+<div class="row"> 
+  <div class="col-md-6"> 
 <form action ="/daily-journal" method = "Post" enctype="multipart/form-data">
-<div class="form-group"> 
+
+<div class="journal-content-padding-box"> 
+<div class="form-outline mb-4">
 <label for ="title">Title:
-    <input type="text" id = "journal-title" name ="title" />
+   {{!-- <textarea name="title" cols="10" rows="10" style="width:100%"; class="form-control"> </textarea> --}}
+    {{!-- <textarea class="col-md-12" ng-model="myTextarea" placeholder="Please write customer notes"></textarea> --}}
+     <input type="text" name="title" class="form-control" placeholder="Title goes here..."/>
+    {{!-- <input type="text" id = "journal-title" name ="title" class="form-control" /> --}}
 </label>
 </div>
-<br>
-<div class="form-group"> 
+
+<div class="form-outline mb-4">
 <label for ="content">Journal Content:
-    <input type="text" id="journal-content" name ="content"/>
+  <textarea class="form-control h-25" id="journal-content" cols="30" rows="4" placeholder="How is your day? Start journaling here!"></textarea>
+    {{!-- <input type="text" id="journal-content" name ="content"/> --}}
+    {{!-- <textarea name="description" cols="30" rows="4" class="form-control h-25" placeholder="Please write your journal here"> </textarea> --}}
 </label>
 </div>
 <br>
-<div class="form-group"> 
+<div class="form-outline mb-4">
 <label for ="date">Date:
-    <input type="date" id ="post_date" name ="createdAt"/>
+    <input type="date" name ="createdAt" class="form-control-file"/>
 </label>
 </div>
-<div class="form-group">
+<div class="form-outline mb-4">
         <label>Image:
           <input type="file" name="journal-post-image" class="form-control-file" />
         </label>
       </div>
-<br>
-<button type="submit"> Create your Journal </button>
+</div>
+ 
+<div class="journalcreat-btn"> 
+<button type="submit" id ="jounalcreat-btn" class="btn btn-warning fw-bold mr-2"> Create your Journal </button>
+</div>
+</div>
 </form>
+</div>
+</div>
+
+</section>
+</section>
+</div> 
+
  <nav class="navbar navbar-expand-lg">
       <a class="nav-link" href="/userProfile">Go back to Dashboards</a> 
       <a class="nav-link" href="/journal-list">Check Your Journal</a>
