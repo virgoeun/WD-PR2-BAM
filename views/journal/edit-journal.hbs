@@ -1,36 +1,50 @@
-<div>   
-<h2>Edit Your Journal: {{journal.title}}</h2>
+<section class ="journal-section">  
+<div class="bg-indigo text-white"> 
+  <div class="writejournal-textbox">
+<h2>Edit Your Journal</h2>
+{{!-- <h2>Edit Your Journal: {{journal.title}}</h2> --}}
+</div>
  <div class="row">
-  <div class="col-md-6"> 
+  <div class="col-sm-6"> 
 <form action="/daily-journal/{{journal._id}}/edit" method="post" enctype="multipart/form-data">
-   <div class="form-group"> 
+  
+<div class="journal-content-padding-box"> 
+<div class="form-outline mb-4">
   <label for ="title"> Title:
     <input type="text" name="title" class="form-control" value="{{journal.title}}" />
+  
   </label>
-  </div>
- <div class="form-group">
-  <label for = "genre"> Content:
-   <textarea name="content" cols="30" rows="4" class="form-control">{{journal.content}}" </textarea>
-  </label>
-  </div>
- <div class="form-group">
-        <label>Image:
-          <img src="{{imageUrl}}" alt="Current Image" id="existing-image" />
-          <input type="file" name="journal-post-image" class="form-control-file" />
-          <input type="text" name="existingImage" hidden value="{{imageUrl}}">
-        </label>
-      </div>
-
-  <button type = "submit" class="btn btn-success">Save changes</button>
-</form>
-</div>
-</div>
-
-
-<p>Delete this journal 🤪</p><form action="/daily-journal/{{journal._id}}/delete" method="POST">
-  <button>Delete</button>
-</form>
-    <br>
-    <a href="/journal-list">⬅️ Back to Journal List</a>
+ <div class="form-outline mb-4"> 
+  <label for = "content"> Content:
     
+   <input name="content"  class="form-control h-25" cols="30" rows="4" value="{{journal.content}}"/>
+  </label>
+  </div>
+ <div class="form-outline">
+    <label>Image:
+      <img src="{{imageUrl}}" alt="Current Image" id="existing-image" />
+      <br>  
+      <input type="file" name="journal-post-image" class="form-control-file" />
+      <input type="text" name="existingImage" hidden value="{{imageUrl}}">
+   </label>
+  </div>
+
+<div class="edit-btn"> 
+  <button type = "submit" class="btn btn-warning fw-bold mr-2">Save changes</button>
+  <form action="/daily-journal/{{journal._id}}/delete" method="POST">
+  <button class ="btn btn-secondary">Delete the Journal</button>
+  </form>
+  <a href="/journal-list"><button class ="btn btn-link">Back to Journals</button></a>
 </div>
+
+</form>
+
+
+<div class="last-btn"> 
+
+</div>
+
+</div>
+</div>
+</div>
+</section> 
