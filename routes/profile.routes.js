@@ -33,9 +33,16 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
           // ******************************************************
         });
       })
-      .catch((error) => console.log("HERE IS THE ERROR!!!", error));
+      .catch((error) => {
+        
+      console.error("Error fetching yoga poses:", error);
+      res.status(500).render('error-page', {
+      errorMessage: '🥲 Sorry, our server is in maintenance phase! Please try again later.',
+      });
+    
   });
 });
+})
 
 // ********* require fileUploader *********
 const fileUploader = require("../config/cloudinary.config");
@@ -97,5 +104,31 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
       console.log(error);
     });
 });
+
+
+router.get("/posts/:postId/edit", (req, res, next) => {
+  const { postId } = req.params;
+
+  Post.findById(postId)
+    .then((postToEdit) => {
+      // console.log(postToEdit);
+      res.render("posts/post-edit", { post: postToEdit });
+    })
+    .catch((error) => next(error));
+});
+
+//returning updated posts
+router.post("/posts/:postId/edit", (req, res, next) => {
+  const { postId } = req.params;
+  const { title, content } = req.body;
+
+  Post.findByIdAndUpdate(postId, { title, content }, { new: true })
+    .then((updatedPost) => {
+      console.log(updatedPost);
+      res.redirect(`/posts/${updatedPost._id}`);
+    })
+    .catch((error) => next(error));
+});
+
 
 module.exports = router;
