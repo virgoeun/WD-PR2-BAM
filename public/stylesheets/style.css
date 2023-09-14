@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 *{
@@ -101,10 +102,12 @@ h2 {
   margin-left:-15px;
   margin-bottom: 50px;
 }
+
 /* style for emoji */
 .emoji-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .emoji-label {
@@ -114,7 +117,8 @@ h2 {
 }
 
 .emoji {
-  font-size: 20px; /* Adjust the size as needed */
+  font-size: 20px;
+  font-weight: bold;
   padding: 2px;
 }
 
@@ -122,26 +126,73 @@ h2 {
 .emoji-label {
   cursor: pointer;
   padding: 1px;
-  border: 1px solid #cbbbcb;
+  border: 3px solid #cbbbcb;
   border-radius: 10px;
   margin: 5px;
   width: 80px;
   height: 70px;
+  color: beige;
 }
-
-/* Style the labels when the associated radio button is checked */
-.emoji-label input[type="radio"]:checked + .emoji + .emoji {
-  background-color: #f29f05;
-  font-weight: bolder;
-  color: white;
-}
-
-
 
 /* avatar */
 .avatar {
-  height: 150px;
+  height: 200px;
   width: auto;
   border-radius: 20px;
 }
 
+.btn-primary {
+  background: linear-gradient(rgb(36, 119, 170) 0%, rgb(100, 97, 224) 100%);
+  border-radius: 100px;
+  transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
+  margin: 0px;
+  box-shadow: none;
+  border: none;
+  color: rgb(255, 255, 255);
+}
+
+.profile-body {
+  background-color: #f26b1d;
+  color: aliceblue;
+}
+
+.recomm {
+  margin-top: 50px;
+}
+
+.mood {
+  margin-top: 40px;
+}
+
+.each-post {
+  margin-top: 5px;
+  background-color: #8d765c;
+  color: aliceblue;
+  padding: 5px;
+}
+
+.activity {
+  margin-top: 40px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70%;
+  background-color: #f29f05;
+}
+
+.profile-left {
+  background-color: #f29f05;
+  padding: 20px;
+  padding-left: 20px; 
+}
+
+.profile-right {
+  padding: 10px;
+}
+
+.profile-buttons{
+  padding-top: 30px;
+}
