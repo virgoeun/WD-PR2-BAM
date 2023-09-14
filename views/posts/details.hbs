@@ -1,8 +1,14 @@
-
 <div>
   {{content}}
-  <br>
-  - by {{author.username}}
+  <br />
+  - by
+  {{author.username}}
+
+  <a href="/posts/{{_id}}/edit">Edit</a>
+
+  <form action="/posts/{{_id}}/delete" method="POST">
+    <button>Delete</button>
+  </form>
 
 </div>
 
@@ -14,23 +20,26 @@
   <p><b>{{this.author.username}}:</b> {{this.content}}</p>
 {{/each}}
 
-<hr>
+<hr />
 
 <h3>Add comment</h3>
 
 <form action="/posts/{{_id}}/comment" method="post">
-  {{!-- <label> Your username:
+  {{! <label> Your username:
     <input type="text" name="author" />
-  </label> --}}
+  </label> }}
 
-  {{!-- <input type="text" name="postAuthor"  --}}
-  {{!-- value=" --}}
-  
-  <textarea name="content" cols="30" rows="2"></textarea>
-  <br/>
+  {{! <input type="text" name="postAuthor"  }}
+  {{! value=" }}
+
+  <textarea name="content"></textarea>
+  <br />
   <p>By: {{author.username}}</p>
 
   <button type="submit">Comment</button>
+  <a href="/userProfile">Go back to Dashboard</a>
+  <a href="/posts"> See all Community Posts </a>
+
 </form>
 
-<br>
+<br />
