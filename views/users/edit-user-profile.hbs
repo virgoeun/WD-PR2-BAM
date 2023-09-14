@@ -1,43 +1,77 @@
+{{!-- LOGIN HEADBAR --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
 {{#if userInSession}}
   <h2>Profile edit for {{userInSession.username}}!</h2>
 {{/if}}
-
-<h2>Edit Profile Details</h2>
-
-<form
-  action="/userProfile/edit/{{user._id}}"
-  method="post"
-  enctype="multipart/form-data"
->
-
-  <div class="form">
-    <label>New Username</label>
-    <input
-      type="text"
-      id="username"
-      name="username"
-      value="{{user.username}}"
-    />
+<section class="profile-section">
+  <div class="bg-indigo text-black">
+    <div class="whiteprofile-textbox">
+      <h2>Edit Profile Details</h2>
+      <div class="row">
+        <div class="col-sm-6">
+          <form
+            action="/userProfile/edit/{{user._id}}"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="profile-content-padding-box profile-edit">
+              <div class="form-group mb-4">
+                <label for="username">New Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value="{{user.username}}"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-4">
+                <label for="password">Password</label>
+                <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-4">
+                <label for="fullName">Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-outline edit-profile">
+                <label for="avatar">Avatar</label>
+                <input
+                  type="file"
+                  id="avatar"
+                  name="avatar"
+                  class="form-control-file"
+                />
+              </div>
+              <button type="profile-submit"> Done Editing! </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form">
-    <label>New Password</label>
-    <input
-      type="text"
-      id="password"
-      name="password"
-      {{!-- value="{{user.password}}" --}}
-    />
-  </div>
-  <div class="form">
-    <label>Full Name</label>
-    <input type="text" id="fullName" name="fullName" />
-  </div>
-
-  <div class="form">
-    <label>Avatar</label>
-    <input type="file" id="avatar" name="avatar" />
-  </div>
-
-  <button type="submit"> Done Editing! </button>
-</form>
+</section>

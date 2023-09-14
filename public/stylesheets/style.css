@@ -258,3 +258,65 @@ h2 {
   font-size: 30px;
 }
 
+
+#signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.team {
+  padding-bottom: 50px;
+  margin-left:50px;
+}
+.edit-profile {
+  padding-bottom: 50px;
+}
+.profile-edit {
+  margin-left:50px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.team-photo img {
+  height: 150px;
+  width: auto;
+}
+.header-community {
+  text-align: center;
+  margin: auto;
+ }
+
+ .community-page {
+  height: 100vh;
+  align-items: center;
+}
+
+.about-container {
+  background-color: #F48748;
+  color: aliceblue;
+}
+.about-text {
+  width: 50%;
+  margin: auto;
+}
+.profile-section {
+  background-color: #F48748;
+  padding-left: 40px;
+  padding-top: 50px;
+  font-weight: bold;
+}
+.team {
+  padding-bottom: 50px;
+}
+.edit-profile {
+  padding-bottom: 50px;
+}
+.profile-edit {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+.team-photo img {
+  height: 150px;
+  width: auto;
+}

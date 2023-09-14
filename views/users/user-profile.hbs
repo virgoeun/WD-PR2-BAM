@@ -1,11 +1,26 @@
+{{!-- LOGIN HEADBAR --}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
+style="background-color: rgb(27, 34, 80) !important;">
+  <div class="container-fluid">
+  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
+      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+      <form id="logout-form" action="/logout" method="POST">
+      <button>Logout</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{{!-- END --}}
 {{! views/users/user-profile.hbs }}
-
 <div class="profile-body">
-
   <div class="row">
     <div class="profile-left col-md-4">
       {{#if userInSession}}
-        <h2 class="user-profile">Hello, {{userInSession.username}}!</h2>
+        <h2 class="user-profile"><strong>Hello, {{userInSession.username}}!</strong></h2>
       {{/if}}
       <div class="left-section">
         <div class="profile-details">
@@ -16,24 +31,22 @@
             class="avatar"
             style="height: 200px; width: auto; border-radius: 20px;"
           />
-          <p>Full Name: {{userInSession.fullName}}</p>
+          <p><strong>Name: {{userInSession.fullName}}</strong></p>
           <br />
           <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
               class="edit-button"
             >Edit Profile Details</button></a>
         </div>
-
-        <div>
+        <div class="d-grid gap-2 d-md-block">
           <div class="profile-buttons"><a href="/posts"><button
-                class="styled-button btn btn-block btn-primary"
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
               >Go to the Community</button></a></div>
           <div class="profile-buttons">
             <a href="/daily-journal"><button
-                class="styled-button btn btn-block btn-primary"
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
               >Add a Journal Entry</button></a>
           </div>
         </div>
-
         <div class="activity">
           <h2>Your Posts</h2>
           <div>
@@ -45,21 +58,21 @@
                 <div class="each-post">
                   <h5 class="card-header">{{title}}</h5>
                   <p class="card-text">{{content}}</p>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="/posts/{{_id}}/edit"
-                      class="btn btn-primary"
-                    >Edit</a>
-                  </div>
-                  <div class="col">
-                    <form action="/posts/{{_id}}/delete" method="POST">
-                      <button
-                        class="btn btn-primary"
-                        type="submit"
-                      >Delete</button>
-                    </form>
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        href="/posts/{{_id}}/edit"
+                        class="btn btn-secondary"
+                      >Edit</a>
+                    </div>
+                    <div class="col">
+                      <form action="/posts/{{_id}}/delete" method="POST">
+                        <button
+                          class="btn btn-secondary"
+                          type="submit"
+                        >Delete</button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               {{/each}}
@@ -90,10 +103,8 @@
             </div>
           </form>
         </div>
-
         <div class="recomm">
           <h2>Daily Yoga recommendation</h2>
-
           <div class="yoga-container">
             <h5>Get your dose of yoga for the day</h5>
             <div class="pose-container">
@@ -114,3 +125,4 @@
     </div>
   </div>
 </div>
+
