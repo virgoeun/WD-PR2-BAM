@@ -83,12 +83,24 @@ h2 {
 }
 
 .edit-btn {
-  margin-left:5px;
   margin-top:70px;
+}
+.backlink-btn {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  margin-left:-10px;
 
 }
 
+.detail-btn {
+  margin-left:100px;
+  margin-top:70px;
+}
 
+.link-btns {
+  margin-left:-15px;
+  margin-bottom: 50px;
+}
 /* style for emoji */
 .emoji-container {
   display: flex;
