@@ -1,5 +1,5 @@
+{{!-- <section class ="journal-section"> 
 <div class="bg-indigo text-white"> 
-<section class ="journal-section"> 
 <section class="daily-journal-section">
   <div class="writejournal-textbox">  
 <h2>Write today's journal</h2>
@@ -20,9 +20,7 @@
 
 <div class="form-outline mb-4">
 <label for ="content">Journal Content:
-  <textarea class="form-control h-25" id="journal-content" cols="30" rows="4" placeholder="How is your day? Start journaling here!"></textarea>
-    {{!-- <input type="text" id="journal-content" name ="content"/> --}}
-    {{!-- <textarea name="description" cols="30" rows="4" class="form-control h-25" placeholder="Please write your journal here"> </textarea> --}}
+   <input type="text" name ="content" class="form-control h-25" cols="30" rows="4" placeholder="How is your day? Start journaling here!"/> 
 </label>
 </div>
 <br>
@@ -41,20 +39,57 @@
 <div class="journalcreat-btn"> 
 <button type="submit" id ="jounalcreat-btn" class="btn btn-warning fw-bold mr-2"> Create your Journal </button>
 </div>
-</div>
 </form>
 </div>
 </div>
-
 </section>
-</section>
-</div> 
+</div>
 
+
+
+<div class="last-btn"> 
+ <nav class="navbar navbar-expand-lg">
+      <a class="nav-link" href="/userProfile"><button class ="btn btn-link btn-sm">Go back to Dashboards</button></a> 
+      <a class="nav-link" href="/journal-list"><button class ="btn btn-link btn-sm">Check Your Journal</button></a>
+    </nav>
+</div>
+    </section>
+{{!-- <a href="/userProfile">Go back to Dashboard</a>
+<br>
+<a href="/journal-list">Check Your Journals</a> --}}
+ --}}
+
+
+
+<h2>Write today's journal</h2>
+
+<form action ="/daily-journal" method = "Post" enctype="multipart/form-data">
+<div class="form-group"> 
+<label for ="title">Title:
+    <input type="text" id = "journal-title" name ="title" />
+</label>
+</div>
+<br>
+<div class="form-group"> 
+<label for ="content">Journal Content:
+    <input type="text" id="journal-content" name ="content"/>
+</label>
+</div>
+<br>
+<div class="form-group"> 
+<label for ="date">Date:
+    <input type="date" id ="post_date" name ="createdAt"/>
+</label>
+</div>
+<div class="form-group">
+        <label>Image:
+          <input type="file" name="journal-post-image" class="form-control-file" />
+        </label>
+      </div>
+<br>
+<button type="submit"> Create your Journal </button>
+</form>
  <nav class="navbar navbar-expand-lg">
       <a class="nav-link" href="/userProfile">Go back to Dashboards</a> 
       <a class="nav-link" href="/journal-list">Check Your Journal</a>
     </nav>
-{{!-- <a href="/userProfile">Go back to Dashboard</a>
-<br>
-<a href="/journal-list">Check Your Journals</a> --}}
-
