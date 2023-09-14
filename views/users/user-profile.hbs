@@ -5,7 +5,7 @@
   <div class="row">
     <div class="profile-left col-md-4">
       {{#if userInSession}}
-        <h2 class="user-profile">Hello, {{userInSession.username}}!</h2>
+        <h2 class="user-profile"><strong>Hello, {{userInSession.username}}!</strong></h2>
       {{/if}}
       <div class="left-section">
         <div class="profile-details">
@@ -16,7 +16,7 @@
             class="avatar"
             style="height: 200px; width: auto; border-radius: 20px;"
           />
-          <p>Full Name: {{userInSession.fullName}}</p>
+          <p><strong>Name: {{userInSession.fullName}}</strong></p>
           <br />
           <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
               class="edit-button"
@@ -24,15 +24,17 @@
         </div>
 
 
-  <div>
-    <div class="profile-buttons"><a href="/posts"><button
-                class="styled-button btn btn-block btn-primary"
+        <div class="d-grid gap-2 d-md-block">
+          <div class="profile-buttons"><a href="/community"><button
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
               >Go to the Community</button></a></div>
           <div class="profile-buttons">
-                <a href="/daily-journal">
-                <button class="styled-button btn btn-block btn-primary"> Add a Journal Entry </button></a>
-</div>
-  </div>
+            <a href="/daily-journal"><button
+                class="button-mira btn btn-primary btn-lg mb-6 mb-md-1"
+              >Add a Journal Entry</button></a>
+          </div>
+        </div>
+
 
   <div class="activity">
           <h2>Your Posts</h2>
@@ -45,23 +47,24 @@
                 <div class="each-post">
                   <h5 class="card-header">{{title}}</h5>
                   <p class="card-text">{{content}}</p>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <a
-                      href="/posts/{{_id}}/edit"
-                      class="btn btn-primary"
-                    >Edit</a>
+                  <div class="row">
+                    <div class="col">
+                      <a
+                        href="/posts/{{_id}}/edit"
+                        class="btn btn-secondary"
+                      >Edit</a>
+                    </div>
+                    <div class="col">
+                      <form action="/posts/{{_id}}/delete" method="POST">
+                        <button
+                          class="btn btn-secondary"
+                          type="submit"
+                        >Delete</button>
+                      </form>
+                    </div>
                   </div>
-                  <div class="col">
-                    <form action="/posts/{{_id}}/delete" method="POST">
-                      <button
-                        class="btn btn-primary"
-                        type="submit"
-                      >Delete</button>
-                    </form>
-                  </div>
                 </div>
+
               {{/each}}
             </div>
           </div>

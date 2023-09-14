@@ -1,43 +1,66 @@
 {{#if userInSession}}
   <h2>Profile edit for {{userInSession.username}}!</h2>
 {{/if}}
+<section class="profile-section">
+  <div class="bg-indigo text-white">
+    <div class="whiteprofile-textbox">
 
-<h2>Edit Profile Details</h2>
+      <h2>Edit Profile Details</h2>
 
-<form
-  action="/userProfile/edit/{{user._id}}"
-  method="post"
-  enctype="multipart/form-data"
->
+      <div class="row">
+        <div class="col-sm-6">
+          <form
+            action="/userProfile/edit/{{user._id}}"
+            method="post"
+            enctype="multipart/form-data"
+          >
 
-  <div class="form">
-    <label>New Username</label>
-    <input
-      type="text"
-      id="username"
-      name="username"
-      value="{{user.username}}"
-    />
+            <div class="profile-content-padding-box profile-edit">
+              <div class="form-group mb-4">
+                <label for="username">New Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value="{{user.username}}"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group mb-4">
+                <label for="password">Password</label>
+                <input
+                  type="text"
+                  id="password"
+                  name="password"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group mb-4">
+                <label for="fullName">Name</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-outline edit-profile">
+                <label for="avatar">Avatar</label>
+                <input
+                  type="file"
+                  id="avatar"
+                  name="avatar"
+                  class="form-control-file"
+                />
+              </div>
+
+              <button type="profile-submit"> Done Editing! </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div class="form">
-    <label>New Password</label>
-    <input
-      type="text"
-      id="password"
-      name="password"
-      {{!-- value="{{user.password}}" --}}
-    />
-  </div>
-  <div class="form">
-    <label>Full Name</label>
-    <input type="text" id="fullName" name="fullName" />
-  </div>
-
-  <div class="form">
-    <label>Avatar</label>
-    <input type="file" id="avatar" name="avatar" />
-  </div>
-
-  <button type="submit"> Done Editing! </button>
-</form>
+</section>
