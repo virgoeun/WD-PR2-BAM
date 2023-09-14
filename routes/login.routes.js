@@ -31,10 +31,10 @@ router.post("/login", isLoggedOut, authenticateUser, (req, res, next) => {
   // next(error));
 });
 
-//if not a loggedin user, it can't log-out
-router.get("/logout", (req, res, next) => {
-  router.post("/login", authenticateUser);
-});
+// //if not a loggedin user, it can't log-out
+// router.get("/logout", (req, res, next) => {
+//   router.post("/login", authenticateUser);
+// });
 
 //if not a loggedin user, it can't log-out
 router.post("/logout", (req, res, next) => {
