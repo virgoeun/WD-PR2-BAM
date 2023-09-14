@@ -1,36 +1,19 @@
 
-{{!-- LOGIN HEADBAR --}}
+<div class="edit-page">
+  <div>
+    <h2>Edit your post</h2>
+    <form action="/posts/{{post._id}}/edit" method="post">
+      <label>
+        Title:
+        <input type="text" name="title" value="{{post.title}}" />
+      </label>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-style="background-color: rgb(27, 34, 80) !important;">
-  <div class="container-fluid">
-  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
-      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
-      <form id="logout-form" action="/logout" method="POST">
-      <button>Logout</button>
-      </form>
-      </div>
-    </div>
+      <label>
+        Post:
+        <input type="text" name="content" value="{{post.content}}" />
+      </label>
+
+      <button class="btn btn-primary">Save changes</button>
+    </form>
   </div>
-</nav>
-
-{{!-- END --}}
-
-
-<h2>Edit your post: {{post.title}}</h2>
-
-<form action="/posts/{{post._id}}/edit" method="post">
-  <label>
-    Title:
-    <input type="text" name="title" value="{{post.title}}" />
-  </label>
-
-  <label>
-    Post:
-    <input type="text" name="content" value="{{post.content}}" />
-  </label>
-
-
-  <button>Save changes</button>
-</form>
+</div>

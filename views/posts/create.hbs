@@ -1,70 +1,52 @@
 
-{{!-- LOGIN HEADBAR --}}
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-style="background-color: rgb(27, 34, 80) !important;">
-  <div class="container-fluid">
-  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-      <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
-      <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
-      <form id="logout-form" action="/logout" method="POST">
-      <button>Logout</button>
-      </form>
+<section class="background-section">
+  <div class="bg-indigo text-white">
+    <section class="daily-journal-section">
+      <div class="writejournal-textbox">
+        <h2>What is on your mind?</h2>
       </div>
-    </div>
+{{!-- Create --}}
+      <div class="journal-content-padding-box">
+        <form action="/create-post" method="POST">
+          <div class="form-outline mb-4">
+            <label>Title:</label>
+            <input type="text" name="title" placeholder="1-2 words" />
+          </div>
+{{!-- post-button --}}
+          <div class="form-outline mb-4">
+            <label>Post:</label>
+            <textarea
+              type="text"
+              name="content"
+              placeholder="what's on your mind?"
+            ></textarea>
+          </div>
+{{!-- username --}}
+          <div class="form-outline mb-4">
+            <label>By: {{xyz.username}}</label>
+          </div>
+{{!-- submit --}}
+          <div class="post-btn">
+            <button
+              type="submit"
+              id="journal-create-btn"
+              class="btn btn-warning fw-bold mr-2"
+            >Post</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </div>
-</nav>
-
-{{!-- END --}}
-
-<section class ="background-section"> 
-<div class="bg-indigo text-white"> 
-<section class="daily-journal-section">
-
-  <div class="writejournal-textbox">  
-<h2>What is on your mind?</h2>
-</div>
-
-<div class="journal-content-padding-box"> 
-<div class="form-outline mb-4">
-<form action="/create-post" method="POST">
-
-  <label> Title:
-    <input type="text" name="title" placeholder="1-2 words" />
-  </label>
+{{!-- other buttons --}}
+  <div class="last-btn">
+    <nav class="navbar navbar-expand-lg">
+      <a class="nav-link" href="/posts"><button
+          class="btn btn-primary btn-sm"
+        >See all Hugger's Posts</button></a>
+      <a class="nav-link" href="/userProfile"><button
+          class="btn btn-primary btn-sm"
+        >Go back to Dashboard</button></a>
+    </nav>
   </div>
-
-<div class="form-outline mb-4"> 
-  <label> Post:
-    <textarea type="text" name="content" placeholder="what's on your mind?"> </textarea>
-  </label>
-</div>
-
-
-<div class="form-outline mb-4">
-  <label>
-
-    By:
-    {{xyz.username}}
-
-  </label>
- </div>
-
- <div class="post-btn">
-  <button type="submit" id ="jounalcreat-btn" class="btn btn-warning fw-bold mr-2">  Post </button>
-  </div>
-  
-</form>
-</div>
 </section>
-</div>
 
-  <div class="last-btn"> 
-    <nav class="navbar navbar-expand-lg"> 
-  <a class="nav-link" href="/posts"> <button class ="btn btn-primary btn-sm">See all Hugger's Posts </button></a>
-  <a class="nav-link" href="/userProfile"><button class ="btn btn-primary btn-sm">Go back to Dashboard</button></a>
-</nav>
-</div>
- </section>
-
- 

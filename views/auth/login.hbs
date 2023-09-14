@@ -1,41 +1,57 @@
-
-{{!-- LOGIN HEADBAR --}}
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark"
-style="background-color: rgb(27, 34, 80) !important;">
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark"
+  style="background-color: rgb(27, 34, 80) !important;"
+>
   <div class="container-fluid">
-  <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-brand navbar-nav ms-auto mb-2 mb-lg-0">
-      <a class="nav-link mb-0 h1 fs-2 text-white" href="/">Hugger &#128151</a>
+        <a class="nav-link mb-2 h1 fs-0 text-white" href="/">Hugger &#128151</a>
+        <form id="logout-form" action="/logout" method="POST">
+          <button>Logout</button>
+        </form>
       </div>
     </div>
   </div>
 </nav>
 
-{{!-- END --}}
+{{!-- LOGIN HEADBAR --}}
 
 
 <div id="login-form">
-        <div>
-            <h2 class="text-center">Login</h2>
-            <form action="/login" method="POST">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Your ID" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-                {{#if errorMessage}}
-                <p class="error text-center">{{errorMessage}}</p>
-                {{/if}}
-            </form>
-            <a href="/signup"><button class ="btn btn-link">Still not a Hugger&#128151?</button></a>
-        </div>
-    </div>
+  <div>
+    <h2 class="text-center">Login</h2>
+    <form action="/login" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          placeholder="Your ID"
+          required
+        />
+      </div>
 
- 
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          placeholder="********"
+          required
+        />
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+
+      {{#if errorMessage}}
+        <p class="error text-center">{{errorMessage}}</p>
+      {{/if}}
+    </form>
+  </div>
+</div>
