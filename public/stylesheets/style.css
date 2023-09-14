@@ -158,12 +158,11 @@ h2 {
 }
 
 /* avatar */
-.avatar {
+.avatar  {
   height: 200px;
   width: auto;
   border-radius: 20px;
 }
-
 
 .card-body {
   background-color: rgb(244, 200, 118);
@@ -179,6 +178,10 @@ h2 {
 }
 
 .btn-primary {
+.head-posts{
+  text-align: center;
+}
+.button-mira {
   background: linear-gradient(rgb(36, 119, 170) 0%, rgb(100, 97, 224) 100%);
   border-radius: 100px;
   transition: margin 0.3s ease-out 0s, opacity 0.3s ease-out 0s;
@@ -212,13 +215,13 @@ h2 {
   margin-top: 40px;
 }
 
-.left-section {
+/* .left-section {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: 70%;
   background-color: #f29f05;
-}
+} */
 
 .profile-left {
   background-color: #f29f05;
@@ -234,4 +237,8 @@ h2 {
   padding-top: 30px;
 }
 
+
+.user-profile{
+  font-size: 30px;
+}
 
