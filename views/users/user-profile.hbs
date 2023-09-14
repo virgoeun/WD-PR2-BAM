@@ -6,7 +6,8 @@
 
 <div>
   <div class="profile-details">
-    <img class="avatar"
+    <img
+      class="avatar"
       src="{{userInSession.avatar}}"
       alt="{{userInSession.username}} Avatar"
       class="avatar"
@@ -15,12 +16,8 @@
     <p>Full Name: {{userInSession.fullName}}</p>
     <br />
     <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
-        class="styled-button"
+        class="edit-button"
       >Edit Profile Details</button></a>
-
-    {{!-- <a href="/userProfile/edit/{{user._id}}" class="edit-avatar"><button
-        class="styled-button"
-      >Edit Profile Image</button></a> --}}
   </div>
 
   <div>
@@ -48,36 +45,41 @@
             </label>
           {{/each}}
         </div>
-        {{!-- <button type="submit">Submit</button> --}}
+        {{! <button type="submit">Submit</button> }}
       </form>
-    </div>    
+    </div>
 
-  <div class="recomm">
+    <div class="recomm">
       <h2>Daily Yoga recommendation</h2>
 
       <div class="yoga-container">
-            <h3>Daily Yoga</h3>
-        <div class="pose-container">     
-        <img src="{{poses.url_png}}" alt="{{poses.english_name}}" class="yoga-pose-picture">
+        <h3>Daily Yoga</h3>
+        <div class="pose-container">
+          <img
+            src="{{poses.url_png}}"
+            alt="{{poses.english_name}}"
+            class="yoga-pose-picture"
+          />
           <h3>{{poses.english_name}}</h3>
           <p><strong>How to do:</strong></p>
           <p>{{poses.pose_description}}</p>
-          <strong>Benefits:</strong></p>
+          <p><strong>Benefits:</strong></p>
           <p>{{poses.pose_benefits}}</p>
-       </div>
+        </div>
       </div>
-  </div>
+    </div>
 
     <div class="activity">
       <h2>Your Posts</h2>
-      <p>Placeholder for post tracking</p>
-      <div>
-        {{#each userPosts}}
+      <div class="profile-posts">
+        <ul class="posts">
+          {{#each userPosts}}
           <div class="post">
+            <li>{{title}}</li>
             <p>{{content}}</p>
-            <!-- Display other post details as needed -->
           </div>
-        {{/each}}
+          {{/each}}
+        </ul>
       </div>
     </div>
 

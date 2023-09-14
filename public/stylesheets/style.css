@@ -1,7 +1,41 @@
-* {
-  background-color: #dadad9;
+/* style for emoji */
+.emoji-container {
+  display: flex;
+  flex-wrap: wrap;
 }
-ul {
+
+.emoji-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emoji {
+  font-size: 20px; /* Adjust the size as needed */
+  padding: 2px;
+}
+
+/* Style the default appearance of the labels */
+.emoji-label {
+  cursor: pointer;
+  padding: 1px;
+  border: 1px solid #cbbbcb;
+  border-radius: 10px;
+  margin: 5px;
+  width: 80px;
+  height: 70px;
+}
+
+/* Style the labels when the associated radio button is checked */
+.emoji-label input[type="radio"]:checked + .emoji + .emoji {
+  background-color: #f29f05;
+  font-weight: bolder;
+  color: white;
+}
+
+/* other styles */
+/* navbar */
+ul.nav-bar {
   border-bottom: 2px solid #876c91;
   height: 30px;
   padding: 1em 0;
@@ -38,49 +72,29 @@ ul li {
   text-decoration: none;
 }
 
-.styled-button {
-  background-color: #876c91;
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  margin: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-
-.emoji-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.emoji-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  cursor: pointer;
-}
-
-.emoji {
-  font-size: 20px; /* Adjust the size as needed */
-}
-
-/* Add styles for highlighting selected emoji if desired */
-.emoji-label input:checked + .emoji {
-  background-color: #876c91; /* Change the background color when selected */
-  border-radius: 20%;
-}
-
-.about {
-  width: 50%;
-  height: 50%;
-  padding: 20px;
-  text-align: center;
-}
-
+/* avatar */
 .avatar {
   height: 150px;
   width: auto;
+  border-radius: 20px;
+}
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.post {
+  background-color: #f29f05;
+  border: 2px solid #4c33a6;
+  height: 100px;
+  width: 200px;
+  overflow: auto;
+  word-wrap: break-word;
+}
+
+.footer {
+  list-style-type: none;
 }
