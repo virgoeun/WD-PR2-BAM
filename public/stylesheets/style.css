@@ -1,3 +1,4 @@
+
 /* style for emoji */
 .emoji-container {
   display: flex;
@@ -33,44 +34,7 @@
   color: white;
 }
 
-/* other styles */
-/* navbar */
-ul.nav-bar {
-  border-bottom: 2px solid #876c91;
-  height: 30px;
-  padding: 1em 0;
-  list-style-type: none;
-}
 
-ul li {
-  line-height: 20px;
-}
-
-#to-right {
-  padding: 1em;
-  float: right;
-}
-
-#to-right span {
-  color: #876c91;
-  font-size: 1.5em;
-}
-
-#form h2 {
-  display: flex;
-  justify-content: center;
-}
-
-#to-left {
-  float: left;
-}
-
-#to-left p a {
-  color: #000;
-  font-weight: bold;
-  font-size: 1.5em;
-  text-decoration: none;
-}
 
 /* avatar */
 .avatar {
@@ -79,22 +43,3 @@ ul li {
   border-radius: 20px;
 }
 
-.posts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-content: center;
-}
-
-.post {
-  background-color: #f29f05;
-  border: 2px solid #4c33a6;
-  height: 100px;
-  width: 200px;
-  overflow: auto;
-  word-wrap: break-word;
-}
-
-.footer {
-  list-style-type: none;
-}

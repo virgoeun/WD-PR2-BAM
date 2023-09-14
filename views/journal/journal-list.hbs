@@ -1,15 +1,24 @@
   
 <h2>My Journals</h2>
- 
-<ul>
+
   {{#each journals}}
-    <li>
+  <hr>
+    {{!-- <li>
       <a href="/daily-journal/{{_id}}">  {{this.title}}</a>
       <p>Created at: {{ this.createdAt }}</p>
-    </li>
-  {{/each}}
-</ul>
+    </li> --}}
+    <div class="col-md-4 mb-5"> 
+        <div class="card" style="width: 18rem;">
+        <img src="{{this.imageUrl}}" class="card-img-top" alt="{{this.title}}">
+        <div class="card-body">
+          <h5 class="card-title">{{this.title}}</h5>
+          <p class="created-date">Created at: {{ this.createdAt }}</p>
+        <a href="/daily-journal/{{_id}}/edit" class="btn btn-primary">Edit</a>
+        </div>
+      </div>
+      </div>
 
-<br>
-<br>
-<a href="/daily-journal">⬅️ Back to journal</a>
+  {{/each}}
+  <p>There are no movies yet!</p>
+  </hr>
+<a href="/daily-journal">⬅️ Back to Journaling!</a>
