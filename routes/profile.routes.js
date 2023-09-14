@@ -98,4 +98,28 @@ router.get("/userProfile", isLoggedIn, (req, res) => {
     });
 });
 
+router.get("/posts/:postId/edit", (req, res, next) => {
+  const { postId } = req.params;
+
+  Post.findById(postId)
+    .then((postToEdit) => {
+      // console.log(postToEdit);
+      res.render("posts/post-edit", { post: postToEdit });
+    })
+    .catch((error) => next(error));
+});
+
+//returning updated posts
+router.post("/posts/:postId/edit", (req, res, next) => {
+  const { postId } = req.params;
+  const { title, content } = req.body;
+
+  Post.findByIdAndUpdate(postId, { title, content }, { new: true })
+    .then((updatedPost) => {
+      console.log(updatedPost);
+      res.redirect(`/posts/${updatedPost._id}`);
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = router;
