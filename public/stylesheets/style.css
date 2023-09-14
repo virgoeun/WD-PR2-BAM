@@ -140,9 +140,43 @@ h2 {
   width: auto;
   border-radius: 20px;
 }
+ 
+.header-community {
+ text-align: center;
+ margin: auto;
+}
 
-.head-posts{
-  text-align: center;
+/* Login, SignUp, community Page button */
+#login-form, 
+#signup-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Community page Buttons */
+.community-btn {
+  margin: 10px;
+}
+
+#post-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh
+}
+
+.community-page {
+  height: 100vh;
+  align-items: center;
+}
+
+.edit-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
 .btn-primary {
@@ -200,3 +234,27 @@ h2 {
 .profile-buttons{
   padding-top: 30px;
 }
+
+.background-section {
+  background-color: #F26B1D;
+}
+.journalwrite-text {
+  font-size:64px;
+  padding-left: 100px;
+  margin-top:50px;
+}
+.journal-content-padding-box {
+  padding-left:100px;
+  margin-top:-20px;
+}
+.last-btn {
+  margin-left:85px;
+  margin-top:70px;
+}
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+}
+
+
+
