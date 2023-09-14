@@ -2,27 +2,27 @@
 
 <div class="profile-body">
 
-
   <div class="row">
     <div class="profile-left col-md-4">
-{{#if userInSession}}
-  <h2>Hello, {{userInSession.username}}!</h2>
-{{/if}}
-<div class="left-section">
-  <div class="profile-details">
-    <img
-      class="avatar"
-      src="{{userInSession.avatar}}"
-      alt="{{userInSession.username}} Avatar"
-      class="avatar"
-    />
-    <p>Username: {{userInSession.username}}</p>
-    <p>Full Name: {{userInSession.fullName}}</p>
-    <br />
-    <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
-        class="edit-button"
-      >Edit Profile Details</button></a>
-  </div>
+      {{#if userInSession}}
+        <h2 class="user-profile">Hello, {{userInSession.username}}!</h2>
+      {{/if}}
+      <div class="left-section">
+        <div class="profile-details">
+          <img
+            class="avatar"
+            src="{{userInSession.avatar}}"
+            alt="{{userInSession.username}} Avatar"
+            class="avatar"
+            style="height: 200px; width: auto; border-radius: 20px;"
+          />
+          <p>Full Name: {{userInSession.fullName}}</p>
+          <br />
+          <a href="/userProfile/edit/{{user._id}}" class="edit-profile"><button
+              class="edit-button"
+            >Edit Profile Details</button></a>
+        </div>
+
 
   <div>
     <div class="profile-buttons"><a href="/posts"><button
@@ -45,6 +45,22 @@
                 <div class="each-post">
                   <h5 class="card-header">{{title}}</h5>
                   <p class="card-text">{{content}}</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <a
+                      href="/posts/{{_id}}/edit"
+                      class="btn btn-primary"
+                    >Edit</a>
+                  </div>
+                  <div class="col">
+                    <form action="/posts/{{_id}}/delete" method="POST">
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                      >Delete</button>
+                    </form>
+                  </div>
                 </div>
               {{/each}}
             </div>
@@ -75,33 +91,8 @@
               </form>
     </div>
 
-
-    <div class="activity">
-      <h2>Your Posts</h2>
-      <div class="profile-posts">
-        <ul class="posts">
-          {{#each userPosts}}
-            <div class="post">
-              <li>{{title}}</li>
-              <p>{{content}}</p>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <a href="/posts/{{_id}}/edit" class="btn btn-primary">Edit</a>
-              </div>
-              <div class="col">
-                <form action="/posts/{{_id}}/delete" method="POST">
-                  <button class="btn btn-primary" type="submit">Delete</button>
-                </form>
-              </div>
-            </div>
-          {{/each}}
-
-        </ul>
-
-    <div class="recomm">
-      <h2>Daily Yoga recommendation</h2>
+        <div class="recomm">
+          <h2>Daily Yoga recommendation</h2>
 
       <div class="yoga-container">
         <h5>Get your dose of yoga for the day</h5>
