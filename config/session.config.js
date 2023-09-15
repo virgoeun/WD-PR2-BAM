@@ -25,7 +25,7 @@ module.exports = (app) => {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
 
-        maxAge: 36000000, // 1 hour
+        maxAge: 3600000 // 1 hour
 
       }, // ADDED code below !!!
       store: MongoStore.create({

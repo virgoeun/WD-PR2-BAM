@@ -3,15 +3,21 @@ const router = new Router();
 const mongoose = require("mongoose");
 const User = require("../model/user.model");
 const ensureNotLoggedIn = require("../middleware/ensuredNotLoggedIn")
+const {bothFilled} = require("../middleware/isauthenticated");
 
-router.get("/signup",ensureNotLoggedIn, (req, res) => res.render("auth/signup"));
+router.get("/signup", ensureNotLoggedIn, bothFilled, (req, res, next) => {
+  res.render("auth/signup")
+  
+})
+// User is already logged in, redirect to their profile page
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup",(req, res, next) => {
   const { username, password } = req.body;
 
 
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-
+  
+  //Strong PW: Regular Expression
   if (!regex.test(password)) {
     res.status(500).render("auth/signup", {
       errorMessage:
@@ -37,7 +43,7 @@ router.post("/signup", (req, res, next) => {
         );
 
         res.status(500).render("auth/signup", {
-          errorMessage: "User not found and/or incorrect password.",
+          errorMessage: "Username is already taken! 🥲",
         });
       } else {
         next(error);

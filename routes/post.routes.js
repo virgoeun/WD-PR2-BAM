@@ -3,15 +3,16 @@ const router = new Router();
 
 const Post = require("../model/post.model");
 const User = require("../model/user.model");
+const { isLoggedIn } = require("../middleware/loggedInOut")
 
 //get route
-router.get("/create-post", (req, res) => {
+router.get("/create-post", isLoggedIn, (req, res) => {
   console.log(req.session.currentUser);
   res.render("posts/create", { xyz: req.session.currentUser });
 });
 
 //post route
-router.post("/create-post", (req, res) => {
+router.post("/create-post", isLoggedIn, (req, res) => {
   console.log(req.session.currentUser._id);
   const { title, content } = req.body;
 
@@ -26,7 +27,7 @@ router.post("/create-post", (req, res) => {
 });
 
 //list all posts
-router.get("/posts", (req, res, next) => {
+router.get("/posts", isLoggedIn, (req, res, next) => {
   Post.find()
     .populate("author")
     .then((dbPosts) => {
@@ -40,7 +41,7 @@ router.get("/posts", (req, res, next) => {
 });
 
 //display a single post
-router.get("/posts/:postId", (req, res, next) => {
+router.get("/posts/:postId", isLoggedIn, (req, res, next) => {
   const { postId } = req.params;
 
   Post.findById(postId)
@@ -86,11 +87,11 @@ router.get("/posts/:postId", (req, res, next) => {
 // });
 
 //delete the post
-router.post("/posts/:postId/delete", (req, res, next) => {
+router.post("/posts/:postId/delete", isLoggedIn, (req, res, next) => {
   const { postId } = req.params;
 
   Post.findByIdAndDelete(postId)
-    .then(() => res.redirect("/posts"))
+    .then(() => res.redirect("/userProfile"))
     .catch((error) => next(error));
 });
 

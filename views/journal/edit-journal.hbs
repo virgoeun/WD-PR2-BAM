@@ -11,13 +11,13 @@ style="background-color: rgb(27, 34, 80) !important;">
       </form>
       </div>
     </div>
-  </div>
+</div>
 </nav>
 
 {{!-- END --}}
 
-<section class ="background-section">  
-<div class="bg-indigo text-white"> 
+{{!-- <section class ="background-section">   --}}
+<div class="bg-indigo text-black"> 
   <div class="writejournal-textbox">
 <strong> <h2>Edit Your Journal</h2></strong>
 {{!-- <h2>Edit Your Journal: {{journal.title}}</h2> --}}
@@ -26,16 +26,16 @@ style="background-color: rgb(27, 34, 80) !important;">
   <div class="col-sm-6"> 
 <form action="/daily-journal/{{journal._id}}/edit" method="post" enctype="multipart/form-data">
   
-<div class="journal-content-padding-box"> 
+<div class="journal-content-padding-box-two"> 
 <div class="form-outline mb-4">
   <strong> <label for ="title"> Title:</strong>
     <input type="text" name="title" class="form-control" value="{{journal.title}}" />
   
   </label>
- <div class="form-outline mb-4"> 
+ <div class="row mb-4 form-group w-120">  
   <strong></strong><label for = "content"> Content:</strong>
-
-   <input type="text" name="content"  class="form-control h-25" cols="30" rows="4" value="{{journal.content}}"/>
+<textarea name="content" class="form-control" style="max-width: 100%" value="{{journal.content}}"></textarea>
+   {{!-- <input type="text" name="content"  class="form-control h-25" cols="30" rows="4" value="{{journal.content}}"/> --}}
   </label>
   </div>
   
@@ -60,11 +60,9 @@ style="background-color: rgb(27, 34, 80) !important;">
   <a href="/journal-list"><button class ="btn btn-link">Back to Journals</button></a>
   </div>
 
-
-
 </form>
 
 </div>
 </div>
 </div>
-</section> 
+{{!-- </section>  --}}

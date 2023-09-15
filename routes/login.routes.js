@@ -3,21 +3,17 @@ const bcryptjs = require("bcryptjs");
 
 const User = require("../model/user.model");
 const mongoose = require("mongoose");
-const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
-const {
-  bothFilled,
-  authenticateUser,
-} = require("../middleware/isauthenticated");
+const { authenticateUser, bothFilledTwo} = require("../middleware/isauthenticated");
 const ensureNotLoggedIn = require("../middleware/ensuredNotLoggedIn");
 
-router.get("/login", ensureNotLoggedIn, (req, res, next) => {
+router.get("/login", ensureNotLoggedIn, bothFilledTwo, (req, res, next) => {
+  
   res.render("auth/login");
 });
 
-router.post("/login", isLoggedOut, authenticateUser, (req, res, next) => {
+router.post("/login", authenticateUser, (req, res, next) => {
   const { username, password } = req.body;
   console.log(req.body);
-  const user = username;
   req.session.user = username; // Store user data in the session
   req.session
     .save((err) => {

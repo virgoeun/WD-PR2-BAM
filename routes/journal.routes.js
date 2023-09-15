@@ -24,14 +24,12 @@ router.post("/daily-journal", fileUploader.single("journal-post-image"), (req, r
       } 
 
 
-  console.log("currentUser", req.session.currentUser)
-  console.log("currentUserID", req.session.currentUser._id)
-  console.log("currentUserUsername", req.session.currentUser.username)
+  // console.log("currentUser", req.session.currentUser)
+  // console.log("currentUserID", req.session.currentUser._id)
+  // console.log("currentUserUsername", req.session.currentUser.username)
 
-  
-  
 
-  Journal.create( body ) //author:userId!!! (or author doesn't have any value)
+  Journal.create( body )
     .then((journalPost) => {
       console.log("journalPost", journalPost)
       return User.findByIdAndUpdate(userId, {
@@ -62,7 +60,7 @@ router.get("/journal-list", isLoggedIn, (req, res, next) => {
   });
 });
 
-router.get("/daily-journal/:journalId", (req, res, next) => {
+router.get("/daily-journal/:journalId", isLoggedIn, (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findById(journalId)
@@ -85,7 +83,7 @@ router.post("/daily-journal/:journalId/delete", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/daily-journal/:journalId/edit", (req, res, next) => {
+router.get("/daily-journal/:journalId/edit", isLoggedIn, (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findById(journalId)
@@ -118,21 +116,6 @@ router.post("/daily-journal/:journalId/edit", fileUploader.single("journal-post-
     )
     .catch((error) => next(error));
 });
-
-
-//only one users' all journals
-
-// router.get("/daily-journal/:userId/journal-list", (req, res, next) => {
-//   const userId = req.session.currentUser._id
-//     User.findById(userId)
-//       .populate("Journal")
-//       .then((foundUser) => {
-//         res.render("all-my-journals", { journals: foundUser.journals });
-//       })
-//       .catch((err) =>
-//         console.log(`Error while getting all posts from the DB: ${err}`)
-//       );
-//   });
 
 
 module.exports = router;

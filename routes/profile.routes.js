@@ -3,7 +3,7 @@ const app = require("../routes/profile.routes");
 const User = require("../model/user.model");
 const Post = require("../model/post.model");
 const emojies = require("../assets/emojies.json");
-const { isLoggedOut, isLoggedIn } = require("../middleware/loggedInOut");
+const { isLoggedIn } = require("../middleware/loggedInOut");
 const axios = require("axios");
 
 //render profile page and emojies
