@@ -53,7 +53,7 @@ h2 {
 
 }
 .background-section {
-  background-color: #f26b1d;
+  background-color: #ed8243;
 }
 
 .journal-list-section {
@@ -113,6 +113,12 @@ h2 {
 
 .journal-content-padding-box {
   padding-left:10px;
+  margin-top:-20px;
+ 
+}
+
+.journal-content-padding-box-two {
+  padding-left:100px;
   margin-top:-20px;
  
 }
