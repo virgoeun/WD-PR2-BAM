@@ -1,8 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+<<<<<<< Updated upstream
 * {
   font-family: "Quicksand", sans-serif;
 }
+=======
+
+*{
+font-family: "Quicksand", sans-serif;
+}
+
+>>>>>>> Stashed changes
 /* JOURNAL STYLING */
 h2 {
   font-size: 64px;
@@ -230,3 +238,31 @@ h2 {
   height: 150px;
   width: auto;
 }
+<<<<<<< Updated upstream
+=======
+
+.background-section {
+  background-color: #F26B1D;
+}
+.journalwrite-text {
+  font-size:64px;
+  padding-left: 100px;
+  margin-top:50px;
+}
+.journal-content-padding-box {
+  padding-left:100px;
+  margin-top:-20px;
+}
+.last-btn {
+  margin-left:85px;
+  margin-top:70px;
+}
+.post-btn {
+  margin-left:40px;
+  margin-top:50px;
+}
+
+.user-profile{
+  font-size: 30px;
+}
+>>>>>>> Stashed changes
