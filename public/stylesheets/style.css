@@ -117,6 +117,9 @@ h2 {
  
 }
 
+
+
+
 .journal-content-padding-box-two {
   padding-left:100px;
   margin-top:-20px;
@@ -332,3 +335,20 @@ width:30%;
 height:40%;
 
 }
+
+.postjournal-textbox {
+  margin-left:20px;
+  padding-top:50px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.editPost-box {
+  height:70vh;
+  margin-top:50px;
+  margin-left:600px;
+  justify-content: center;
+  
+  }
+  
