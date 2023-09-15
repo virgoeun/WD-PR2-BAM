@@ -1,10 +1,10 @@
 
-# My First Game Project
-# "Picka-Boo!" 
+# Express App Project
+## "Hugger - Online Community for Mental Health" 
 
 <img src="./public/images/Hugger Logo.png" alt="Alt text" title="Optional title">
 
-[Play Game](http://localhost:3000/)
+[Deployment Link](http://localhost:3000/)
 
 <br>
 
