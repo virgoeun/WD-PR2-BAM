@@ -60,7 +60,7 @@ router.get("/journal-list", isLoggedIn, (req, res, next) => {
   });
 });
 
-router.get("/daily-journal/:journalId", (req, res, next) => {
+router.get("/daily-journal/:journalId", isLoggedIn, (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findById(journalId)
@@ -83,7 +83,7 @@ router.post("/daily-journal/:journalId/delete", (req, res, next) => {
     .catch((error) => next(error));
 });
 
-router.get("/daily-journal/:journalId/edit", (req, res, next) => {
+router.get("/daily-journal/:journalId/edit", isLoggedIn, (req, res, next) => {
   const { journalId } = req.params;
 
   Journal.findById(journalId)

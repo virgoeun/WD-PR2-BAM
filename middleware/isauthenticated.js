@@ -8,6 +8,19 @@ function bothFilled(req, res, next) {
   // Check if both fields are filled
   if (!username || !password) {
     return res.render("auth/signup", {
+      errorMessage: "🐣 Please enter both username and password to signup.",
+    });
+  }
+
+  next();
+}
+
+function bothFilledTwo(req, res, next) {
+  const { username, password } = req.body;
+
+  // Check if both fields are filled
+  if (!username || !password) {
+    return res.render("auth/login", {
       errorMessage: "🐣 Please enter both username and password to login.",
     });
   }
@@ -41,4 +54,4 @@ function authenticateUser(req, res, next) {
     });
 }
 
-module.exports = { bothFilled, authenticateUser };
+module.exports = { bothFilled, authenticateUser, bothFilledTwo };

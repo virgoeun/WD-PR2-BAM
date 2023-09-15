@@ -3,11 +3,11 @@ const bcryptjs = require("bcryptjs");
 
 const User = require("../model/user.model");
 const mongoose = require("mongoose");
-const { isLoggedOut } = require("../middleware/loggedInOut");
-const {authenticateUser} = require("../middleware/isauthenticated");
+const { authenticateUser, bothFilledTwo} = require("../middleware/isauthenticated");
 const ensureNotLoggedIn = require("../middleware/ensuredNotLoggedIn");
 
-router.get("/login", ensureNotLoggedIn, (req, res, next) => {
+router.get("/login", ensureNotLoggedIn, bothFilledTwo, (req, res, next) => {
+  
   res.render("auth/login");
 });
 
