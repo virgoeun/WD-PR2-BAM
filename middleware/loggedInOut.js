@@ -2,7 +2,7 @@
 
 function isLoggedOut (req, res, next) {
   if (req.session.currentUser) {
-    return res.redirect("/");
+    return res.redirect("/"); //If the user is logged in, it redirects them to the root path ("/"); 
   }
   next();
 };

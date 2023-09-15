@@ -16,16 +16,14 @@ h2 {
 
 
 .main-picture{
-  width:40%;
-  display: block;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  text-align: center;
+  padding-top:20px;
+  margin: 0 auto;
   margin-top:0;
   margin-bottom:0;
   background-repeat: no-repeat;
   background-size: contain;
-
 }
 
 .nav-link {
@@ -55,7 +53,7 @@ h2 {
 
 }
 .background-section {
-  background-color: #f26b1d;
+  background-color: #ed8243;
 }
 
 .journal-list-section {
@@ -97,7 +95,7 @@ h2 {
 }
 
 .journalcreat-btn {
-  margin-left:100px;
+  margin-left:10px;
   margin-top:50px;
 
 }
@@ -114,6 +112,15 @@ h2 {
 }
 
 .journal-content-padding-box {
+  padding-left:10px;
+  margin-top:-20px;
+ 
+}
+
+
+
+
+.journal-content-padding-box-two {
   padding-left:100px;
   margin-top:-20px;
  
@@ -320,3 +327,28 @@ h2 {
   height: 150px;
   width: auto;
 }
+
+.journal-image {
+margin-left:800px;
+margin-bottom:100px;
+width:30%;
+height:40%;
+
+}
+
+.postjournal-textbox {
+  margin-left:20px;
+  padding-top:50px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.editPost-box {
+  height:70vh;
+  margin-top:50px;
+  margin-left:600px;
+  justify-content: center;
+  
+  }
+  
