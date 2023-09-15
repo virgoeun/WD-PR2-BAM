@@ -1,3 +1,5 @@
+const { isLoggedIn } = require("../middleware/loggedInOut");
+
 const router = require("express").Router();
 
 //render page
