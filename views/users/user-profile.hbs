@@ -92,9 +92,15 @@ style="background-color: rgb(27, 34, 80) !important;">
                 <label class="emoji-label">
                   <input
                     type="radio"
-                    name="selectedMood"
+                    name="selectedMood" 
+                    {{!-- In HTML forms, when multiple radio buttons share the same name attribute, 
+                    they form a radio button group, and the user can select only one option 
+                    from that group. Selecting one radio button automatically deselects 
+                    any other radio button within the same group. 
+                    This behavior is inherent to radio buttons in HTML, and it allows you 
+                    to create mutually exclusive options where the user can choose only one. --}}
                     value="{{name}}"
-                    style="display: none;"
+                    style="display: block;"
                   />
                   <span class="emoji">{{emoji}}</span>
                   <span class="emoji">{{name}}</span>

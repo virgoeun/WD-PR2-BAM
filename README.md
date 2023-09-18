@@ -30,7 +30,7 @@ Hugger provides a secure and compassionate digital platform where people can con
 - Session & Cookie management 
 - User login/out & Signup 
 - User Authentication & Authorization
-- CSS: Bootstrap 5.0.2v (Reponstive design)
+- CSS: Bootstrap 5.0.2v (Reponsive design)
 
 <br>
 
@@ -42,6 +42,7 @@ Hugger provides a secure and compassionate digital platform where people can con
 - Journal Password
 - Live Chat Functions
 - Video Post DB 
+- Mood data tracking on the Journal page
 
 <br>
 
