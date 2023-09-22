@@ -27,14 +27,18 @@ style="background-color: rgb(27, 34, 80) !important;">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
                 </div>
-                <div class="text-center">
+                </div>
+                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Login</button>
                 </div>
                 {{#if errorMessage}}
                 <p class="error text-center">{{errorMessage}}</p>
                 {{/if}}
             </form>
-            <a href="/signup"><button class ="btn btn-link">Still not a Hugger&#128151?</button></a>
+            <a href="/signup">
+            <button class ="btn btn-link">Still not a Hugger&#128151?</button>
+            </a>
+            
         </div>
     </div>
 

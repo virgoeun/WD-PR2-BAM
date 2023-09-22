@@ -6,7 +6,11 @@ const mongoose = require("mongoose");
 // If no env has been set, we dynamically set it to whatever the folder name was upon the creation of the app
 
 // const MONGO_URL = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hugger-project";
-const MONGODB_URI = process.env.MONGODB_URL;
+const MONGODB_URI =
+  // when working on local version
+  // process.env.MONGODB_URL;
+  //  when working on deploy version
+  "mongodb+srv://test_user:n0PgwB3ipaZWCYJh@cluster0.dmxynb3.mongodb.net/hugger-project?retryWrites=true&w=majority";
 
 //connect DB
 async function connectDB() {
@@ -17,6 +21,8 @@ async function connectDB() {
         "connected MongoDB | DATABASE:",
         response.connections[0].name
       );
+
+      console.log("Connected to database!");
     })
     .catch((error) => {
       console.error("Failed to connect to MongoDB | error:", error);

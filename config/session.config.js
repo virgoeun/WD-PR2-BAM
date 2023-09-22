@@ -25,12 +25,12 @@ module.exports = (app) => {
         secure: process.env.NODE_ENV === "production",
         httpOnly: true,
 
-        maxAge: 3600000 // 1 hour
-
+        maxAge: 3600000, // 1 hour
       }, // ADDED code below !!!
       store: MongoStore.create({
         mongoUrl:
-          process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hugger-project",
+          "mongodb+srv://test_user:n0PgwB3ipaZWCYJh@cluster0.dmxynb3.mongodb.net/hugger-project?retryWrites=true&w=majority",
+        // process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hugger-project",
 
         // ttl => time to live
         //
